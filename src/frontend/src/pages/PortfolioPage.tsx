@@ -88,7 +88,9 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-md shadow-card" : "bg-white"
+        scrolled
+          ? "bg-background/80 backdrop-blur-md border-b border-border"
+          : "bg-background/80 backdrop-blur-md border-b border-border"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -98,8 +100,8 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
           onClick={() => navigate("/")}
           className="flex items-center gap-1 font-bold text-xl tracking-tight"
         >
-          <span className="text-navy">ANYI</span>
-          <span className="w-2 h-2 rounded-full bg-teal mt-0.5" />
+          <span className="text-gradient font-bold">ANYI</span>
+          <span className="w-2 h-2 rounded-full bg-primary mt-0.5" />
         </button>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -110,7 +112,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
                 key={item}
                 data-ocid="nav.link"
                 onClick={() => goHome(item.toLowerCase())}
-                className="text-sm font-medium text-body-gray hover:text-navy transition-colors"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item}
               </button>
@@ -120,7 +122,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
             type="button"
             data-ocid="nav.link"
             onClick={() => navigate("/portfolio")}
-            className="text-sm font-medium text-teal hover:text-navy transition-colors"
+            className="text-sm font-medium text-primary hover:text-foreground transition-colors"
           >
             Portfolio
           </button>
@@ -128,7 +130,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
             type="button"
             data-ocid="nav.link"
             onClick={() => navigate("/admin")}
-            className="text-sm font-medium text-body-gray hover:text-navy transition-colors"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Admin
           </button>
@@ -138,7 +140,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
           <Button
             data-ocid="nav.primary_button"
             onClick={() => goHome("contact")}
-            className="bg-navy text-white hover:bg-navy/90 rounded-full px-6 text-xs font-semibold uppercase tracking-wider"
+            className="btn-gradient text-white hover:opacity-90 rounded-full px-6 text-xs font-semibold uppercase tracking-wider"
           >
             Start a Project
           </Button>
@@ -160,7 +162,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="md:hidden bg-white border-t border-subtle px-6 py-4 flex flex-col gap-4"
+            className="md:hidden bg-background/90 backdrop-blur-md border-t border-border px-6 py-4 flex flex-col gap-4"
           >
             {["Home", "About", "Services", "Testimonials", "Contact"].map(
               (item) => (
@@ -168,7 +170,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
                   type="button"
                   key={item}
                   onClick={() => goHome(item.toLowerCase())}
-                  className="text-sm font-medium text-left text-body-gray hover:text-navy py-1"
+                  className="text-sm font-medium text-left text-muted-foreground hover:text-foreground py-1"
                 >
                   {item}
                 </button>
@@ -177,14 +179,14 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
             <button
               type="button"
               onClick={() => navigate("/portfolio")}
-              className="text-sm font-medium text-left text-teal hover:text-navy py-1"
+              className="text-sm font-medium text-left text-primary hover:text-foreground py-1"
             >
               Portfolio
             </button>
             <button
               type="button"
               onClick={() => navigate("/admin")}
-              className="text-sm font-medium text-left text-body-gray hover:text-navy py-1"
+              className="text-sm font-medium text-left text-muted-foreground hover:text-foreground py-1"
             >
               Admin
             </button>
@@ -268,7 +270,7 @@ function Lightbox({
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.2 }}
         onClick={(e) => e.stopPropagation()}
-        className="max-w-4xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl"
+        className="max-w-4xl w-full glass-card rounded-2xl overflow-hidden"
       >
         <div className="aspect-video bg-muted relative">
           <img
@@ -278,14 +280,14 @@ function Lightbox({
           />
         </div>
         <div className="p-6">
-          <Badge className="bg-teal/10 text-teal border-0 mb-2">
+          <Badge className="bg-primary/20 text-primary border-0 mb-2">
             {item.category}
           </Badge>
-          <h2 className="text-2xl font-bold text-navy">{item.title}</h2>
+          <h2 className="text-2xl font-bold text-foreground">{item.title}</h2>
           {item.description && (
-            <p className="mt-2 text-body-gray">{item.description}</p>
+            <p className="mt-2 text-muted-foreground">{item.description}</p>
           )}
-          <p className="text-xs text-muted-gray mt-3">
+          <p className="text-xs text-muted-foreground/70 mt-3">
             {index + 1} / {items.length}
           </p>
         </div>
@@ -331,16 +333,16 @@ export default function PortfolioPage({
       : items.filter((i) => i.category === cat).length;
 
   return (
-    <div className="min-h-screen bg-page">
+    <div className="min-h-screen bg-background">
       <NavBar navigate={navigate} />
 
       {/* Hero */}
-      <section className="pt-28 pb-16 px-6 bg-gradient-to-br from-navy to-navy/80 text-white">
+      <section className="pt-28 pb-16 px-6 bg-gradient-to-br from-background via-primary/20 to-background text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto text-center">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-teal uppercase tracking-widest text-xs font-semibold mb-4"
+            className="text-primary uppercase tracking-widest text-xs font-semibold mb-4"
           >
             Our Work
           </motion.p>
@@ -365,7 +367,7 @@ export default function PortfolioPage({
       </section>
 
       {/* Filters + View Toggle */}
-      <section className="sticky top-16 z-40 bg-white border-b border-subtle shadow-sm">
+      <section className="sticky top-16 z-40 bg-background/90 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
           <div
             className="flex items-center gap-2 flex-wrap"
@@ -379,8 +381,8 @@ export default function PortfolioPage({
                 onClick={() => setActiveCategory(cat)}
                 className={`relative px-4 py-1.5 text-sm font-medium rounded-full transition-all ${
                   activeCategory === cat
-                    ? "bg-navy text-white"
-                    : "bg-muted text-body-gray hover:bg-muted/80"
+                    ? "btn-gradient text-white"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >
                 {cat}
@@ -388,7 +390,7 @@ export default function PortfolioPage({
                   className={`ml-1.5 text-xs px-1.5 py-0.5 rounded-full ${
                     activeCategory === cat
                       ? "bg-white/20 text-white"
-                      : "bg-subtle text-muted-gray"
+                      : "bg-muted text-muted-foreground/70"
                   }`}
                 >
                   {countFor(cat)}
@@ -404,8 +406,8 @@ export default function PortfolioPage({
               onClick={() => setViewMode("grid")}
               className={`p-2 rounded-md transition-all ${
                 viewMode === "grid"
-                  ? "bg-white shadow-sm text-navy"
-                  : "text-body-gray"
+                  ? "glass-card text-foreground"
+                  : "text-muted-foreground"
               }`}
             >
               <Grid3X3 className="w-4 h-4" />
@@ -416,8 +418,8 @@ export default function PortfolioPage({
               onClick={() => setViewMode("list")}
               className={`p-2 rounded-md transition-all ${
                 viewMode === "list"
-                  ? "bg-white shadow-sm text-navy"
-                  : "text-body-gray"
+                  ? "glass-card text-foreground"
+                  : "text-muted-foreground"
               }`}
             >
               <LayoutList className="w-4 h-4" />
@@ -435,11 +437,11 @@ export default function PortfolioPage({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="text-center py-24 text-body-gray"
+              className="text-center py-24 text-muted-foreground"
               data-ocid="portfolio.empty_state"
             >
               <p className="text-5xl mb-4">🎨</p>
-              <h3 className="text-xl font-semibold text-navy mb-2">
+              <h3 className="text-xl font-semibold text-foreground mb-2">
                 No items yet
               </h3>
               <p className="text-sm">
@@ -471,7 +473,7 @@ export default function PortfolioPage({
                       alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/30 transition-all duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-transparent group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
                       <motion.span
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileHover={{ opacity: 1, scale: 1 }}
@@ -482,10 +484,10 @@ export default function PortfolioPage({
                     </div>
                   </div>
                   <div className="p-4">
-                    <Badge className="bg-teal/10 text-teal border-0 text-xs mb-2">
+                    <Badge className="bg-primary/20 text-primary border-0 text-xs mb-2">
                       {item.category}
                     </Badge>
-                    <h3 className="font-semibold text-navy text-sm">
+                    <h3 className="font-semibold text-foreground text-sm">
                       {item.title}
                     </h3>
                   </div>
@@ -509,7 +511,7 @@ export default function PortfolioPage({
                   transition={{ delay: i * 0.05 }}
                   data-ocid={`portfolio.item.${i + 1}`}
                   onClick={() => setLightboxIndex(filtered.indexOf(item))}
-                  className="group cursor-pointer flex gap-5 bg-white rounded-2xl p-4 shadow-card hover:shadow-lg transition-all duration-300"
+                  className="group cursor-pointer flex gap-5 glass-card rounded-2xl p-4 shadow-card hover:shadow-lg transition-all duration-300"
                 >
                   <div className="w-28 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-muted">
                     <img
@@ -519,17 +521,19 @@ export default function PortfolioPage({
                     />
                   </div>
                   <div className="flex-1 min-w-0 flex flex-col justify-center">
-                    <Badge className="bg-teal/10 text-teal border-0 text-xs mb-1 w-fit">
+                    <Badge className="bg-primary/20 text-primary border-0 text-xs mb-1 w-fit">
                       {item.category}
                     </Badge>
-                    <h3 className="font-semibold text-navy">{item.title}</h3>
+                    <h3 className="font-semibold text-foreground">
+                      {item.title}
+                    </h3>
                     {item.description && (
-                      <p className="text-sm text-body-gray mt-1 line-clamp-2">
+                      <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
                         {item.description}
                       </p>
                     )}
                   </div>
-                  <div className="flex items-center text-muted-gray group-hover:text-teal transition-colors">
+                  <div className="flex items-center text-muted-foreground/70 group-hover:text-primary transition-colors">
                     <ChevronRight className="w-5 h-5" />
                   </div>
                 </motion.div>
@@ -551,7 +555,7 @@ export default function PortfolioPage({
       </AnimatePresence>
 
       {/* Footer */}
-      <footer className="bg-navy text-white/60 text-center text-xs py-6 mt-12">
+      <footer className="bg-black/60 backdrop-blur-md border-t border-border text-white/60 text-center text-xs py-6 mt-12">
         © {new Date().getFullYear()}. Built with ❤️ using{" "}
         <a
           href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname)}`}

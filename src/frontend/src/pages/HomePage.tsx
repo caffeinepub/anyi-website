@@ -140,7 +140,9 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-md shadow-card" : "bg-white"
+        scrolled
+          ? "bg-background/80 backdrop-blur-md border-b border-border"
+          : "bg-background/80 backdrop-blur-md border-b border-border"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -151,8 +153,8 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
           onClick={() => scrollTo("hero")}
           className="flex items-center gap-1 font-bold text-xl tracking-tight"
         >
-          <span className="text-navy">ANYI</span>
-          <span className="w-2 h-2 rounded-full bg-teal mt-0.5" />
+          <span className="text-gradient font-bold">ANYI</span>
+          <span className="w-2 h-2 rounded-full bg-primary mt-0.5" />
         </button>
 
         {/* Desktop Nav */}
@@ -160,6 +162,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
           {[
             "Home",
             "About",
+            "Solutions",
             "Services",
             "Portfolio",
             "Testimonials",
@@ -172,11 +175,13 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
               onClick={() =>
                 item === "Portfolio"
                   ? navigate("/portfolio")
-                  : item === "About"
-                    ? navigate("/about")
-                    : scrollTo(item.toLowerCase())
+                  : item === "Solutions"
+                    ? navigate("/solutions")
+                    : item === "About"
+                      ? navigate("/about")
+                      : scrollTo(item.toLowerCase())
               }
-              className="text-sm font-medium text-body-gray hover:text-navy transition-colors"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               {item}
             </button>
@@ -185,7 +190,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
             type="button"
             data-ocid="nav.link"
             onClick={() => navigate("/admin")}
-            className="text-sm font-medium text-teal hover:text-navy transition-colors"
+            className="text-sm font-medium text-primary hover:text-foreground transition-colors"
           >
             Admin
           </button>
@@ -196,7 +201,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
           <Button
             data-ocid="nav.primary_button"
             onClick={() => scrollTo("contact")}
-            className="bg-navy text-white hover:bg-navy/90 rounded-full px-6 text-xs font-semibold uppercase tracking-wider"
+            className="btn-gradient text-white hover:opacity-90 rounded-full px-6 text-xs font-semibold uppercase tracking-wider"
           >
             Start a Project
           </Button>
@@ -220,11 +225,12 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="md:hidden bg-white border-t border-subtle px-6 py-4 flex flex-col gap-4"
+            className="md:hidden bg-background/90 backdrop-blur-md border-t border-border px-6 py-4 flex flex-col gap-4"
           >
             {[
               "Home",
               "About",
+              "Solutions",
               "Services",
               "Portfolio",
               "Testimonials",
@@ -236,11 +242,13 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
                 onClick={() =>
                   item === "Portfolio"
                     ? navigate("/portfolio")
-                    : item === "About"
-                      ? navigate("/about")
-                      : scrollTo(item.toLowerCase())
+                    : item === "Solutions"
+                      ? navigate("/solutions")
+                      : item === "About"
+                        ? navigate("/about")
+                        : scrollTo(item.toLowerCase())
                 }
-                className="text-sm font-medium text-left text-body-gray hover:text-navy py-1"
+                className="text-sm font-medium text-left text-muted-foreground hover:text-foreground py-1"
               >
                 {item}
               </button>
@@ -251,13 +259,13 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
                 setMenuOpen(false);
                 navigate("/admin");
               }}
-              className="text-sm font-medium text-left text-teal"
+              className="text-sm font-medium text-left text-primary"
             >
               Admin
             </button>
             <Button
               onClick={() => scrollTo("contact")}
-              className="bg-navy text-white rounded-full text-xs font-semibold uppercase tracking-wider w-full"
+              className="btn-gradient text-white rounded-full text-xs font-semibold uppercase tracking-wider w-full"
             >
               Start a Project
             </Button>
@@ -272,9 +280,12 @@ function HeroSection() {
   const { data: hero } = useHeroContent();
 
   return (
-    <section id="home" className="pt-16 min-h-screen bg-page flex items-center">
+    <section
+      id="home"
+      className="pt-16 min-h-screen bg-background flex items-center"
+    >
       <div className="max-w-7xl mx-auto px-6 py-16 w-full">
-        <div className="bg-white rounded-2xl shadow-card overflow-hidden">
+        <div className="glass-card rounded-2xl overflow-hidden">
           <div className="grid md:grid-cols-2 gap-0">
             {/* Left */}
             <div className="p-10 md:p-16 flex flex-col justify-center">
@@ -283,13 +294,13 @@ function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: "easeOut" }}
               >
-                <span className="inline-block text-xs font-semibold uppercase tracking-widest text-teal mb-6 px-3 py-1.5 bg-teal/10 rounded-full">
+                <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-6 px-3 py-1.5 bg-primary/20 rounded-full">
                   Creative Agency
                 </span>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-navy leading-[1.05] uppercase tracking-tight mb-6">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[1.05] uppercase tracking-tight mb-6">
                   {hero?.title ?? "WE AMPLIFY YOUR BRAND."}
                 </h1>
-                <p className="text-base text-body-gray leading-relaxed mb-10 max-w-md">
+                <p className="text-base text-muted-foreground leading-relaxed mb-10 max-w-md">
                   {hero?.subtitle ??
                     "We craft bold digital experiences that connect brands with their audience and drive meaningful results."}
                 </p>
@@ -301,7 +312,7 @@ function HeroSection() {
                         .getElementById("services")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="bg-navy text-white hover:bg-navy/90 rounded-full px-8 py-6 text-xs font-bold uppercase tracking-widest flex items-center gap-2"
+                    className="btn-gradient text-white hover:opacity-90 rounded-full px-8 py-6 text-xs font-bold uppercase tracking-widest flex items-center gap-2"
                   >
                     {hero?.ctaText ?? "Explore Services"}
                     <ArrowUpRight className="w-4 h-4" />
@@ -314,7 +325,7 @@ function HeroSection() {
                         .getElementById("portfolio")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="rounded-full px-8 py-6 text-xs font-bold uppercase tracking-widest border-subtle text-navy hover:bg-navy hover:text-white transition-all"
+                    className="rounded-full px-8 py-6 text-xs font-bold uppercase tracking-widest border-border text-foreground hover:opacity-80 hover:text-white transition-all"
                   >
                     View Portfolio
                   </Button>
@@ -347,24 +358,21 @@ function AboutSection() {
   const { data: about } = useAboutContent();
 
   return (
-    <section id="about" className="py-24 bg-page">
+    <section id="about" className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
-        <div
-          ref={ref}
-          className="bg-white rounded-2xl shadow-card p-10 md:p-16"
-        >
+        <div ref={ref} className="glass-card rounded-2xl p-10 md:p-16">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-teal block mb-3">
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
                 Who We Are
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 {about?.title ?? "About Us"}
               </h2>
-              <p className="text-lg font-semibold text-navy mb-6">
+              <p className="text-lg font-semibold text-foreground mb-6">
                 Innovative. Strategic. Results-Driven.
               </p>
-              <p className="text-sm text-body-gray leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 {about?.body ??
                   "We are a full-service creative agency dedicated to building brands that inspire, engage, and convert. With over a decade of experience, our team of strategists, designers, and developers work in harmony to deliver exceptional results."}
               </p>
@@ -375,10 +383,10 @@ function AboutSection() {
                   { num: "98%", label: "Client Satisfaction" },
                 ].map((stat) => (
                   <div key={stat.label}>
-                    <div className="text-2xl font-extrabold text-navy">
+                    <div className="text-2xl font-extrabold text-foreground">
                       {stat.num}
                     </div>
-                    <div className="text-xs text-body-gray mt-1">
+                    <div className="text-xs text-muted-foreground mt-1">
                       {stat.label}
                     </div>
                   </div>
@@ -406,16 +414,16 @@ function ServicesSection() {
     services && services.length > 0 ? services : DEFAULT_SERVICES;
 
   return (
-    <section id="services" className="py-24 bg-page">
+    <section id="services" className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         <div ref={ref} className="text-center mb-12">
-          <span className="text-xs font-semibold uppercase tracking-widest text-teal block mb-3">
+          <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
             What We Do
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-navy">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Our Services
           </h2>
-          <p className="text-sm text-body-gray mt-4 max-w-xl mx-auto">
+          <p className="text-sm text-muted-foreground mt-4 max-w-xl mx-auto">
             Comprehensive solutions tailored to elevate your brand and
             accelerate your growth.
           </p>
@@ -427,16 +435,16 @@ function ServicesSection() {
               <motion.div
                 key={service.id}
                 whileHover={{ y: -4 }}
-                className="bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-all p-8"
+                className="glass-card rounded-2xl hover:shadow-card-hover transition-all p-8"
                 data-ocid={`services.item.${i + 1}`}
               >
-                <div className="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-5">
-                  <Icon className="w-5 h-5 text-teal" />
+                <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-5">
+                  <Icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-base font-bold text-navy mb-3">
+                <h3 className="text-base font-bold text-foreground mb-3">
                   {service.title}
                 </h3>
-                <p className="text-sm text-body-gray leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>
@@ -486,16 +494,16 @@ function GallerySection() {
       : displayItems.filter((i) => i.category === activeFilter);
 
   return (
-    <section id="portfolio" className="py-24 bg-page">
+    <section id="portfolio" className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         <div ref={ref} className="text-center mb-12">
-          <span className="text-xs font-semibold uppercase tracking-widest text-teal block mb-3">
+          <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
             Our Work
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-navy">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Portfolio
           </h2>
-          <p className="text-sm text-body-gray mt-4 max-w-xl mx-auto">
+          <p className="text-sm text-muted-foreground mt-4 max-w-xl mx-auto">
             A selection of projects that showcase the depth and diversity of our
             creative work.
           </p>
@@ -513,8 +521,8 @@ function GallerySection() {
               onClick={() => setActiveFilter(cat)}
               className={`px-5 py-2 rounded-full text-xs font-semibold transition-all ${
                 activeFilter === cat
-                  ? "bg-navy text-white"
-                  : "bg-white text-navy border border-subtle hover:bg-navy hover:text-white"
+                  ? "btn-gradient text-white"
+                  : "glass-card text-foreground border border-border hover:opacity-80 hover:text-white"
               }`}
             >
               {cat}
@@ -546,7 +554,7 @@ function GallerySection() {
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-6">
-                  <span className="text-xs text-teal font-semibold uppercase tracking-wider block mb-1">
+                  <span className="text-xs text-primary font-semibold uppercase tracking-wider block mb-1">
                     {item.category}
                   </span>
                   <span className="text-white font-bold text-sm">
@@ -587,13 +595,13 @@ function TestimonialsSection() {
   const t = displayTestimonials[current];
 
   return (
-    <section id="testimonials" className="py-24 bg-page">
+    <section id="testimonials" className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         <div ref={ref} className="text-center mb-12">
-          <span className="text-xs font-semibold uppercase tracking-widest text-teal block mb-3">
+          <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
             What Clients Say
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-navy">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Testimonials
           </h2>
         </div>
@@ -606,16 +614,18 @@ function TestimonialsSection() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -30 }}
               transition={{ duration: 0.4 }}
-              className="bg-white rounded-2xl shadow-card p-10 md:p-14 text-center"
+              className="glass-card rounded-2xl p-10 md:p-14 text-center"
               data-ocid="testimonials.card"
             >
-              <Quote className="w-10 h-10 text-teal mx-auto mb-6 opacity-60" />
-              <p className="text-lg md:text-xl text-navy font-medium leading-relaxed mb-8">
+              <Quote className="w-10 h-10 text-primary mx-auto mb-6 opacity-60" />
+              <p className="text-lg md:text-xl text-foreground font-medium leading-relaxed mb-8">
                 &ldquo;{t.quote}&rdquo;
               </p>
               <div>
-                <div className="font-bold text-navy">{t.author}</div>
-                <div className="text-sm text-body-gray mt-1">{t.role}</div>
+                <div className="font-bold text-foreground">{t.author}</div>
+                <div className="text-sm text-muted-foreground mt-1">
+                  {t.role}
+                </div>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -626,7 +636,7 @@ function TestimonialsSection() {
               type="button"
               data-ocid="testimonials.pagination_prev"
               onClick={prev}
-              className="w-10 h-10 rounded-full bg-white shadow-card flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-all"
+              className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-foreground hover:opacity-80 hover:text-white transition-all"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -637,7 +647,7 @@ function TestimonialsSection() {
                   key={t.id}
                   onClick={() => setCurrent(i)}
                   className={`w-2 h-2 rounded-full transition-all ${
-                    i === current ? "bg-teal w-6" : "bg-muted-gray"
+                    i === current ? "bg-primary w-6" : "bg-muted-gray"
                   }`}
                 />
               ))}
@@ -646,7 +656,7 @@ function TestimonialsSection() {
               type="button"
               data-ocid="testimonials.pagination_next"
               onClick={next}
-              className="w-10 h-10 rounded-full bg-white shadow-card flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-all"
+              className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-foreground hover:opacity-80 hover:text-white transition-all"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -673,28 +683,25 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-page">
+    <section id="contact" className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
-        <div
-          ref={ref}
-          className="bg-white rounded-2xl shadow-card overflow-hidden"
-        >
+        <div ref={ref} className="glass-card rounded-2xl overflow-hidden">
           <div className="grid md:grid-cols-2">
             {/* Left */}
-            <div className="bg-navy p-10 md:p-16 flex flex-col justify-between">
+            <div className="glass-card bg-gradient-to-br from-primary/20 to-accent/10 p-10 md:p-16 flex flex-col justify-between">
               <div>
-                <span className="text-xs font-semibold uppercase tracking-widest text-teal block mb-6">
+                <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-6">
                   Get In Touch
                 </span>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white uppercase leading-tight mb-8">
                   Let&apos;s Build Something
                   <br />
-                  <span className="text-teal">Extraordinary</span>
+                  <span className="text-primary">Extraordinary</span>
                 </h2>
                 <div className="space-y-5">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Mail className="w-4 h-4 text-teal" />
+                      <Mail className="w-4 h-4 text-primary" />
                     </div>
                     <div>
                       <div className="text-xs text-white/50 uppercase tracking-wider mb-1">
@@ -702,7 +709,7 @@ function ContactSection() {
                       </div>
                       <a
                         href={`mailto:${contactInfo?.email ?? "hello@anyi.co.in"}`}
-                        className="text-white hover:text-teal transition-colors text-sm"
+                        className="text-white hover:text-primary transition-colors text-sm"
                       >
                         {contactInfo?.email ?? "hello@anyi.co.in"}
                       </a>
@@ -710,7 +717,7 @@ function ContactSection() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Phone className="w-4 h-4 text-teal" />
+                      <Phone className="w-4 h-4 text-primary" />
                     </div>
                     <div>
                       <div className="text-xs text-white/50 uppercase tracking-wider mb-1">
@@ -718,7 +725,7 @@ function ContactSection() {
                       </div>
                       <a
                         href={`tel:${contactInfo?.phone ?? "+919876543210"}`}
-                        className="text-white hover:text-teal transition-colors text-sm"
+                        className="text-white hover:text-primary transition-colors text-sm"
                       >
                         {contactInfo?.phone ?? "+91 98765 43210"}
                       </a>
@@ -726,7 +733,7 @@ function ContactSection() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <MapPin className="w-4 h-4 text-teal" />
+                      <MapPin className="w-4 h-4 text-primary" />
                     </div>
                     <div>
                       <div className="text-xs text-white/50 uppercase tracking-wider mb-1">
@@ -745,7 +752,7 @@ function ContactSection() {
                   href="https://twitter.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-teal transition-colors"
+                  className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-primary transition-colors"
                   data-ocid="contact.link"
                 >
                   <SiX className="w-4 h-4" />
@@ -754,7 +761,7 @@ function ContactSection() {
                   href="https://instagram.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-teal transition-colors"
+                  className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-primary transition-colors"
                   data-ocid="contact.link"
                 >
                   <SiInstagram className="w-4 h-4" />
@@ -763,7 +770,7 @@ function ContactSection() {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-teal transition-colors"
+                  className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-primary transition-colors"
                   data-ocid="contact.link"
                 >
                   <SiLinkedin className="w-4 h-4" />
@@ -777,11 +784,11 @@ function ContactSection() {
               className="p-10 md:p-16 flex flex-col gap-5"
               data-ocid="contact.modal"
             >
-              <h3 className="text-xl font-bold text-navy mb-2">
+              <h3 className="text-xl font-bold text-foreground mb-2">
                 Send Us a Message
               </h3>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
                   Your Name
                 </p>
                 <Input
@@ -792,11 +799,11 @@ function ContactSection() {
                   }
                   placeholder="John Doe"
                   required
-                  className="border-subtle focus:border-teal"
+                  className="border-border focus:border-teal"
                 />
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
                   Email Address
                 </p>
                 <Input
@@ -808,11 +815,11 @@ function ContactSection() {
                   }
                   placeholder="john@company.com"
                   required
-                  className="border-subtle focus:border-teal"
+                  className="border-border focus:border-teal"
                 />
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
                   Message
                 </p>
                 <Textarea
@@ -824,14 +831,14 @@ function ContactSection() {
                   placeholder="Tell us about your project..."
                   required
                   rows={5}
-                  className="border-subtle focus:border-teal resize-none"
+                  className="border-border focus:border-teal resize-none"
                 />
               </div>
               <Button
                 data-ocid="contact.submit_button"
                 type="submit"
                 disabled={submitting}
-                className="bg-navy text-white hover:bg-navy/90 rounded-full py-6 text-xs font-bold uppercase tracking-widest mt-2"
+                className="btn-gradient text-white hover:opacity-90 rounded-full py-6 text-xs font-bold uppercase tracking-widest mt-2"
               >
                 {submitting ? "Sending..." : "Send Message"}
               </Button>
@@ -848,13 +855,13 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
   const hostname = window.location.hostname;
 
   return (
-    <footer className="bg-navy text-white">
+    <footer className="bg-black/60 backdrop-blur-md border-t border-border text-white">
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-4 gap-10 pb-10 border-b border-white/10">
           <div className="md:col-span-2">
             <div className="flex items-center gap-1 font-bold text-xl mb-4">
               <span>ANYI</span>
-              <span className="w-2 h-2 rounded-full bg-teal mt-0.5" />
+              <span className="w-2 h-2 rounded-full bg-primary mt-0.5" />
             </div>
             <p className="text-sm text-white/60 leading-relaxed max-w-xs">
               We amplify brands through bold strategy, creative design, and
@@ -865,7 +872,7 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-teal transition-colors"
+                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
                 data-ocid="footer.link"
               >
                 <SiX className="w-3.5 h-3.5" />
@@ -874,7 +881,7 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-teal transition-colors"
+                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
                 data-ocid="footer.link"
               >
                 <SiInstagram className="w-3.5 h-3.5" />
@@ -883,7 +890,7 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-teal transition-colors"
+                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
                 data-ocid="footer.link"
               >
                 <SiLinkedin className="w-3.5 h-3.5" />
@@ -898,6 +905,7 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
               {[
                 "Home",
                 "About",
+                "Solutions",
                 "Services",
                 "Portfolio",
                 "Testimonials",
@@ -910,11 +918,13 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
                   onClick={() =>
                     item === "About"
                       ? navigate("/about")
-                      : item === "Portfolio"
-                        ? navigate("/portfolio")
-                        : document
-                            .getElementById(item.toLowerCase())
-                            ?.scrollIntoView({ behavior: "smooth" })
+                      : item === "Solutions"
+                        ? navigate("/solutions")
+                        : item === "Portfolio"
+                          ? navigate("/portfolio")
+                          : document
+                              .getElementById(item.toLowerCase())
+                              ?.scrollIntoView({ behavior: "smooth" })
                   }
                   className="text-sm text-white/60 hover:text-white transition-colors text-left"
                 >
@@ -948,7 +958,7 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
               <button
                 type="button"
                 onClick={() => navigate("/admin")}
-                className="text-teal hover:text-white transition-colors text-left mt-2"
+                className="text-primary hover:text-white transition-colors text-left mt-2"
               >
                 Admin Panel
               </button>
@@ -963,7 +973,7 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
               href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(hostname)}`}
               target="_blank"
               rel="noreferrer"
-              className="text-teal hover:text-white transition-colors"
+              className="text-primary hover:text-white transition-colors"
             >
               caffeine.ai
             </a>
@@ -978,7 +988,7 @@ export default function HomePage({
   navigate,
 }: { navigate: (to: string) => void }) {
   return (
-    <div className="min-h-screen bg-page">
+    <div className="min-h-screen bg-background">
       <NavBar navigate={navigate} />
       <main>
         <HeroSection />

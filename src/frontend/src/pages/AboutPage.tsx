@@ -81,6 +81,8 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
     setMenuOpen(false);
     if (item === "About") {
       navigate("/about");
+    } else if (item === "Solutions") {
+      navigate("/solutions");
     } else if (item === "Portfolio") {
       navigate("/portfolio");
     } else {
@@ -91,7 +93,9 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-md shadow-card" : "bg-white"
+        scrolled
+          ? "bg-background/80 backdrop-blur-md border-b border-border"
+          : "bg-background/80 backdrop-blur-md border-b border-border"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -101,14 +105,15 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
           onClick={() => navigate("/")}
           className="flex items-center gap-1 font-bold text-xl tracking-tight"
         >
-          <span className="text-navy">ANYI</span>
-          <span className="w-2 h-2 rounded-full bg-teal mt-0.5" />
+          <span className="text-gradient font-bold">ANYI</span>
+          <span className="w-2 h-2 rounded-full bg-primary mt-0.5" />
         </button>
 
         <nav className="hidden md:flex items-center gap-8">
           {[
             "Home",
             "About",
+            "Solutions",
             "Services",
             "Portfolio",
             "Testimonials",
@@ -121,8 +126,8 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
               onClick={() => handleNav(item)}
               className={`text-sm font-medium transition-colors ${
                 item === "About"
-                  ? "text-teal"
-                  : "text-body-gray hover:text-navy"
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               {item}
@@ -132,7 +137,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
             type="button"
             data-ocid="nav.link"
             onClick={() => navigate("/admin")}
-            className="text-sm font-medium text-teal hover:text-navy transition-colors"
+            className="text-sm font-medium text-primary hover:text-foreground transition-colors"
           >
             Admin
           </button>
@@ -142,7 +147,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
           <Button
             data-ocid="nav.primary_button"
             onClick={() => navigate("/#contact")}
-            className="bg-navy text-white hover:bg-navy/90 rounded-full px-6 text-xs font-semibold uppercase tracking-wider"
+            className="btn-gradient text-white hover:opacity-90 rounded-full px-6 text-xs font-semibold uppercase tracking-wider"
           >
             Start a Project
           </Button>
@@ -164,11 +169,12 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="md:hidden bg-white border-t border-subtle px-6 py-4 flex flex-col gap-4"
+            className="md:hidden bg-background/90 backdrop-blur-md border-t border-border px-6 py-4 flex flex-col gap-4"
           >
             {[
               "Home",
               "About",
+              "Solutions",
               "Services",
               "Portfolio",
               "Testimonials",
@@ -179,7 +185,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
                 key={item}
                 data-ocid="nav.link"
                 onClick={() => handleNav(item)}
-                className="text-sm font-medium text-left text-body-gray hover:text-navy py-1"
+                className="text-sm font-medium text-left text-muted-foreground hover:text-foreground py-1"
               >
                 {item}
               </button>
@@ -191,7 +197,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
                 setMenuOpen(false);
                 navigate("/admin");
               }}
-              className="text-sm font-medium text-left text-teal"
+              className="text-sm font-medium text-left text-primary"
             >
               Admin
             </button>
@@ -228,11 +234,11 @@ export default function AboutPage({
   const tagline = parsed.tagline || "Innovative. Strategic. Results-Driven.";
 
   return (
-    <div className="min-h-screen bg-page">
+    <div className="min-h-screen bg-background">
       <NavBar navigate={navigate} />
 
       {/* Hero Banner */}
-      <section className="bg-navy pt-32 pb-16 px-6">
+      <section className="relative bg-gradient-to-br from-background to-primary/20 pt-32 pb-16 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -273,20 +279,20 @@ export default function AboutPage({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="bg-white rounded-2xl shadow-card p-10 md:p-16"
+            className="glass-card rounded-2xl p-10 md:p-16"
           >
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <span className="text-xs font-semibold uppercase tracking-widest text-teal block mb-3">
+                <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
                   Who We Are
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                   {about?.title ?? "About Anyi"}
                 </h2>
-                <p className="text-lg font-semibold text-navy mb-6">
+                <p className="text-lg font-semibold text-foreground mb-6">
                   {tagline}
                 </p>
-                <p className="text-sm text-body-gray leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {bodyText}
                 </p>
                 <div className="mt-8 grid grid-cols-3 gap-6">
@@ -296,10 +302,10 @@ export default function AboutPage({
                     { num: "98%", label: "Client Satisfaction" },
                   ].map((stat) => (
                     <div key={stat.label}>
-                      <div className="text-2xl font-extrabold text-navy">
+                      <div className="text-2xl font-extrabold text-foreground">
                         {stat.num}
                       </div>
-                      <div className="text-xs text-body-gray mt-1">
+                      <div className="text-xs text-muted-foreground mt-1">
                         {stat.label}
                       </div>
                     </div>
@@ -328,10 +334,10 @@ export default function AboutPage({
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <span className="text-xs font-semibold uppercase tracking-widest text-teal block mb-3">
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               Purpose
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               Mission &amp; Vision
             </h2>
           </motion.div>
@@ -341,13 +347,13 @@ export default function AboutPage({
                 icon: Target,
                 label: "Our Mission",
                 text: mission,
-                accent: "bg-teal/10 text-teal",
+                accent: "bg-primary/20 text-primary",
               },
               {
                 icon: Sparkles,
                 label: "Our Vision",
                 text: vision,
-                accent: "bg-navy/10 text-navy",
+                accent: "bg-primary/20 text-primary",
               },
             ].map(({ icon: Icon, label, text, accent }) => (
               <motion.div
@@ -356,15 +362,19 @@ export default function AboutPage({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="bg-white rounded-2xl shadow-card p-8"
+                className="glass-card rounded-2xl p-8"
               >
                 <div
                   className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${accent}`}
                 >
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-navy mb-3">{label}</h3>
-                <p className="text-sm text-body-gray leading-relaxed">{text}</p>
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  {label}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {text}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -372,7 +382,7 @@ export default function AboutPage({
       </section>
 
       {/* Our Values */}
-      <section className="py-24 px-6 bg-navy">
+      <section className="py-24 px-6 bg-gradient-to-br from-primary/20 to-accent/10 relative">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -381,7 +391,7 @@ export default function AboutPage({
             transition={{ duration: 0.5 }}
             className="text-center mb-14"
           >
-            <span className="text-xs font-semibold uppercase tracking-widest text-teal block mb-3">
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               What Drives Us
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white">
@@ -398,8 +408,8 @@ export default function AboutPage({
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors"
               >
-                <div className="w-10 h-10 rounded-lg bg-teal/20 flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5 text-teal" />
+                <div className="w-10 h-10 rounded-lg bg-primary/30 flex items-center justify-center mb-4">
+                  <Icon className="w-5 h-5 text-primary" />
                 </div>
                 <h3 className="text-base font-bold text-white mb-2">{title}</h3>
                 <p className="text-sm text-white/60 leading-relaxed">{desc}</p>
@@ -419,13 +429,13 @@ export default function AboutPage({
             transition={{ duration: 0.5 }}
             className="text-center mb-14"
           >
-            <span className="text-xs font-semibold uppercase tracking-widest text-teal block mb-3">
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               The People
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               Meet the Team
             </h2>
-            <p className="text-sm text-body-gray mt-4 max-w-lg mx-auto">
+            <p className="text-sm text-muted-foreground mt-4 max-w-lg mx-auto">
               A collective of strategists, creatives, and technologists united
               by a passion for outstanding work.
             </p>
@@ -447,7 +457,7 @@ export default function AboutPage({
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="bg-white rounded-2xl shadow-card p-6 text-center"
+                  className="glass-card rounded-2xl p-6 text-center"
                 >
                   {img ? (
                     <img
@@ -456,17 +466,17 @@ export default function AboutPage({
                       className="w-20 h-20 rounded-full object-cover mx-auto mb-4"
                     />
                   ) : (
-                    <div className="w-20 h-20 rounded-full bg-navy/10 flex items-center justify-center mx-auto mb-4">
-                      <span className="text-xl font-bold text-navy">
+                    <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                      <span className="text-xl font-bold text-foreground">
                         {initials}
                       </span>
                     </div>
                   )}
-                  <h3 className="font-bold text-navy">{name}</h3>
-                  <p className="text-xs font-semibold text-teal uppercase tracking-wider mt-1 mb-2">
+                  <h3 className="font-bold text-foreground">{name}</h3>
+                  <p className="text-xs font-semibold text-primary uppercase tracking-wider mt-1 mb-2">
                     {role}
                   </p>
-                  <p className="text-xs text-body-gray leading-relaxed">
+                  <p className="text-xs text-muted-foreground leading-relaxed">
                     {bio}
                   </p>
                 </motion.div>
@@ -477,7 +487,7 @@ export default function AboutPage({
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-teal/5">
+      <section className="py-20 px-6 bg-primary/5">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -485,18 +495,18 @@ export default function AboutPage({
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <Users className="w-12 h-12 text-teal mx-auto mb-6 opacity-60" />
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+            <Users className="w-12 h-12 text-primary mx-auto mb-6 opacity-60" />
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Ready to work with us?
             </h2>
-            <p className="text-sm text-body-gray mb-8 max-w-md mx-auto">
+            <p className="text-sm text-muted-foreground mb-8 max-w-md mx-auto">
               Let's build something remarkable together. Reach out and let's
               start the conversation.
             </p>
             <Button
               data-ocid="about.primary_button"
               onClick={() => navigate("/#contact")}
-              className="bg-navy text-white hover:bg-navy/90 rounded-full px-8 py-3 text-sm font-semibold uppercase tracking-wider"
+              className="btn-gradient text-white hover:opacity-90 rounded-full px-8 py-3 text-sm font-semibold uppercase tracking-wider"
             >
               Get in Touch
             </Button>
@@ -505,13 +515,13 @@ export default function AboutPage({
       </section>
 
       {/* Footer */}
-      <footer className="bg-navy text-white">
+      <footer className="bg-black/60 backdrop-blur-md border-t border-border text-white">
         <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="grid md:grid-cols-4 gap-10 pb-10 border-b border-white/10">
             <div className="md:col-span-2">
               <div className="flex items-center gap-1 font-bold text-xl mb-4">
                 <span>ANYI</span>
-                <span className="w-2 h-2 rounded-full bg-teal mt-0.5" />
+                <span className="w-2 h-2 rounded-full bg-primary mt-0.5" />
               </div>
               <p className="text-sm text-white/60 leading-relaxed max-w-xs">
                 We amplify brands through bold strategy, creative design, and
@@ -529,7 +539,7 @@ export default function AboutPage({
                     target="_blank"
                     rel="noreferrer"
                     data-ocid="footer.link"
-                    className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-teal transition-colors"
+                    className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
                   >
                     <Icon className="w-3.5 h-3.5" />
                   </a>
@@ -544,6 +554,7 @@ export default function AboutPage({
                 {[
                   "Home",
                   "About",
+                  "Solutions",
                   "Services",
                   "Portfolio",
                   "Testimonials",
@@ -556,9 +567,11 @@ export default function AboutPage({
                     onClick={() =>
                       item === "About"
                         ? navigate("/about")
-                        : item === "Portfolio"
-                          ? navigate("/portfolio")
-                          : navigate(`/#${item.toLowerCase()}`)
+                        : item === "Solutions"
+                          ? navigate("/solutions")
+                          : item === "Portfolio"
+                            ? navigate("/portfolio")
+                            : navigate(`/#${item.toLowerCase()}`)
                     }
                     className="text-sm text-white/60 hover:text-white transition-colors text-left"
                   >
@@ -600,7 +613,7 @@ export default function AboutPage({
                 href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(hostname)}`}
                 target="_blank"
                 rel="noreferrer"
-                className="text-teal hover:text-white transition-colors"
+                className="text-primary hover:text-white transition-colors"
               >
                 caffeine.ai
               </a>

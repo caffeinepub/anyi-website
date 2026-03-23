@@ -4,6 +4,7 @@ import AboutPage from "./pages/AboutPage";
 import AdminPage from "./pages/AdminPage";
 import HomePage from "./pages/HomePage";
 import PortfolioPage from "./pages/PortfolioPage";
+import SolutionsPage from "./pages/SolutionsPage";
 
 export default function App() {
   const [path, setPath] = useState(window.location.pathname);
@@ -28,6 +29,8 @@ export default function App() {
         <PortfolioPage navigate={navigate} />
       ) : path.startsWith("/about") ? (
         <AboutPage navigate={navigate} />
+      ) : path.startsWith("/solutions") ? (
+        <SolutionsPage navigate={navigate} />
       ) : (
         <HomePage navigate={navigate} />
       )}

@@ -45,26 +45,28 @@ function LoginScreen({
   isLoggingIn,
 }: { onLogin: () => void; isLoggingIn: boolean }) {
   return (
-    <div className="min-h-screen bg-page flex items-center justify-center p-6">
+    <div className="min-h-screen bg-background flex items-center justify-center p-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white rounded-2xl shadow-card p-10 max-w-md w-full text-center"
+        className="glass-card rounded-2xl p-10 max-w-md w-full text-center"
       >
         <div className="flex items-center justify-center gap-1 font-bold text-2xl mb-2">
-          <span className="text-navy">ANYI</span>
-          <span className="w-2.5 h-2.5 rounded-full bg-teal mt-0.5" />
+          <span className="text-gradient font-bold">ANYI</span>
+          <span className="w-2.5 h-2.5 rounded-full bg-primary mt-0.5" />
         </div>
-        <p className="text-sm text-body-gray mb-8">Admin Content Management</p>
-        <h1 className="text-2xl font-bold text-navy mb-2">Sign In</h1>
-        <p className="text-sm text-body-gray mb-8">
+        <p className="text-sm text-muted-foreground mb-8">
+          Admin Content Management
+        </p>
+        <h1 className="text-2xl font-bold text-foreground mb-2">Sign In</h1>
+        <p className="text-sm text-muted-foreground mb-8">
           Login with your Internet Identity to access the CMS panel.
         </p>
         <Button
           data-ocid="admin.primary_button"
           onClick={onLogin}
           disabled={isLoggingIn}
-          className="w-full bg-navy text-white hover:bg-navy/90 rounded-full py-6 font-semibold"
+          className="w-full btn-gradient text-white hover:opacity-90 rounded-full py-6 font-semibold"
         >
           {isLoggingIn ? (
             <>
@@ -105,7 +107,7 @@ function HeroEditor() {
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
             Headline
           </p>
           <Input
@@ -116,7 +118,7 @@ function HeroEditor() {
           />
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
             Subtitle
           </p>
           <Textarea
@@ -130,7 +132,7 @@ function HeroEditor() {
           />
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
             CTA Button Text
           </p>
           <Input
@@ -146,7 +148,7 @@ function HeroEditor() {
           data-ocid="admin.save_button"
           onClick={handleSave}
           disabled={update.isPending}
-          className="bg-navy text-white hover:bg-navy/90 rounded-full"
+          className="btn-gradient text-white hover:opacity-90 rounded-full"
         >
           {update.isPending ? (
             <Loader2 className="w-4 h-4 animate-spin mr-2" />
@@ -198,7 +200,7 @@ function AboutEditor() {
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
             Title
           </p>
           <Input
@@ -209,7 +211,7 @@ function AboutEditor() {
           />
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
             Tagline
           </p>
           <Input
@@ -220,7 +222,7 @@ function AboutEditor() {
           />
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
             Body Text
           </p>
           <Textarea
@@ -232,7 +234,7 @@ function AboutEditor() {
           />
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
             Mission
           </p>
           <Textarea
@@ -244,7 +246,7 @@ function AboutEditor() {
           />
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
             Vision
           </p>
           <Textarea
@@ -259,7 +261,7 @@ function AboutEditor() {
           data-ocid="admin.save_button"
           onClick={handleSave}
           disabled={update.isPending}
-          className="bg-navy text-white hover:bg-navy/90 rounded-full"
+          className="btn-gradient text-white hover:opacity-90 rounded-full"
         >
           {update.isPending ? (
             <Loader2 className="w-4 h-4 animate-spin mr-2" />
@@ -302,7 +304,7 @@ function ServicesEditor() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
               Title
             </p>
             <Input
@@ -315,7 +317,7 @@ function ServicesEditor() {
             />
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
               Description
             </p>
             <Textarea
@@ -332,7 +334,7 @@ function ServicesEditor() {
             data-ocid="admin.primary_button"
             onClick={handleAdd}
             disabled={addService.isPending}
-            className="bg-teal text-white hover:bg-teal/90 rounded-full"
+            className="bg-primary text-white hover:bg-primary/90 rounded-full"
           >
             {addService.isPending ? (
               <Loader2 className="w-4 h-4 animate-spin mr-2" />
@@ -346,7 +348,7 @@ function ServicesEditor() {
 
       {services && services.length > 0 && (
         <div className="space-y-4">
-          <h3 className="font-semibold text-navy">Existing Services</h3>
+          <h3 className="font-semibold text-foreground">Existing Services</h3>
           {services.map((service, i) => (
             <ServiceItem
               key={service.id}
@@ -419,7 +421,7 @@ function ServiceItem({
                 data-ocid={`admin.save_button.${index}`}
                 size="sm"
                 onClick={handleSave}
-                className="bg-navy text-white rounded-full"
+                className="btn-gradient text-white rounded-full"
               >
                 Save
               </Button>
@@ -437,8 +439,10 @@ function ServiceItem({
         ) : (
           <div className="flex items-start justify-between">
             <div>
-              <div className="font-semibold text-navy">{service.title}</div>
-              <div className="text-sm text-body-gray mt-1">
+              <div className="font-semibold text-foreground">
+                {service.title}
+              </div>
+              <div className="text-sm text-muted-foreground mt-1">
                 {service.description}
               </div>
             </div>
@@ -506,7 +510,7 @@ function TestimonialsEditor() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
               Quote
             </p>
             <Textarea
@@ -521,7 +525,7 @@ function TestimonialsEditor() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
                 Author Name
               </p>
               <Input
@@ -534,7 +538,7 @@ function TestimonialsEditor() {
               />
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
                 Role / Company
               </p>
               <Input
@@ -551,7 +555,7 @@ function TestimonialsEditor() {
             data-ocid="admin.primary_button"
             onClick={handleAdd}
             disabled={addTestimonial.isPending}
-            className="bg-teal text-white hover:bg-teal/90 rounded-full"
+            className="bg-primary text-white hover:bg-primary/90 rounded-full"
           >
             {addTestimonial.isPending ? (
               <Loader2 className="w-4 h-4 animate-spin mr-2" />
@@ -565,7 +569,9 @@ function TestimonialsEditor() {
 
       {testimonials && testimonials.length > 0 && (
         <div className="space-y-4">
-          <h3 className="font-semibold text-navy">Existing Testimonials</h3>
+          <h3 className="font-semibold text-foreground">
+            Existing Testimonials
+          </h3>
           {testimonials.map((t, i) => (
             <TestimonialItem
               key={t.id}
@@ -638,7 +644,7 @@ function TestimonialItem({
                 data-ocid={`admin.save_button.${index}`}
                 size="sm"
                 onClick={handleSave}
-                className="bg-navy text-white rounded-full"
+                className="btn-gradient text-white rounded-full"
               >
                 Save
               </Button>
@@ -656,13 +662,15 @@ function TestimonialItem({
         ) : (
           <div className="flex items-start justify-between">
             <div className="flex-1 min-w-0">
-              <p className="text-sm text-body-gray italic">
+              <p className="text-sm text-muted-foreground italic">
                 &ldquo;{testimonial.quote}&rdquo;
               </p>
-              <div className="font-semibold text-navy text-sm mt-2">
+              <div className="font-semibold text-foreground text-sm mt-2">
                 {testimonial.author}
               </div>
-              <div className="text-xs text-body-gray">{testimonial.role}</div>
+              <div className="text-xs text-muted-foreground">
+                {testimonial.role}
+              </div>
             </div>
             <div className="flex gap-2 ml-4 flex-shrink-0">
               <Button
@@ -792,7 +800,7 @@ function GalleryEditor() {
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
                 Title *
               </p>
               <Input
@@ -803,7 +811,7 @@ function GalleryEditor() {
               />
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
                 Category
               </p>
               <Input
@@ -821,7 +829,7 @@ function GalleryEditor() {
             </div>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
               Description (optional)
             </p>
             <Textarea
@@ -834,24 +842,24 @@ function GalleryEditor() {
           </div>
           <label
             data-ocid="admin.upload_button"
-            className={`flex flex-col items-center justify-center w-full h-36 border-2 border-dashed border-subtle rounded-xl cursor-pointer hover:border-teal hover:bg-teal/5 transition-all ${
+            className={`flex flex-col items-center justify-center w-full h-36 border-2 border-dashed border-border rounded-xl cursor-pointer hover:border-teal hover:bg-primary/5 transition-all ${
               uploading ? "opacity-50 pointer-events-none" : ""
             }`}
           >
             {uploading ? (
               <div className="text-center">
-                <Loader2 className="w-8 h-8 animate-spin text-teal mx-auto mb-2" />
-                <span className="text-sm text-body-gray">
+                <Loader2 className="w-8 h-8 animate-spin text-primary mx-auto mb-2" />
+                <span className="text-sm text-muted-foreground">
                   Uploading... {uploadProgress}%
                 </span>
               </div>
             ) : (
               <div className="text-center">
-                <Upload className="w-8 h-8 text-muted-gray mx-auto mb-2" />
-                <span className="text-sm text-body-gray">
+                <Upload className="w-8 h-8 text-muted-foreground/70 mx-auto mb-2" />
+                <span className="text-sm text-muted-foreground">
                   Click to upload image
                 </span>
-                <span className="text-xs text-muted-gray block mt-1">
+                <span className="text-xs text-muted-foreground/70 block mt-1">
                   PNG, JPG, GIF up to 10MB
                 </span>
               </div>
@@ -877,7 +885,7 @@ function GalleryEditor() {
             {uniqueCategories.map((cat) => (
               <span
                 key={cat}
-                className="px-3 py-1 bg-teal/10 text-teal text-sm rounded-full font-medium"
+                className="px-3 py-1 bg-primary/20 text-primary text-sm rounded-full font-medium"
               >
                 {cat} (
                 {galleryItems?.filter((i) => i.category === cat).length ?? 0})
@@ -890,18 +898,18 @@ function GalleryEditor() {
       {/* Gallery items list */}
       {galleryItems && galleryItems.length > 0 && (
         <div>
-          <h3 className="font-semibold text-navy mb-4">
+          <h3 className="font-semibold text-foreground mb-4">
             Gallery Images ({galleryItems.length})
           </h3>
           <div className="space-y-3" data-ocid="admin.list">
             {galleryItems.map((item, i) => (
               <div
                 key={item.id}
-                className="bg-white border border-subtle rounded-xl p-4 flex gap-4 items-start"
+                className="bg-white border border-border rounded-xl p-4 flex gap-4 items-start"
                 data-ocid={`admin.item.${i + 1}`}
               >
                 <div className="w-20 h-16 rounded-lg overflow-hidden bg-muted flex-shrink-0 flex items-center justify-center">
-                  <Image className="w-6 h-6 text-muted-gray" />
+                  <Image className="w-6 h-6 text-muted-foreground/70" />
                 </div>
 
                 <div className="flex-1 min-w-0">
@@ -936,7 +944,7 @@ function GalleryEditor() {
                           size="sm"
                           onClick={() => handleEditSave(item as any)}
                           disabled={updateItem.isPending}
-                          className="bg-teal text-white hover:bg-teal/90"
+                          className="bg-primary text-white hover:bg-primary/90"
                         >
                           {updateItem.isPending ? (
                             <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -956,10 +964,10 @@ function GalleryEditor() {
                     </div>
                   ) : (
                     <>
-                      <div className="font-semibold text-navy text-sm">
+                      <div className="font-semibold text-foreground text-sm">
                         {item.title}
                       </div>
-                      <div className="text-xs text-teal mt-0.5">
+                      <div className="text-xs text-primary mt-0.5">
                         {item.category}
                       </div>
                     </>
@@ -1020,7 +1028,7 @@ function GalleryEditor() {
 
       {(!galleryItems || galleryItems.length === 0) && (
         <div
-          className="text-center py-12 text-body-gray"
+          className="text-center py-12 text-muted-foreground"
           data-ocid="admin.empty_state"
         >
           <Image className="w-12 h-12 mx-auto mb-3 opacity-30" />
@@ -1056,7 +1064,7 @@ function ContactEditor() {
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
             Email
           </p>
           <Input
@@ -1068,7 +1076,7 @@ function ContactEditor() {
           />
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
             Phone
           </p>
           <Input
@@ -1079,7 +1087,7 @@ function ContactEditor() {
           />
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
             Address
           </p>
           <Textarea
@@ -1096,7 +1104,7 @@ function ContactEditor() {
           data-ocid="admin.save_button"
           onClick={handleSave}
           disabled={update.isPending}
-          className="bg-navy text-white hover:bg-navy/90 rounded-full"
+          className="btn-gradient text-white hover:opacity-90 rounded-full"
         >
           {update.isPending ? (
             <Loader2 className="w-4 h-4 animate-spin mr-2" />
@@ -1123,18 +1131,20 @@ export default function AdminPage({
 
   if (isAdminLoading) {
     return (
-      <div className="min-h-screen bg-page flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-teal" />
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
       </div>
     );
   }
 
   if (!isAdmin) {
     return (
-      <div className="min-h-screen bg-page flex items-center justify-center p-6">
-        <div className="bg-white rounded-2xl shadow-card p-10 max-w-md w-full text-center">
-          <h2 className="text-xl font-bold text-navy mb-4">Access Denied</h2>
-          <p className="text-sm text-body-gray mb-6">
+      <div className="min-h-screen bg-background flex items-center justify-center p-6">
+        <div className="glass-card rounded-2xl p-10 max-w-md w-full text-center">
+          <h2 className="text-xl font-bold text-foreground mb-4">
+            Access Denied
+          </h2>
+          <p className="text-sm text-muted-foreground mb-6">
             You don't have admin access to this panel.
           </p>
           <div className="flex gap-3 justify-center">
@@ -1163,13 +1173,13 @@ export default function AdminPage({
   }
 
   return (
-    <div className="min-h-screen bg-page">
+    <div className="min-h-screen bg-background">
       {/* Admin Header */}
-      <header className="bg-navy text-white px-6 py-4 flex items-center justify-between sticky top-0 z-50">
+      <header className="btn-gradient text-white px-6 py-4 flex items-center justify-between sticky top-0 z-50">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1 font-bold text-lg">
             <span>ANYI</span>
-            <span className="w-2 h-2 rounded-full bg-teal" />
+            <span className="w-2 h-2 rounded-full bg-primary" />
           </div>
           <span className="text-white/40 text-sm">Admin CMS</span>
         </div>
@@ -1200,8 +1210,10 @@ export default function AdminPage({
       {/* Content */}
       <main className="max-w-4xl mx-auto px-6 py-10">
         <div className="mb-8">
-          <h1 className="text-2xl font-bold text-navy">Content Management</h1>
-          <p className="text-sm text-body-gray mt-1">
+          <h1 className="text-2xl font-bold text-foreground">
+            Content Management
+          </h1>
+          <p className="text-sm text-muted-foreground mt-1">
             Update your website content without any coding.
           </p>
         </div>
@@ -1220,7 +1232,7 @@ export default function AdminPage({
                 key={tab}
                 value={tab}
                 data-ocid="admin.tab"
-                className="capitalize rounded-lg data-[state=active]:bg-navy data-[state=active]:text-white"
+                className="capitalize rounded-lg data-[state=active]:btn-gradient data-[state=active]:text-white"
               >
                 {tab}
               </TabsTrigger>

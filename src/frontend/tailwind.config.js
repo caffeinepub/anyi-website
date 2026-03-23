@@ -78,9 +78,9 @@ export default {
         "2xl": "1.25rem",
       },
       boxShadow: {
-        xs: "0 1px 2px 0 rgba(0,0,0,0.05)",
-        card: "0 2px 12px 0 rgba(14,27,45,0.08)",
-        "card-hover": "0 8px 32px 0 rgba(14,27,45,0.14)",
+        xs: "0 1px 2px 0 rgba(0,0,0,0.2)",
+        card: "0 4px 32px rgba(139,92,246,0.15), 0 1px 8px rgba(0,0,0,0.4)",
+        "card-hover": "0 8px 48px rgba(236,72,153,0.25), 0 2px 16px rgba(0,0,0,0.5)",
       },
       keyframes: {
         "accordion-down": {
