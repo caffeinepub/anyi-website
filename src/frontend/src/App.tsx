@@ -1,7 +1,9 @@
 import { Toaster } from "@/components/ui/sonner";
 import { useEffect, useState } from "react";
+import AboutPage from "./pages/AboutPage";
 import AdminPage from "./pages/AdminPage";
 import HomePage from "./pages/HomePage";
+import PortfolioPage from "./pages/PortfolioPage";
 
 export default function App() {
   const [path, setPath] = useState(window.location.pathname);
@@ -15,12 +17,17 @@ export default function App() {
   const navigate = (to: string) => {
     window.history.pushState({}, "", to);
     setPath(to);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <>
       {path.startsWith("/admin") ? (
         <AdminPage navigate={navigate} />
+      ) : path.startsWith("/portfolio") ? (
+        <PortfolioPage navigate={navigate} />
+      ) : path.startsWith("/about") ? (
+        <AboutPage navigate={navigate} />
       ) : (
         <HomePage navigate={navigate} />
       )}

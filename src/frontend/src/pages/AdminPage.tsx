@@ -33,6 +33,7 @@ import {
   useTestimonials,
   useUpdateAbout,
   useUpdateContactInfo,
+  useUpdateGalleryItem,
   useUpdateHero,
   useUpdateService,
   useUpdateTestimonial,
@@ -160,14 +161,30 @@ function HeroEditor() {
 function AboutEditor() {
   const { data: about } = useAboutContent();
   const update = useUpdateAbout();
-  const [form, setForm] = useState({
-    title: about?.title ?? "",
-    body: about?.body ?? "",
-  });
+
+  // Parse existing JSON body or fall back to plain text
+  let parsedBody = { body: "", mission: "", vision: "", tagline: "" };
+  try {
+    parsedBody = JSON.parse(about?.body ?? "");
+  } catch {
+    parsedBody.body = about?.body ?? "";
+  }
+
+  const [title, setTitle] = useState(about?.title ?? "");
+  const [bodyText, setBodyText] = useState(parsedBody.body);
+  const [tagline, setTagline] = useState(parsedBody.tagline);
+  const [mission, setMission] = useState(parsedBody.mission);
+  const [vision, setVision] = useState(parsedBody.vision);
 
   const handleSave = async () => {
     try {
-      await update.mutateAsync(form);
+      const serialized = JSON.stringify({
+        body: bodyText,
+        mission,
+        vision,
+        tagline,
+      });
+      await update.mutateAsync({ title, body: serialized });
       toast.success("About content updated!");
     } catch {
       toast.error("Failed to update about content");
@@ -186,9 +203,20 @@ function AboutEditor() {
           </p>
           <Input
             data-ocid="admin.input"
-            value={form.title}
-            onChange={(e) => setForm((p) => ({ ...p, title: e.target.value }))}
-            placeholder={about?.title}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="About Us"
+          />
+        </div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+            Tagline
+          </p>
+          <Input
+            data-ocid="admin.input"
+            value={tagline}
+            onChange={(e) => setTagline(e.target.value)}
+            placeholder="Innovative. Strategic. Results-Driven."
           />
         </div>
         <div>
@@ -197,10 +225,34 @@ function AboutEditor() {
           </p>
           <Textarea
             data-ocid="admin.textarea"
-            value={form.body}
-            onChange={(e) => setForm((p) => ({ ...p, body: e.target.value }))}
-            placeholder={about?.body}
-            rows={6}
+            value={bodyText}
+            onChange={(e) => setBodyText(e.target.value)}
+            placeholder="Describe your agency..."
+            rows={5}
+          />
+        </div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+            Mission
+          </p>
+          <Textarea
+            data-ocid="admin.textarea"
+            value={mission}
+            onChange={(e) => setMission(e.target.value)}
+            placeholder="To empower brands with creative strategies..."
+            rows={3}
+          />
+        </div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+            Vision
+          </p>
+          <Textarea
+            data-ocid="admin.textarea"
+            value={vision}
+            onChange={(e) => setVision(e.target.value)}
+            placeholder="To be the most trusted creative partner..."
+            rows={3}
           />
         </div>
         <Button
@@ -648,10 +700,21 @@ function GalleryEditor() {
   const { data: galleryItems } = useGalleryItems();
   const addItem = useAddGalleryItem();
   const deleteItem = useDeleteGalleryItem();
+  const updateItem = useUpdateGalleryItem();
   const [uploading, setUploading] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newCategory, setNewCategory] = useState("");
+  const [newDescription, setNewDescription] = useState("");
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editTitle, setEditTitle] = useState("");
+  const [editCategory, setEditCategory] = useState("");
+  const [editDescription, setEditDescription] = useState("");
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+
+  const uniqueCategories = galleryItems
+    ? Array.from(new Set(galleryItems.map((i) => i.category)))
+    : [];
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -670,6 +733,7 @@ function GalleryEditor() {
       });
       setNewTitle("");
       setNewCategory("");
+      setNewDescription("");
       setUploadProgress(0);
       toast.success("Image uploaded!");
     } catch (err) {
@@ -680,8 +744,47 @@ function GalleryEditor() {
     }
   };
 
+  const startEdit = (item: { id: string; title: string; category: string }) => {
+    setEditingId(item.id);
+    setEditTitle(item.title);
+    setEditCategory(item.category);
+    setEditDescription("");
+  };
+
+  const handleEditSave = async (item: {
+    id: string;
+    blob: ReturnType<typeof ExternalBlob.fromBytes>;
+  }) => {
+    try {
+      await updateItem.mutateAsync({
+        id: item.id,
+        item: {
+          id: item.id,
+          title: editTitle,
+          category: editCategory,
+          blob: item.blob,
+        },
+      });
+      setEditingId(null);
+      toast.success("Updated!");
+    } catch {
+      toast.error("Update failed");
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteItem.mutateAsync(id);
+      setConfirmDeleteId(null);
+      toast.success("Deleted");
+    } catch {
+      toast.error("Delete failed");
+    }
+  };
+
   return (
     <div className="space-y-6">
+      {/* Add New Item */}
       <Card>
         <CardHeader>
           <CardTitle>Upload Gallery Image</CardTitle>
@@ -690,7 +793,7 @@ function GalleryEditor() {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
-                Title
+                Title *
               </p>
               <Input
                 data-ocid="admin.input"
@@ -708,10 +811,28 @@ function GalleryEditor() {
                 value={newCategory}
                 onChange={(e) => setNewCategory(e.target.value)}
                 placeholder="e.g. Branding"
+                list="category-suggestions"
               />
+              <datalist id="category-suggestions">
+                {uniqueCategories.map((c) => (
+                  <option key={c} value={c} />
+                ))}
+              </datalist>
             </div>
           </div>
-          <div
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-body-gray block mb-2">
+              Description (optional)
+            </p>
+            <Textarea
+              data-ocid="admin.textarea"
+              value={newDescription}
+              onChange={(e) => setNewDescription(e.target.value)}
+              placeholder="Short description of this project..."
+              rows={2}
+            />
+          </div>
+          <label
             data-ocid="admin.upload_button"
             className={`flex flex-col items-center justify-center w-full h-36 border-2 border-dashed border-subtle rounded-xl cursor-pointer hover:border-teal hover:bg-teal/5 transition-all ${
               uploading ? "opacity-50 pointer-events-none" : ""
@@ -742,47 +863,155 @@ function GalleryEditor() {
               onChange={handleFileUpload}
               disabled={uploading}
             />
-          </div>
+          </label>
         </CardContent>
       </Card>
 
+      {/* Categories summary */}
+      {uniqueCategories.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Categories ({uniqueCategories.length})</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-wrap gap-2">
+            {uniqueCategories.map((cat) => (
+              <span
+                key={cat}
+                className="px-3 py-1 bg-teal/10 text-teal text-sm rounded-full font-medium"
+              >
+                {cat} (
+                {galleryItems?.filter((i) => i.category === cat).length ?? 0})
+              </span>
+            ))}
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Gallery items list */}
       {galleryItems && galleryItems.length > 0 && (
         <div>
           <h3 className="font-semibold text-navy mb-4">
             Gallery Images ({galleryItems.length})
           </h3>
-          <div
-            className="grid grid-cols-2 md:grid-cols-3 gap-4"
-            data-ocid="admin.list"
-          >
+          <div className="space-y-3" data-ocid="admin.list">
             {galleryItems.map((item, i) => (
               <div
                 key={item.id}
-                className="relative group rounded-xl overflow-hidden bg-muted aspect-video"
+                className="bg-white border border-subtle rounded-xl p-4 flex gap-4 items-start"
                 data-ocid={`admin.item.${i + 1}`}
               >
-                <Image className="w-8 h-8 text-muted-gray absolute inset-0 m-auto" />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <Button
-                    data-ocid={`admin.delete_button.${i + 1}`}
-                    size="sm"
-                    variant="destructive"
-                    onClick={async () => {
-                      if (!confirm("Delete this image?")) return;
-                      await deleteItem.mutateAsync(item.id);
-                      toast.success("Deleted");
-                    }}
-                    className="rounded-full"
-                  >
-                    <Trash2 className="w-3.5 h-3.5" />
-                  </Button>
+                <div className="w-20 h-16 rounded-lg overflow-hidden bg-muted flex-shrink-0 flex items-center justify-center">
+                  <Image className="w-6 h-6 text-muted-gray" />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-2 bg-black/50">
-                  <div className="text-white text-xs font-semibold truncate">
-                    {item.title}
+
+                <div className="flex-1 min-w-0">
+                  {editingId === item.id ? (
+                    <div className="space-y-2">
+                      <Input
+                        data-ocid="admin.input"
+                        value={editTitle}
+                        onChange={(e) => setEditTitle(e.target.value)}
+                        placeholder="Title"
+                        className="text-sm"
+                      />
+                      <Input
+                        data-ocid="admin.input"
+                        value={editCategory}
+                        onChange={(e) => setEditCategory(e.target.value)}
+                        placeholder="Category"
+                        className="text-sm"
+                        list="category-suggestions"
+                      />
+                      <Textarea
+                        data-ocid="admin.textarea"
+                        value={editDescription}
+                        onChange={(e) => setEditDescription(e.target.value)}
+                        placeholder="Description (optional)"
+                        rows={2}
+                        className="text-sm"
+                      />
+                      <div className="flex gap-2">
+                        <Button
+                          data-ocid={`admin.save_button.${i + 1}`}
+                          size="sm"
+                          onClick={() => handleEditSave(item as any)}
+                          disabled={updateItem.isPending}
+                          className="bg-teal text-white hover:bg-teal/90"
+                        >
+                          {updateItem.isPending ? (
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                          ) : (
+                            "Save"
+                          )}
+                        </Button>
+                        <Button
+                          data-ocid={`admin.cancel_button.${i + 1}`}
+                          size="sm"
+                          variant="outline"
+                          onClick={() => setEditingId(null)}
+                        >
+                          Cancel
+                        </Button>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="font-semibold text-navy text-sm">
+                        {item.title}
+                      </div>
+                      <div className="text-xs text-teal mt-0.5">
+                        {item.category}
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {editingId !== item.id && (
+                  <div className="flex gap-2 flex-shrink-0">
+                    <Button
+                      data-ocid={`admin.edit_button.${i + 1}`}
+                      size="sm"
+                      variant="outline"
+                      onClick={() => startEdit(item)}
+                      className="rounded-lg"
+                    >
+                      <Plus className="w-3.5 h-3.5 rotate-45" />
+                    </Button>
+                    {confirmDeleteId === item.id ? (
+                      <div className="flex gap-1">
+                        <Button
+                          data-ocid={`admin.confirm_button.${i + 1}`}
+                          size="sm"
+                          variant="destructive"
+                          onClick={() => handleDelete(item.id)}
+                          disabled={deleteItem.isPending}
+                          className="rounded-lg text-xs"
+                        >
+                          Confirm
+                        </Button>
+                        <Button
+                          data-ocid={`admin.cancel_button.${i + 1}`}
+                          size="sm"
+                          variant="outline"
+                          onClick={() => setConfirmDeleteId(null)}
+                          className="rounded-lg text-xs"
+                        >
+                          No
+                        </Button>
+                      </div>
+                    ) : (
+                      <Button
+                        data-ocid={`admin.delete_button.${i + 1}`}
+                        size="sm"
+                        variant="destructive"
+                        onClick={() => setConfirmDeleteId(item.id)}
+                        className="rounded-lg"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </Button>
+                    )}
                   </div>
-                  <div className="text-white/70 text-xs">{item.category}</div>
-                </div>
+                )}
               </div>
             ))}
           </div>

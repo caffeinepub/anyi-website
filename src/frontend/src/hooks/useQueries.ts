@@ -253,3 +253,15 @@ export function useDeleteGalleryItem() {
     onSuccess: () => qc.invalidateQueries({ queryKey: ["galleryItems"] }),
   });
 }
+
+export function useUpdateGalleryItem() {
+  const { actor } = useActor();
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async ({ id, item }: { id: string; item: GalleryItem }) => {
+      if (!actor) throw new Error("Not connected");
+      await (actor as any).updateGalleryItem(id, item);
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["galleryItems"] }),
+  });
+}

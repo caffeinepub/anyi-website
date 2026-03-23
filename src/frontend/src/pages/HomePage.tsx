@@ -169,7 +169,13 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
               type="button"
               key={item}
               data-ocid="nav.link"
-              onClick={() => scrollTo(item.toLowerCase())}
+              onClick={() =>
+                item === "Portfolio"
+                  ? navigate("/portfolio")
+                  : item === "About"
+                    ? navigate("/about")
+                    : scrollTo(item.toLowerCase())
+              }
               className="text-sm font-medium text-body-gray hover:text-navy transition-colors"
             >
               {item}
@@ -227,7 +233,13 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
               <button
                 type="button"
                 key={item}
-                onClick={() => scrollTo(item.toLowerCase())}
+                onClick={() =>
+                  item === "Portfolio"
+                    ? navigate("/portfolio")
+                    : item === "About"
+                      ? navigate("/about")
+                      : scrollTo(item.toLowerCase())
+                }
                 className="text-sm font-medium text-left text-body-gray hover:text-navy py-1"
               >
                 {item}
@@ -896,9 +908,13 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
                   key={item}
                   data-ocid="footer.link"
                   onClick={() =>
-                    document
-                      .getElementById(item.toLowerCase())
-                      ?.scrollIntoView({ behavior: "smooth" })
+                    item === "About"
+                      ? navigate("/about")
+                      : item === "Portfolio"
+                        ? navigate("/portfolio")
+                        : document
+                            .getElementById(item.toLowerCase())
+                            ?.scrollIntoView({ behavior: "smooth" })
                   }
                   className="text-sm text-white/60 hover:text-white transition-colors text-left"
                 >

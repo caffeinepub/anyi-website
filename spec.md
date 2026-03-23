@@ -1,29 +1,28 @@
-# Anyi Website
+# Anyi Website - About Page
 
 ## Current State
-New project with no existing application files.
+- About section exists inline in HomePage.tsx with title, body text, stats (10+ years, 320+ projects, 98% satisfaction), and a team image
+- AdminPage has an AboutEditor with title + body text fields only
+- Backend: `getAboutContent()` / `updateAboutContent()` return `{ title, body }`
 
 ## Requested Changes (Diff)
 
 ### Add
-- Public marketing website with sections: Hero, About, Services, Gallery/Portfolio, Testimonials, Contact, Footer
-- Navigation bar with smooth scrolling to sections
-- Content Management Panel (admin dashboard) protected by authorization
-- CMS capabilities: edit hero text, about text, services list, gallery images (via blob storage), testimonials, contact info
-- Subtle animations on scroll (fade-in, slide-in)
-- Mobile-responsive layout
-- Social media links in footer
-- Large bold typography, generous whitespace, modern design
+- Dedicated `/about` route with a full About page
+- Page sections: Hero banner, Who We Are (same as homepage), Mission/Vision cards, Stats row, Team members grid, Values section, CTA
+- All text content editable via admin (using existing `about.title` + `about.body`, plus frontend-level extended content)
+- Navigation link to /about in NavBar
 
 ### Modify
-- N/A (new project)
+- App.tsx: add `/about` route
+- HomePage NavBar: add "About" link navigating to `/about`
+- AdminPage AboutEditor: add fields for mission, vision, team tagline (stored as JSON in `about.body` for backward compat)
 
 ### Remove
-- N/A (new project)
+- Nothing
 
 ## Implementation Plan
-1. Backend: Store site content (hero, about, services, testimonials, contact info) in stable variables. CRUD APIs for each content section. Authorization for admin access. Blob storage for gallery images.
-2. Frontend public site: Full-page scrollable marketing site with all sections, smooth scroll nav, scroll animations.
-3. Frontend CMS panel: Admin login -> dashboard to edit all text content and manage gallery images (upload/delete via blob storage).
-4. Wire authorization component for admin login/logout.
-5. Wire blob-storage component for gallery image uploads.
+1. Create AboutPage.tsx with full sections: hero, who we are, mission/vision, stats, team grid, values, CTA
+2. Update App.tsx routing
+3. Update NavBar in HomePage to link About to /about
+4. Enhance AdminPage AboutEditor to handle structured body content
