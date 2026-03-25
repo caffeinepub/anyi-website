@@ -1,5 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { useEffect, useState } from "react";
+import { WhatsAppButton } from "./components/WhatsAppButton";
+import { ThemeProvider } from "./hooks/useTheme";
 import AboutPage from "./pages/AboutPage";
 import BPOPage from "./pages/BPOPage";
 import HomePage from "./pages/HomePage";
@@ -22,7 +24,7 @@ export default function App() {
   };
 
   return (
-    <>
+    <ThemeProvider>
       {path.startsWith("/portfolio") ? (
         <PortfolioPage navigate={navigate} />
       ) : path.startsWith("/about") ? (
@@ -34,7 +36,8 @@ export default function App() {
       ) : (
         <HomePage navigate={navigate} />
       )}
+      <WhatsAppButton />
       <Toaster position="top-right" richColors />
-    </>
+    </ThemeProvider>
   );
 }

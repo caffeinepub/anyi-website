@@ -20,6 +20,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { SiInstagram, SiLinkedin, SiX } from "react-icons/si";
 import { toast } from "sonner";
+import { ThemeToggle } from "../components/ThemeToggle";
 import {
   useAboutContent,
   useContactInfo,
@@ -153,8 +154,11 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
           onClick={() => scrollTo("hero")}
           className="flex items-center gap-1 font-bold text-xl tracking-tight"
         >
-          <span className="text-gradient font-bold">ANYI</span>
-          <span className="w-2 h-2 rounded-full bg-primary mt-0.5" />
+          <img
+            src="/assets/generated/anyi-logo-hires.dim_400x120.png"
+            alt="ANYI"
+            className="h-9 w-auto object-contain"
+          />
         </button>
 
         {/* Desktop Nav */}
@@ -193,6 +197,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
+          <ThemeToggle />
           <Button
             data-ocid="nav.primary_button"
             onClick={() => scrollTo("contact")}
@@ -848,8 +853,11 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
         <div className="grid md:grid-cols-4 gap-10 pb-10 border-b border-white/10">
           <div className="md:col-span-2">
             <div className="flex items-center gap-1 font-bold text-xl mb-4">
-              <span>ANYI</span>
-              <span className="w-2 h-2 rounded-full bg-primary mt-0.5" />
+              <img
+                src="/assets/generated/anyi-logo-hires.dim_400x120.png"
+                alt="ANYI"
+                className="h-7 w-auto object-contain"
+              />
             </div>
             <p className="text-sm text-white/60 leading-relaxed max-w-xs">
               We amplify brands through bold strategy, creative design, and
