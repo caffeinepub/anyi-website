@@ -83,9 +83,10 @@ export function useContactInfo() {
     queryFn: async () => {
       if (!actor)
         return {
-          email: "hello@anyi.co.in",
-          address: "42 Creative Hub, Koramangala, Bengaluru 560034",
-          phone: "+91 98765 43210",
+          email: "ys@anyi.co.in",
+          address:
+            "C-32, First & Second Floor, Ram Nagar, Kaushambi, Ghaziabad, Uttar Pradesh 201010",
+          phone: "098106 57082",
         };
       return actor.getContactInfo();
     },

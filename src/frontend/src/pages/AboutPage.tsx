@@ -583,10 +583,10 @@ export default function AboutPage({
               </h4>
               <div className="flex flex-col gap-3 text-sm text-white/60">
                 <a
-                  href="mailto:hello@anyi.co.in"
+                  href="mailto:ys@anyi.co.in"
                   className="hover:text-white transition-colors"
                 >
-                  hello@anyi.co.in
+                  ys@anyi.co.in
                 </a>
                 <a
                   href="tel:+919876543210"
@@ -595,9 +595,9 @@ export default function AboutPage({
                   +91 98765 43210
                 </a>
                 <p>
-                  42 Creative Hub,
+                  C-32, First & Second Floor, Ram Nagar, Kaushambi,
                   <br />
-                  Koramangala, Bengaluru
+                  Ghaziabad, Uttar Pradesh 201010
                 </p>
               </div>
             </div>

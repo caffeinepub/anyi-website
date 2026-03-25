@@ -97,9 +97,9 @@ actor {
   let servicesStore = Map.empty<Text, ServiceContent>();
   let testimonialsStore = Map.empty<Text, TestimonialContent>();
   var contactInfo : ContactInfo = {
-    address = "123 Main St";
-    email = "contact@ourcompany.com";
-    phone = "+1234567890";
+    address = "C-32, First & Second Floor, Ram Nagar, Kaushambi, Ghaziabad, Uttar Pradesh 201010";
+    email = "ys@anyi.co.in";
+    phone = "098106 57082";
   };
 
   var galleryStore : Map.Map<Text, GalleryItem> = Map.empty<Text, GalleryItem>();

@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { SiInstagram, SiLinkedin, SiX } from "react-icons/si";
+import { SiFacebook, SiInstagram, SiLinkedin, SiX } from "react-icons/si";
 import { toast } from "sonner";
 import { ThemeToggle } from "../components/ThemeToggle";
 import {
@@ -701,10 +701,10 @@ function ContactSection() {
                         Email
                       </div>
                       <a
-                        href={`mailto:${contactInfo?.email ?? "hello@anyi.co.in"}`}
+                        href={`mailto:${contactInfo?.email ?? "ys@anyi.co.in"}`}
                         className="text-foreground hover:text-primary transition-colors text-sm"
                       >
-                        {contactInfo?.email ?? "hello@anyi.co.in"}
+                        {contactInfo?.email ?? "ys@anyi.co.in"}
                       </a>
                     </div>
                   </div>
@@ -717,10 +717,10 @@ function ContactSection() {
                         Phone
                       </div>
                       <a
-                        href={`tel:${contactInfo?.phone ?? "+919876543210"}`}
+                        href={`tel:${contactInfo?.phone ?? "+919810657082"}`}
                         className="text-foreground hover:text-primary transition-colors text-sm"
                       >
-                        {contactInfo?.phone ?? "+91 98765 43210"}
+                        {contactInfo?.phone ?? "098106 57082"}
                       </a>
                     </div>
                   </div>
@@ -734,7 +734,7 @@ function ContactSection() {
                       </div>
                       <p className="text-foreground text-sm">
                         {contactInfo?.address ??
-                          "42 Creative Hub, Koramangala, Bengaluru 560034"}
+                          "C-32, First & Second Floor, Ram Nagar, Kaushambi, Ghaziabad, Uttar Pradesh 201010"}
                       </p>
                     </div>
                   </div>
@@ -742,13 +742,22 @@ function ContactSection() {
               </div>
               <div className="mt-10 flex gap-4">
                 <a
-                  href="https://twitter.com"
+                  href="https://www.facebook.com/people/ANYI/100066798577515/"
                   target="_blank"
                   rel="noreferrer"
                   className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center text-foreground hover:bg-primary transition-colors"
                   data-ocid="contact.link"
                 >
-                  <SiX className="w-4 h-4" />
+                  <SiFacebook className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/71969389/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center text-foreground hover:bg-primary transition-colors"
+                  data-ocid="contact.link"
+                >
+                  <SiLinkedin className="w-4 h-4" />
                 </a>
                 <a
                   href="https://instagram.com"
@@ -758,15 +767,6 @@ function ContactSection() {
                   data-ocid="contact.link"
                 >
                   <SiInstagram className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center text-foreground hover:bg-primary transition-colors"
-                  data-ocid="contact.link"
-                >
-                  <SiLinkedin className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -865,13 +865,22 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
             </p>
             <div className="flex gap-3 mt-6">
               <a
-                href="https://twitter.com"
+                href="https://www.facebook.com/people/ANYI/100066798577515/"
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
                 data-ocid="footer.link"
               >
-                <SiX className="w-3.5 h-3.5" />
+                <SiFacebook className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/71969389/"
+                target="_blank"
+                rel="noreferrer"
+                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
+                data-ocid="footer.link"
+              >
+                <SiLinkedin className="w-3.5 h-3.5" />
               </a>
               <a
                 href="https://instagram.com"
@@ -881,15 +890,6 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
                 data-ocid="footer.link"
               >
                 <SiInstagram className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
-                data-ocid="footer.link"
-              >
-                <SiLinkedin className="w-3.5 h-3.5" />
               </a>
             </div>
           </div>
@@ -935,21 +935,21 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
             </h4>
             <div className="flex flex-col gap-3 text-sm text-white/60">
               <a
-                href="mailto:hello@anyi.co.in"
+                href="mailto:ys@anyi.co.in"
                 className="hover:text-white transition-colors"
               >
-                hello@anyi.co.in
+                ys@anyi.co.in
               </a>
               <a
-                href="tel:+919876543210"
+                href="tel:+919810657082"
                 className="hover:text-white transition-colors"
               >
-                +91 98765 43210
+                098106 57082
               </a>
               <p>
-                42 Creative Hub,
+                C-32, First & Second Floor, Ram Nagar, Kaushambi,
                 <br />
-                Koramangala, Bengaluru
+                Ghaziabad, Uttar Pradesh 201010
               </p>
             </div>
           </div>

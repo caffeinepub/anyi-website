@@ -845,10 +845,10 @@ export default function BPOPage({
                   <Mail className="w-3.5 h-3.5" /> ys@anyi.co.in
                 </a>
                 <a
-                  href="mailto:sales@anyi.co.in"
+                  href="mailto:ys@anyi.co.in"
                   className="hover:text-white transition-colors flex items-center gap-2"
                 >
-                  <Mail className="w-3.5 h-3.5" /> sales@anyi.co.in
+                  <Mail className="w-3.5 h-3.5" /> ys@anyi.co.in
                 </a>
                 <a
                   href="tel:+919810657082"

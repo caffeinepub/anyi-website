@@ -970,10 +970,10 @@ export default function SolutionsPage({
                 <Mail className="w-4 h-4 text-primary" /> ys@anyi.co.in
               </a>
               <a
-                href="mailto:sales@anyi.co.in"
+                href="mailto:ys@anyi.co.in"
                 className="flex items-center gap-2 hover:text-foreground transition-colors"
               >
-                <Mail className="w-4 h-4 text-primary" /> sales@anyi.co.in
+                <Mail className="w-4 h-4 text-primary" /> ys@anyi.co.in
               </a>
             </div>
             <Button
@@ -1071,10 +1071,10 @@ export default function SolutionsPage({
                   ys@anyi.co.in
                 </a>
                 <a
-                  href="mailto:sales@anyi.co.in"
+                  href="mailto:ys@anyi.co.in"
                   className="hover:text-white transition-colors"
                 >
-                  sales@anyi.co.in
+                  ys@anyi.co.in
                 </a>
                 <a
                   href="tel:+919810657082"
