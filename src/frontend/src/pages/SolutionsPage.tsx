@@ -51,6 +51,8 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
       navigate("/about");
     } else if (item === "Solutions") {
       navigate("/solutions");
+    } else if (item === "BPO Services") {
+      navigate("/bpo");
     } else if (item === "Portfolio") {
       navigate("/portfolio");
     } else {
@@ -82,6 +84,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
             "Home",
             "About",
             "Solutions",
+            "BPO Services",
             "Services",
             "Portfolio",
             "Testimonials",
@@ -101,21 +104,13 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
               {item}
             </button>
           ))}
-          <button
-            type="button"
-            data-ocid="nav.link"
-            onClick={() => navigate("/admin")}
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Admin
-          </button>
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
           <Button
             data-ocid="nav.primary_button"
             onClick={() => navigate("/#contact")}
-            className="btn-gradient text-white hover:opacity-90 rounded-full px-6 text-xs font-semibold uppercase tracking-wider"
+            className="btn-gradient text-foreground hover:opacity-90 rounded-full px-6 text-xs font-semibold uppercase tracking-wider"
           >
             Start a Project
           </Button>
@@ -143,6 +138,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
               "Home",
               "About",
               "Solutions",
+              "BPO Services",
               "Services",
               "Portfolio",
               "Testimonials",
@@ -162,17 +158,6 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
                 {item}
               </button>
             ))}
-            <button
-              type="button"
-              data-ocid="nav.link"
-              onClick={() => {
-                setMenuOpen(false);
-                navigate("/admin");
-              }}
-              className="text-sm font-medium text-left text-muted-foreground hover:text-foreground"
-            >
-              Admin
-            </button>
           </motion.div>
         )}
       </AnimatePresence>
@@ -402,25 +387,25 @@ export default function SolutionsPage({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center gap-2 text-sm text-white/50 mb-6">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
               <button
                 type="button"
                 data-ocid="hero.link"
                 onClick={() => navigate("/")}
-                className="hover:text-white transition-colors flex items-center gap-1"
+                className="hover:text-foreground transition-colors flex items-center gap-1"
               >
                 <Home className="w-3 h-3" /> Home
               </button>
               <ChevronRight className="w-3 h-3" />
               <span className="text-primary">Solutions</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-display font-bold text-white mb-4">
+            <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground mb-4">
               Integrated Solutions
             </h1>
             <p className="text-2xl text-primary font-medium mb-4">
               For All Possible Industries
             </p>
-            <p className="text-white/60 max-w-2xl mb-10 text-lg">
+            <p className="text-muted-foreground max-w-2xl mb-10 text-lg">
               We design solutions which a business requires, using latest
               technology, AI & easy-to-use UI
             </p>
@@ -638,7 +623,7 @@ export default function SolutionsPage({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-primary/20 to-accent/10 glass-card rounded-2xl p-10 text-white"
+              className="bg-gradient-to-br from-primary/20 to-accent/10 glass-card rounded-2xl p-10 text-foreground"
             >
               <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-3 block">
                 Auto Dialer
@@ -646,7 +631,7 @@ export default function SolutionsPage({
               <h3 className="text-3xl font-display font-bold mb-5">
                 Voice Solutions — Auto Dialer
               </h3>
-              <p className="text-white/70 leading-relaxed mb-8 max-w-3xl">
+              <p className="text-muted-foreground leading-relaxed mb-8 max-w-3xl">
                 Auto Dialer Software is generally used in call centers and
                 mobile companies. It automatically dials telephone numbers from
                 a list or API. Once the call is answered, the auto-dialer either
@@ -661,7 +646,7 @@ export default function SolutionsPage({
                 ].map(({ label, icon: Icon }) => (
                   <div
                     key={label}
-                    className="bg-white/10 rounded-xl p-5 text-center"
+                    className="bg-muted/50 rounded-xl p-5 text-center"
                   >
                     <Icon className="w-7 h-7 text-primary mx-auto mb-3" />
                     <p className="text-sm font-medium">{label}</p>
@@ -827,7 +812,7 @@ export default function SolutionsPage({
               className="w-full h-56 object-cover"
             />
             <div className="absolute inset-0 bg-background/60 backdrop-blur-sm flex items-center justify-center">
-              <p className="text-white text-2xl font-display font-bold text-center px-4">
+              <p className="text-foreground text-2xl font-display font-bold text-center px-4">
                 Seamlessly connect with your entire ecosystem
               </p>
             </div>
@@ -872,17 +857,19 @@ export default function SolutionsPage({
               <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-3 block">
                 Infrastructure
               </span>
-              <h2 className="text-4xl font-display font-bold text-white mb-8">
+              <h2 className="text-4xl font-display font-bold text-foreground mb-8">
                 Hardware / Infra
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {HARDWARE_ITEMS.map(({ icon: Icon, label }) => (
                   <div
                     key={label}
-                    className="bg-white/10 rounded-xl p-4 text-center hover:bg-primary/30 transition-colors"
+                    className="bg-muted/50 rounded-xl p-4 text-center hover:bg-primary/30 transition-colors"
                   >
                     <Icon className="w-7 h-7 text-primary mx-auto mb-2" />
-                    <p className="text-xs text-white/80 font-medium">{label}</p>
+                    <p className="text-xs text-foreground font-medium">
+                      {label}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -914,13 +901,13 @@ export default function SolutionsPage({
             className="mb-12"
           >
             <div className="inline-block bg-gradient-to-r from-teal to-navy rounded-2xl p-8 w-full">
-              <span className="text-xs font-semibold uppercase tracking-widest text-white/70 mb-2 block">
+              <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2 block">
                 AI-Powered
               </span>
-              <h2 className="text-4xl font-display font-bold text-white mb-2">
+              <h2 className="text-4xl font-display font-bold text-foreground mb-2">
                 Smart Marks
               </h2>
-              <p className="text-white/70">
+              <p className="text-muted-foreground">
                 AI-Powered Features that transform your operations
               </p>
             </div>
@@ -958,28 +945,28 @@ export default function SolutionsPage({
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl font-display font-bold text-white mb-4">
+            <h2 className="text-4xl font-display font-bold text-foreground mb-4">
               Need a hand?
             </h2>
-            <p className="text-white/60 mb-8">
+            <p className="text-muted-foreground mb-8">
               Contact us at Anyi Services India Private Limited
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10 text-sm text-white/70">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10 text-sm text-muted-foreground">
               <a
                 href="tel:+919810657082"
-                className="flex items-center gap-2 hover:text-white transition-colors"
+                className="flex items-center gap-2 hover:text-foreground transition-colors"
               >
                 <Phone className="w-4 h-4 text-primary" /> +91 9810657082
               </a>
               <a
                 href="mailto:ys@anyi.co.in"
-                className="flex items-center gap-2 hover:text-white transition-colors"
+                className="flex items-center gap-2 hover:text-foreground transition-colors"
               >
                 <Mail className="w-4 h-4 text-primary" /> ys@anyi.co.in
               </a>
               <a
                 href="mailto:sales@anyi.co.in"
-                className="flex items-center gap-2 hover:text-white transition-colors"
+                className="flex items-center gap-2 hover:text-foreground transition-colors"
               >
                 <Mail className="w-4 h-4 text-primary" /> sales@anyi.co.in
               </a>
@@ -1036,6 +1023,7 @@ export default function SolutionsPage({
                   "Home",
                   "About",
                   "Solutions",
+                  "BPO Services",
                   "Services",
                   "Portfolio",
                   "Testimonials",
@@ -1050,9 +1038,11 @@ export default function SolutionsPage({
                         ? navigate("/about")
                         : item === "Solutions"
                           ? navigate("/solutions")
-                          : item === "Portfolio"
-                            ? navigate("/portfolio")
-                            : navigate(`/#${item.toLowerCase()}`)
+                          : item === "BPO Services"
+                            ? navigate("/bpo")
+                            : item === "Portfolio"
+                              ? navigate("/portfolio")
+                              : navigate(`/#${item.toLowerCase()}`)
                     }
                     className="text-sm text-white/60 hover:text-white transition-colors text-left"
                   >

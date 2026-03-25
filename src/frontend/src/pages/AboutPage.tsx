@@ -83,6 +83,8 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
       navigate("/about");
     } else if (item === "Solutions") {
       navigate("/solutions");
+    } else if (item === "BPO Services") {
+      navigate("/bpo");
     } else if (item === "Portfolio") {
       navigate("/portfolio");
     } else {
@@ -114,6 +116,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
             "Home",
             "About",
             "Solutions",
+            "BPO Services",
             "Services",
             "Portfolio",
             "Testimonials",
@@ -133,21 +136,13 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
               {item}
             </button>
           ))}
-          <button
-            type="button"
-            data-ocid="nav.link"
-            onClick={() => navigate("/admin")}
-            className="text-sm font-medium text-primary hover:text-foreground transition-colors"
-          >
-            Admin
-          </button>
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
           <Button
             data-ocid="nav.primary_button"
             onClick={() => navigate("/#contact")}
-            className="btn-gradient text-white hover:opacity-90 rounded-full px-6 text-xs font-semibold uppercase tracking-wider"
+            className="btn-gradient text-foreground hover:opacity-90 rounded-full px-6 text-xs font-semibold uppercase tracking-wider"
           >
             Start a Project
           </Button>
@@ -175,6 +170,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
               "Home",
               "About",
               "Solutions",
+              "BPO Services",
               "Services",
               "Portfolio",
               "Testimonials",
@@ -190,17 +186,6 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
                 {item}
               </button>
             ))}
-            <button
-              type="button"
-              data-ocid="nav.link"
-              onClick={() => {
-                setMenuOpen(false);
-                navigate("/admin");
-              }}
-              className="text-sm font-medium text-left text-primary"
-            >
-              Admin
-            </button>
           </motion.div>
         )}
       </AnimatePresence>
@@ -247,25 +232,25 @@ export default function AboutPage({
           >
             {/* Breadcrumb */}
             <nav
-              className="flex items-center gap-2 text-xs text-white/50 mb-6"
+              className="flex items-center gap-2 text-xs text-muted-foreground mb-6"
               aria-label="Breadcrumb"
             >
               <button
                 type="button"
                 onClick={() => navigate("/")}
-                className="flex items-center gap-1 hover:text-white transition-colors"
+                className="flex items-center gap-1 hover:text-foreground transition-colors"
                 data-ocid="about.link"
               >
                 <Home className="w-3 h-3" />
                 Home
               </button>
               <ChevronRight className="w-3 h-3" />
-              <span className="text-white/80">About</span>
+              <span className="text-foreground">About</span>
             </nav>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-4">
               About Us
             </h1>
-            <p className="text-lg text-white/60 max-w-xl">
+            <p className="text-lg text-muted-foreground max-w-xl">
               The team and story behind Anyi
             </p>
           </motion.div>
@@ -394,7 +379,7 @@ export default function AboutPage({
             <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               What Drives Us
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               Our Values
             </h2>
           </motion.div>
@@ -406,13 +391,17 @@ export default function AboutPage({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors"
+                className="bg-primary/5 border border-border rounded-2xl p-6 hover:bg-muted/50 transition-colors"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/30 flex items-center justify-center mb-4">
                   <Icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-base font-bold text-white mb-2">{title}</h3>
-                <p className="text-sm text-white/60 leading-relaxed">{desc}</p>
+                <h3 className="text-base font-bold text-foreground mb-2">
+                  {title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -506,7 +495,7 @@ export default function AboutPage({
             <Button
               data-ocid="about.primary_button"
               onClick={() => navigate("/#contact")}
-              className="btn-gradient text-white hover:opacity-90 rounded-full px-8 py-3 text-sm font-semibold uppercase tracking-wider"
+              className="btn-gradient text-foreground hover:opacity-90 rounded-full px-8 py-3 text-sm font-semibold uppercase tracking-wider"
             >
               Get in Touch
             </Button>

@@ -163,6 +163,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
             "Home",
             "About",
             "Solutions",
+            "BPO Services",
             "Services",
             "Portfolio",
             "Testimonials",
@@ -177,23 +178,17 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
                   ? navigate("/portfolio")
                   : item === "Solutions"
                     ? navigate("/solutions")
-                    : item === "About"
-                      ? navigate("/about")
-                      : scrollTo(item.toLowerCase())
+                    : item === "BPO Services"
+                      ? navigate("/bpo")
+                      : item === "About"
+                        ? navigate("/about")
+                        : scrollTo(item.toLowerCase())
               }
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               {item}
             </button>
           ))}
-          <button
-            type="button"
-            data-ocid="nav.link"
-            onClick={() => navigate("/admin")}
-            className="text-sm font-medium text-primary hover:text-foreground transition-colors"
-          >
-            Admin
-          </button>
         </nav>
 
         {/* CTA */}
@@ -201,7 +196,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
           <Button
             data-ocid="nav.primary_button"
             onClick={() => scrollTo("contact")}
-            className="btn-gradient text-white hover:opacity-90 rounded-full px-6 text-xs font-semibold uppercase tracking-wider"
+            className="btn-gradient text-foreground hover:opacity-90 rounded-full px-6 text-xs font-semibold uppercase tracking-wider"
           >
             Start a Project
           </Button>
@@ -231,6 +226,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
               "Home",
               "About",
               "Solutions",
+              "BPO Services",
               "Services",
               "Portfolio",
               "Testimonials",
@@ -244,28 +240,20 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
                     ? navigate("/portfolio")
                     : item === "Solutions"
                       ? navigate("/solutions")
-                      : item === "About"
-                        ? navigate("/about")
-                        : scrollTo(item.toLowerCase())
+                      : item === "BPO Services"
+                        ? navigate("/bpo")
+                        : item === "About"
+                          ? navigate("/about")
+                          : scrollTo(item.toLowerCase())
                 }
                 className="text-sm font-medium text-left text-muted-foreground hover:text-foreground py-1"
               >
                 {item}
               </button>
             ))}
-            <button
-              type="button"
-              onClick={() => {
-                setMenuOpen(false);
-                navigate("/admin");
-              }}
-              className="text-sm font-medium text-left text-primary"
-            >
-              Admin
-            </button>
             <Button
               onClick={() => scrollTo("contact")}
-              className="btn-gradient text-white rounded-full text-xs font-semibold uppercase tracking-wider w-full"
+              className="btn-gradient text-foreground rounded-full text-xs font-semibold uppercase tracking-wider w-full"
             >
               Start a Project
             </Button>
@@ -312,7 +300,7 @@ function HeroSection() {
                         .getElementById("services")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="btn-gradient text-white hover:opacity-90 rounded-full px-8 py-6 text-xs font-bold uppercase tracking-widest flex items-center gap-2"
+                    className="btn-gradient text-foreground hover:opacity-90 rounded-full px-8 py-6 text-xs font-bold uppercase tracking-widest flex items-center gap-2"
                   >
                     {hero?.ctaText ?? "Explore Services"}
                     <ArrowUpRight className="w-4 h-4" />
@@ -325,7 +313,7 @@ function HeroSection() {
                         .getElementById("portfolio")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="rounded-full px-8 py-6 text-xs font-bold uppercase tracking-widest border-border text-foreground hover:opacity-80 hover:text-white transition-all"
+                    className="rounded-full px-8 py-6 text-xs font-bold uppercase tracking-widest border-border text-foreground hover:opacity-80 hover:text-foreground transition-all"
                   >
                     View Portfolio
                   </Button>
@@ -521,8 +509,8 @@ function GallerySection() {
               onClick={() => setActiveFilter(cat)}
               className={`px-5 py-2 rounded-full text-xs font-semibold transition-all ${
                 activeFilter === cat
-                  ? "btn-gradient text-white"
-                  : "glass-card text-foreground border border-border hover:opacity-80 hover:text-white"
+                  ? "btn-gradient text-foreground"
+                  : "glass-card text-foreground border border-border hover:opacity-80 hover:text-foreground"
               }`}
             >
               {cat}
@@ -557,7 +545,7 @@ function GallerySection() {
                   <span className="text-xs text-primary font-semibold uppercase tracking-wider block mb-1">
                     {item.category}
                   </span>
-                  <span className="text-white font-bold text-sm">
+                  <span className="text-foreground font-bold text-sm">
                     {item.title}
                   </span>
                 </div>
@@ -636,7 +624,7 @@ function TestimonialsSection() {
               type="button"
               data-ocid="testimonials.pagination_prev"
               onClick={prev}
-              className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-foreground hover:opacity-80 hover:text-white transition-all"
+              className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-foreground hover:opacity-80 hover:text-foreground transition-all"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -656,7 +644,7 @@ function TestimonialsSection() {
               type="button"
               data-ocid="testimonials.pagination_next"
               onClick={next}
-              className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-foreground hover:opacity-80 hover:text-white transition-all"
+              className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-foreground hover:opacity-80 hover:text-foreground transition-all"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -693,53 +681,53 @@ function ContactSection() {
                 <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-6">
                   Get In Touch
                 </span>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white uppercase leading-tight mb-8">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground uppercase leading-tight mb-8">
                   Let&apos;s Build Something
                   <br />
                   <span className="text-primary">Extraordinary</span>
                 </h2>
                 <div className="space-y-5">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <Mail className="w-4 h-4 text-primary" />
                     </div>
                     <div>
-                      <div className="text-xs text-white/50 uppercase tracking-wider mb-1">
+                      <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
                         Email
                       </div>
                       <a
                         href={`mailto:${contactInfo?.email ?? "hello@anyi.co.in"}`}
-                        className="text-white hover:text-primary transition-colors text-sm"
+                        className="text-foreground hover:text-primary transition-colors text-sm"
                       >
                         {contactInfo?.email ?? "hello@anyi.co.in"}
                       </a>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <Phone className="w-4 h-4 text-primary" />
                     </div>
                     <div>
-                      <div className="text-xs text-white/50 uppercase tracking-wider mb-1">
+                      <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
                         Phone
                       </div>
                       <a
                         href={`tel:${contactInfo?.phone ?? "+919876543210"}`}
-                        className="text-white hover:text-primary transition-colors text-sm"
+                        className="text-foreground hover:text-primary transition-colors text-sm"
                       >
                         {contactInfo?.phone ?? "+91 98765 43210"}
                       </a>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <MapPin className="w-4 h-4 text-primary" />
                     </div>
                     <div>
-                      <div className="text-xs text-white/50 uppercase tracking-wider mb-1">
+                      <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
                         Address
                       </div>
-                      <p className="text-white text-sm">
+                      <p className="text-foreground text-sm">
                         {contactInfo?.address ??
                           "42 Creative Hub, Koramangala, Bengaluru 560034"}
                       </p>
@@ -752,7 +740,7 @@ function ContactSection() {
                   href="https://twitter.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-primary transition-colors"
+                  className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center text-foreground hover:bg-primary transition-colors"
                   data-ocid="contact.link"
                 >
                   <SiX className="w-4 h-4" />
@@ -761,7 +749,7 @@ function ContactSection() {
                   href="https://instagram.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-primary transition-colors"
+                  className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center text-foreground hover:bg-primary transition-colors"
                   data-ocid="contact.link"
                 >
                   <SiInstagram className="w-4 h-4" />
@@ -770,7 +758,7 @@ function ContactSection() {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-primary transition-colors"
+                  className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center text-foreground hover:bg-primary transition-colors"
                   data-ocid="contact.link"
                 >
                   <SiLinkedin className="w-4 h-4" />
@@ -838,7 +826,7 @@ function ContactSection() {
                 data-ocid="contact.submit_button"
                 type="submit"
                 disabled={submitting}
-                className="btn-gradient text-white hover:opacity-90 rounded-full py-6 text-xs font-bold uppercase tracking-widest mt-2"
+                className="btn-gradient text-foreground hover:opacity-90 rounded-full py-6 text-xs font-bold uppercase tracking-widest mt-2"
               >
                 {submitting ? "Sending..." : "Send Message"}
               </Button>
@@ -955,13 +943,6 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
                 <br />
                 Koramangala, Bengaluru
               </p>
-              <button
-                type="button"
-                onClick={() => navigate("/admin")}
-                className="text-primary hover:text-white transition-colors text-left mt-2"
-              >
-                Admin Panel
-              </button>
             </div>
           </div>
         </div>
