@@ -23,7 +23,6 @@ import { toast } from "sonner";
 import { ThemeToggle } from "../components/ThemeToggle";
 import {
   useAboutContent,
-  useContactInfo,
   useGalleryItems,
   useHeroContent,
   useServices,
@@ -662,7 +661,7 @@ function TestimonialsSection() {
 
 function ContactSection() {
   const ref = useScrollAnimation();
-  const { data: contactInfo } = useContactInfo();
+
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
 
@@ -701,10 +700,10 @@ function ContactSection() {
                         Email
                       </div>
                       <a
-                        href={`mailto:${contactInfo?.email ?? "ys@anyi.co.in"}`}
+                        href="mailto:ys@anyi.co.in"
                         className="text-foreground hover:text-primary transition-colors text-sm"
                       >
-                        {contactInfo?.email ?? "ys@anyi.co.in"}
+                        ys@anyi.co.in
                       </a>
                     </div>
                   </div>
@@ -717,10 +716,10 @@ function ContactSection() {
                         Phone
                       </div>
                       <a
-                        href={`tel:${contactInfo?.phone ?? "+919810657082"}`}
+                        href="tel:+919810657082"
                         className="text-foreground hover:text-primary transition-colors text-sm"
                       >
-                        {contactInfo?.phone ?? "098106 57082"}
+                        098106 57082
                       </a>
                     </div>
                   </div>
@@ -733,8 +732,8 @@ function ContactSection() {
                         Address
                       </div>
                       <p className="text-foreground text-sm">
-                        {contactInfo?.address ??
-                          "C-32, First & Second Floor, Ram Nagar, Kaushambi, Ghaziabad, Uttar Pradesh 201010"}
+                        C-32, First & Second Floor, Ram Nagar, Kaushambi,
+                        Ghaziabad, Uttar Pradesh 201010
                       </p>
                     </div>
                   </div>

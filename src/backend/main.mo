@@ -96,7 +96,7 @@ actor {
 
   let servicesStore = Map.empty<Text, ServiceContent>();
   let testimonialsStore = Map.empty<Text, TestimonialContent>();
-  var contactInfo : ContactInfo = {
+  stable var contactInfo : ContactInfo = {
     address = "C-32, First & Second Floor, Ram Nagar, Kaushambi, Ghaziabad, Uttar Pradesh 201010";
     email = "ys@anyi.co.in";
     phone = "098106 57082";
