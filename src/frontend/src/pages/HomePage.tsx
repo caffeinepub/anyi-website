@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { CONTACT } from "@/config/contact";
 import {
   ArrowUpRight,
   ChevronLeft,
@@ -84,39 +85,51 @@ const DEFAULT_TESTIMONIALS = [
 const DEFAULT_GALLERY = [
   {
     id: "1",
-    title: "Zenith Brand Identity",
-    category: "Branding",
-    imageUrl: "/assets/generated/portfolio-branding.dim_600x400.jpg",
+    title: "Office PBX System",
+    category: "Communication",
+    imageUrl: "/assets/generated/portfolio-pbx.dim_600x400.jpg",
   },
   {
     id: "2",
-    title: "FlowCommerce Website",
-    category: "Web Design",
-    imageUrl: "/assets/generated/portfolio-web.dim_600x400.jpg",
+    title: "Multi-Channel Communication",
+    category: "Communication",
+    imageUrl: "/assets/generated/portfolio-multichannel.dim_600x400.jpg",
   },
   {
     id: "3",
-    title: "VibeCo Social Campaign",
-    category: "Social Media",
-    imageUrl: "/assets/generated/portfolio-social.dim_600x400.jpg",
+    title: "WhatsApp Business Solution",
+    category: "Communication",
+    imageUrl: "/assets/generated/portfolio-whatsapp.dim_600x400.jpg",
   },
   {
     id: "4",
-    title: "Pulse Health App",
-    category: "App Design",
-    imageUrl: "/assets/generated/portfolio-app.dim_600x400.jpg",
+    title: "Voice Auto Dialer",
+    category: "Communication",
+    imageUrl: "/assets/generated/portfolio-voice.dim_600x400.jpg",
   },
   {
     id: "5",
-    title: "Urban Glow Ads",
-    category: "Advertising",
-    imageUrl: "/assets/generated/portfolio-ads.dim_600x400.jpg",
+    title: "Helpdesk Ticketing Software",
+    category: "CRM Platform",
+    imageUrl: "/assets/generated/portfolio-crm.dim_600x400.jpg",
   },
   {
     id: "6",
-    title: "Bloom Packaging",
-    category: "Packaging",
-    imageUrl: "/assets/generated/portfolio-packaging.dim_600x400.jpg",
+    title: "Lead Management System",
+    category: "CRM Platform",
+    imageUrl: "/assets/generated/portfolio-lms.dim_600x400.jpg",
+  },
+  {
+    id: "7",
+    title: "Customized Mobile App",
+    category: "Custom Solutions",
+    imageUrl: "/assets/generated/portfolio-mobile-app.dim_600x400.jpg",
+  },
+  {
+    id: "8",
+    title: "System Integrations",
+    category: "Integrations",
+    imageUrl: "/assets/generated/portfolio-integration.dim_600x400.jpg",
   },
 ];
 
@@ -454,7 +467,13 @@ function GallerySection() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [imageUrls, setImageUrls] = useState<Record<string, string>>({});
 
-  const categories = ["All", ...DEFAULT_GALLERY.map((g) => g.category)];
+  const categories = [
+    "All",
+    "Communication",
+    "CRM Platform",
+    "Custom Solutions",
+    "Integrations",
+  ];
 
   // For backend gallery items, resolve blob URLs
   useEffect(() => {
@@ -700,10 +719,10 @@ function ContactSection() {
                         Email
                       </div>
                       <a
-                        href="mailto:ys@anyi.co.in"
+                        href={`mailto:${CONTACT.email}`}
                         className="text-foreground hover:text-primary transition-colors text-sm"
                       >
-                        ys@anyi.co.in
+                        {CONTACT.email}
                       </a>
                     </div>
                   </div>
@@ -719,7 +738,7 @@ function ContactSection() {
                         href="tel:+919810657082"
                         className="text-foreground hover:text-primary transition-colors text-sm"
                       >
-                        098106 57082
+                        {CONTACT.phone}
                       </a>
                     </div>
                   </div>
@@ -732,8 +751,7 @@ function ContactSection() {
                         Address
                       </div>
                       <p className="text-foreground text-sm">
-                        C-32, First & Second Floor, Ram Nagar, Kaushambi,
-                        Ghaziabad, Uttar Pradesh 201010
+                        {CONTACT.address}
                       </p>
                     </div>
                   </div>
@@ -741,7 +759,7 @@ function ContactSection() {
               </div>
               <div className="mt-10 flex gap-4">
                 <a
-                  href="https://www.facebook.com/people/ANYI/100066798577515/"
+                  href={CONTACT.facebook}
                   target="_blank"
                   rel="noreferrer"
                   className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center text-foreground hover:bg-primary transition-colors"
@@ -750,7 +768,7 @@ function ContactSection() {
                   <SiFacebook className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/71969389/"
+                  href={CONTACT.linkedin}
                   target="_blank"
                   rel="noreferrer"
                   className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center text-foreground hover:bg-primary transition-colors"
@@ -844,7 +862,6 @@ function ContactSection() {
 
 function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
   const year = new Date().getFullYear();
-  const hostname = window.location.hostname;
 
   return (
     <footer className="bg-black/60 backdrop-blur-md border-t border-border text-white">
@@ -864,7 +881,7 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
             </p>
             <div className="flex gap-3 mt-6">
               <a
-                href="https://www.facebook.com/people/ANYI/100066798577515/"
+                href={CONTACT.facebook}
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
@@ -873,7 +890,7 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
                 <SiFacebook className="w-3.5 h-3.5" />
               </a>
               <a
-                href="https://www.linkedin.com/company/71969389/"
+                href={CONTACT.linkedin}
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
@@ -934,38 +951,24 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
             </h4>
             <div className="flex flex-col gap-3 text-sm text-white/60">
               <a
-                href="mailto:ys@anyi.co.in"
+                href={`mailto:${CONTACT.email}`}
                 className="hover:text-white transition-colors"
               >
-                ys@anyi.co.in
+                {CONTACT.email}
               </a>
               <a
                 href="tel:+919810657082"
                 className="hover:text-white transition-colors"
               >
-                098106 57082
+                {CONTACT.phone}
               </a>
-              <p>
-                C-32, First & Second Floor, Ram Nagar, Kaushambi,
-                <br />
-                Ghaziabad, Uttar Pradesh 201010
-              </p>
+              <p>{CONTACT.address}</p>
             </div>
           </div>
         </div>
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40">
           <span>&copy; {year} Anyi. All rights reserved.</span>
-          <span>
-            Built with ❤️ using{" "}
-            <a
-              href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(hostname)}`}
-              target="_blank"
-              rel="noreferrer"
-              className="text-primary hover:text-white transition-colors"
-            >
-              caffeine.ai
-            </a>
-          </span>
+          <span>Built by ANYI</span>
         </div>
       </div>
     </footer>

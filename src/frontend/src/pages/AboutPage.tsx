@@ -20,28 +20,22 @@ import { useAboutContent } from "../hooks/useQueries";
 
 const DEFAULT_TEAM = [
   {
-    name: "Ananya Sharma",
-    role: "Founder & Creative Director",
-    bio: "10+ years crafting brand identities that move markets and inspire loyalty.",
-    img: "",
+    name: "Yusuf Suleman",
+    role: "Founder & Sales Director",
+    bio: "A results-driven leader with 20+ years of experience in scaling businesses across global and domestic markets. Yusuf specializes in building revenue-focused strategies, leading dynamic sales teams, and unlocking new growth opportunities in competitive industries.",
+    img: "/assets/uploads/yusuflatest-019d29c9-cd44-77cc-8165-efe3325f36ff-1.jpeg",
   },
   {
-    name: "Rahul Mehta",
-    role: "Head of Strategy",
-    bio: "Data-driven growth strategist turning insights into measurable business results.",
-    img: "",
+    name: "Ajay Tyagi",
+    role: "Founder & Technology Director",
+    bio: "Driving innovation through technology, leads the development of scalable solutions and digital transformation strategies, helping businesses grow with cutting-edge IT systems.",
+    img: "/assets/uploads/ajaytyagilatest-019d2dac-0ae1-70dd-8a48-5316acfe7fc9-1.jpeg",
   },
   {
-    name: "Priya Nair",
-    role: "Lead Designer",
-    bio: "Visual storyteller and UI specialist with a passion for purposeful aesthetics.",
-    img: "",
-  },
-  {
-    name: "Arjun Patel",
-    role: "Digital Marketing Lead",
-    bio: "SEO, paid ads, and content expert driving organic and paid growth.",
-    img: "",
+    name: "Naveen Sati",
+    role: "Founder & Operations Director",
+    bio: "Expert in process-driven operations, advanced applications, and AI-based innovation, driving efficiency and scalable business solutions.",
+    img: "/assets/uploads/naveen_sati-019d29f0-c657-766c-8110-afadb472e2bc-1.jpeg",
   },
 ];
 
@@ -203,7 +197,6 @@ export default function AboutPage({
 }: { navigate: (to: string) => void }) {
   const { data: about } = useAboutContent();
   const year = new Date().getFullYear();
-  const hostname = window.location.hostname;
 
   let parsed = { body: "", mission: "", vision: "", tagline: "" };
   try {
@@ -435,7 +428,7 @@ export default function AboutPage({
             </p>
           </motion.div>
           <div
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="flex flex-wrap justify-center gap-8"
             data-ocid="about.list"
           >
             {DEFAULT_TEAM.map(({ name, role, bio, img }, i) => {
@@ -451,26 +444,26 @@ export default function AboutPage({
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="glass-card rounded-2xl p-6 text-center"
+                  className="glass-card rounded-2xl p-8 text-center w-full sm:w-80"
                 >
                   {img ? (
                     <img
                       src={img}
                       alt={name}
-                      className="w-20 h-20 rounded-full object-cover mx-auto mb-4"
+                      className="w-28 h-28 rounded-full object-cover object-top mx-auto mb-5"
                     />
                   ) : (
-                    <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                      <span className="text-xl font-bold text-foreground">
+                    <div className="w-28 h-28 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-5">
+                      <span className="text-2xl font-bold text-foreground">
                         {initials}
                       </span>
                     </div>
                   )}
-                  <h3 className="font-bold text-foreground">{name}</h3>
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wider mt-1 mb-2">
+                  <h3 className="font-bold text-foreground text-lg">{name}</h3>
+                  <p className="text-xs font-semibold text-primary uppercase tracking-wider mt-1 mb-3">
                     {role}
                   </p>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {bio}
                   </p>
                 </motion.div>
@@ -604,17 +597,7 @@ export default function AboutPage({
           </div>
           <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40">
             <span>&copy; {year} Anyi. All rights reserved.</span>
-            <span>
-              Built with ❤️ using{" "}
-              <a
-                href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(hostname)}`}
-                target="_blank"
-                rel="noreferrer"
-                className="text-primary hover:text-white transition-colors"
-              >
-                caffeine.ai
-              </a>
-            </span>
+            <span>Built by ANYI</span>
           </div>
         </div>
       </footer>

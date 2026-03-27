@@ -283,7 +283,6 @@ export default function BPOPage({
   navigate,
 }: { navigate: (to: string) => void }) {
   const year = new Date().getFullYear();
-  const hostname = window.location.hostname;
 
   return (
     <div className="min-h-screen bg-background font-body">
@@ -861,17 +860,7 @@ export default function BPOPage({
           </div>
           <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40">
             <span>&copy; {year} Anyi. All rights reserved.</span>
-            <span>
-              Built with ❤️ using{" "}
-              <a
-                href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(hostname)}`}
-                target="_blank"
-                rel="noreferrer"
-                className="text-primary hover:text-white transition-colors"
-              >
-                caffeine.ai
-              </a>
-            </span>
+            <span>Built by ANYI</span>
           </div>
         </div>
       </footer>

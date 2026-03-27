@@ -1,3 +1,4 @@
+import { CONTACT } from "@/config/contact";
 import { useState } from "react";
 
 export function WhatsAppButton() {
@@ -5,7 +6,7 @@ export function WhatsAppButton() {
 
   return (
     <a
-      href="https://wa.me/919818558073"
+      href={`https://wa.me/${CONTACT.whatsapp}`}
       target="_blank"
       rel="noreferrer"
       data-ocid="whatsapp.button"
@@ -36,7 +37,6 @@ export function WhatsAppButton() {
         maxWidth: hovered ? "200px" : "52px",
       }}
     >
-      {/* WhatsApp icon */}
       <svg
         role="img"
         aria-label="WhatsApp"
