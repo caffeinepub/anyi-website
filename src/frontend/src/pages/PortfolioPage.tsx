@@ -133,7 +133,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
           className="flex items-center gap-1 font-bold text-xl tracking-tight"
         >
           <img
-            src="/assets/generated/anyi-logo-hires.dim_400x120.png"
+            src="/assets/uploads/logo-019d2435-a026-72b8-ba6b-b9bde75c6d82-1.png"
             alt="ANYI"
             className="h-9 w-auto object-contain"
           />

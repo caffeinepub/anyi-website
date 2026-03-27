@@ -19,7 +19,13 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { SiFacebook, SiInstagram, SiLinkedin, SiX } from "react-icons/si";
+import {
+  SiFacebook,
+  SiInstagram,
+  SiLinkedin,
+  SiWhatsapp,
+  SiX,
+} from "react-icons/si";
 import { toast } from "sonner";
 import { ThemeToggle } from "../components/ThemeToggle";
 import {
@@ -167,7 +173,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
           className="flex items-center gap-1 font-bold text-xl tracking-tight"
         >
           <img
-            src="/assets/generated/anyi-logo-hires.dim_400x120.png"
+            src="/assets/uploads/logo-019d2435-a026-72b8-ba6b-b9bde75c6d82-1.png"
             alt="ANYI"
             className="h-9 w-auto object-contain"
           />
@@ -682,14 +688,33 @@ function ContactSection() {
   const ref = useScrollAnimation();
 
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [submitting, setSubmitting] = useState(false);
+  const [sendMethod, setSendMethod] = useState<"whatsapp" | "email">(
+    "whatsapp",
+  );
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setSubmitting(false);
-    toast.success("Message sent! We'll be in touch shortly.");
+  const validateForm = () => {
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      toast.error("Please fill in all fields before sending.");
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = () => {
+    if (!validateForm()) return;
+    if (sendMethod === "whatsapp") {
+      const whatsappNumber = "919810657082";
+      const text = `New Enquiry from ANYI Website\n\nName: ${form.name}\nEmail: ${form.email}\nMessage: ${form.message}`;
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+      window.open(url, "_blank");
+      toast.success("Redirecting to WhatsApp...");
+    } else {
+      const subject = "Enquiry from ANYI Website";
+      const body = `Name: ${form.name}%0AEmail: ${form.email}%0AMessage: ${form.message}`;
+      const url = `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${body}`;
+      window.location.href = url;
+      toast.success("Opening your email client...");
+    }
     setForm({ name: "", email: "", message: "" });
   };
 
@@ -789,8 +814,7 @@ function ContactSection() {
             </div>
 
             {/* Right form */}
-            <form
-              onSubmit={handleSubmit}
+            <div
               className="p-10 md:p-16 flex flex-col gap-5"
               data-ocid="contact.modal"
             >
@@ -808,7 +832,6 @@ function ContactSection() {
                     setForm((p) => ({ ...p, name: e.target.value }))
                   }
                   placeholder="John Doe"
-                  required
                   className="border-border focus:border-teal"
                 />
               </div>
@@ -824,7 +847,6 @@ function ContactSection() {
                     setForm((p) => ({ ...p, email: e.target.value }))
                   }
                   placeholder="john@company.com"
-                  required
                   className="border-border focus:border-teal"
                 />
               </div>
@@ -839,20 +861,63 @@ function ContactSection() {
                     setForm((p) => ({ ...p, message: e.target.value }))
                   }
                   placeholder="Tell us about your project..."
-                  required
                   rows={5}
                   className="border-border focus:border-teal resize-none"
                 />
               </div>
+
+              {/* Send via selector */}
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-3">
+                  Send Via
+                </p>
+                <div className="flex gap-3" data-ocid="contact.toggle">
+                  <button
+                    type="button"
+                    onClick={() => setSendMethod("whatsapp")}
+                    className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest border transition-all ${
+                      sendMethod === "whatsapp"
+                        ? "btn-gradient text-foreground border-transparent"
+                        : "border-border text-muted-foreground hover:text-foreground hover:border-foreground/40"
+                    }`}
+                  >
+                    <SiWhatsapp className="w-3.5 h-3.5" />
+                    WhatsApp
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSendMethod("email")}
+                    className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest border transition-all ${
+                      sendMethod === "email"
+                        ? "btn-gradient text-foreground border-transparent"
+                        : "border-border text-muted-foreground hover:text-foreground hover:border-foreground/40"
+                    }`}
+                  >
+                    <Mail className="w-3.5 h-3.5" />
+                    Email
+                  </button>
+                </div>
+              </div>
+
               <Button
                 data-ocid="contact.submit_button"
-                type="submit"
-                disabled={submitting}
-                className="btn-gradient text-foreground hover:opacity-90 rounded-full py-6 text-xs font-bold uppercase tracking-widest mt-2"
+                type="button"
+                onClick={handleSubmit}
+                className="btn-gradient text-foreground hover:opacity-90 rounded-full py-6 text-xs font-bold uppercase tracking-widest w-full flex items-center justify-center gap-2 mt-1"
               >
-                {submitting ? "Sending..." : "Send Message"}
+                {sendMethod === "whatsapp" ? (
+                  <>
+                    <SiWhatsapp className="w-4 h-4" />
+                    Send via WhatsApp
+                  </>
+                ) : (
+                  <>
+                    <Mail className="w-4 h-4" />
+                    Send via Email
+                  </>
+                )}
               </Button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
@@ -870,7 +935,7 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
           <div className="md:col-span-2">
             <div className="flex items-center gap-1 font-bold text-xl mb-4">
               <img
-                src="/assets/generated/anyi-logo-hires.dim_400x120.png"
+                src="/assets/uploads/logo-019d2435-a026-72b8-ba6b-b9bde75c6d82-1.png"
                 alt="ANYI"
                 className="h-7 w-auto object-contain"
               />
