@@ -11,7 +11,6 @@ import {
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "../components/ThemeToggle";
-import { WhatsAppButton } from "../components/WhatsAppButton";
 import { useGalleryItems } from "../hooks/useQueries";
 
 const DEFAULT_GALLERY = [
@@ -648,8 +647,6 @@ export default function PortfolioPage({
           />
         )}
       </AnimatePresence>
-
-      <WhatsAppButton />
 
       {/* Footer */}
       <footer className="bg-black/60 backdrop-blur-md border-t border-border text-white/60 text-center text-xs py-6 mt-12">
