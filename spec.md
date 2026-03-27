@@ -1,34 +1,25 @@
 # Anyi Website
 
 ## Current State
-Modern business website with navy/teal color scheme on a light page background. Includes HomePage, AboutPage, SolutionsPage, PortfolioPage, AdminPage. Uses Plus Jakarta Sans font, white cards with shadow-card, bg-page (#F3F6F9) background.
+The backend has a `ContactInfo` type with `email`, `phone`, and `address` fields. `getContactInfo()` and `updateContactInfo()` are already implemented and admin-protected. The frontend Contact section uses a static `src/frontend/src/config/contact.ts` file and does NOT fetch from the backend. There is no UI to update contact info after the admin CMS was removed.
 
 ## Requested Changes (Diff)
 
 ### Add
-- Dark deep-space background (near-black with deep purple undertones)
-- Vibrant gradient accents: purple → pink/magenta (oklch-based)
-- Glassmorphism card style: semi-transparent frosted glass cards with backdrop-blur
-- Subtle gradient glows/blobs in hero and section backgrounds
-- Gradient text on headings
+- A hidden admin settings page at `/admin-settings` that shows a form to configure the contact email (and phone/address). Admin must be logged in (use `isCallerAdmin()` to gate access). The form reads current values from `getContactInfo()` and saves via `updateContactInfo()`.
+- The Contact section (in HomePage or wherever "Get In Touch" is rendered) should fetch the contact email from the backend via `getContactInfo()`, using the static `CONTACT.email` from `contact.ts` as fallback if the backend call fails.
 
 ### Modify
-- index.css: replace navy/teal/page-bg tokens with dark theme tokens (dark bg, purple primary, pink accent, white/light text)
-- All pages: update Tailwind classes to use new dark theme tokens
-- NavBar: dark glassy header
-- Hero, About, Services, Gallery, Testimonials, Contact sections: dark bg with glassmorphism cards
-- Footer: even darker panel
-- Buttons: gradient purple-to-pink fills
-- SolutionsPage, AboutPage, PortfolioPage: match same dark glassmorphism theme
+- The "Get In Touch" / Contact section on the homepage: fetch `contactInfo` from backend on mount, use `email` from backend response (fallback to `CONTACT.email` from static config if unavailable).
 
 ### Remove
-- Light page background (#F3F6F9)
-- White opaque cards
-- Navy/teal color scheme
+- Nothing removed.
 
 ## Implementation Plan
-1. Update index.css with dark theme OKLCH tokens: deep dark bg, purple primary, pink/magenta accent, glass card styles
-2. Update tailwind.config.js shadow tokens for glass cards
-3. Update HomePage.tsx: dark bg classes, glassmorphism cards, gradient hero text, gradient buttons
-4. Update AboutPage.tsx, SolutionsPage.tsx, PortfolioPage.tsx: same dark glassmorphism treatment
-5. Validate and build
+1. Create `src/frontend/src/pages/AdminSettingsPage.tsx` — a simple page with:
+   - Auth gate: calls `isCallerAdmin()`, shows "Unauthorized" if not admin
+   - Form with fields: Email, Phone, Address (pre-filled from `getContactInfo()`)
+   - Save button calls `updateContactInfo()` with new values
+   - Success/error feedback
+2. Add `/admin-settings` route in `App.tsx`
+3. Update the Contact section component to call `getContactInfo()` on mount and use the returned email (with static fallback)

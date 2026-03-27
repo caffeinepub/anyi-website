@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { WhatsAppButton } from "./components/WhatsAppButton";
 import { ThemeProvider } from "./hooks/useTheme";
 import AboutPage from "./pages/AboutPage";
+import AdminSettingsPage from "./pages/AdminSettingsPage";
 import BPOPage from "./pages/BPOPage";
 import HomePage from "./pages/HomePage";
 import PortfolioPage from "./pages/PortfolioPage";
@@ -33,6 +34,8 @@ export default function App() {
         <SolutionsPage navigate={navigate} />
       ) : path.startsWith("/bpo") ? (
         <BPOPage navigate={navigate} />
+      ) : path.startsWith("/admin-settings") ? (
+        <AdminSettingsPage navigate={navigate} />
       ) : (
         <HomePage navigate={navigate} />
       )}
