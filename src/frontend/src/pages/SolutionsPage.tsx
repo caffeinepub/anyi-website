@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
+  Activity,
+  AlertOctagon,
   AlertTriangle,
   BarChart2,
   Bell,
@@ -8,6 +10,7 @@ import {
   Calendar,
   CheckCircle,
   ChevronRight,
+  ClipboardList,
   Clock,
   Cpu,
   Globe,
@@ -22,10 +25,13 @@ import {
   Mic,
   Monitor,
   Phone,
+  PhoneCall,
   QrCode,
+  Radio,
   Server,
   Settings,
   Shield,
+  ShieldAlert,
   Smartphone,
   Star,
   StickyNote,
@@ -411,6 +417,49 @@ const ATTENDANCE_FEATURES = [
   },
 ];
 
+const EMERGENCY_CODE_FEATURES = [
+  {
+    icon: AlertOctagon,
+    title: "Multi-Code Alert System",
+    desc: "Manage all emergency codes (Code Red, Blue, Yellow, Black, White, Orange, Purple, Pink, Green) from a single unified dashboard with real-time status tracking.",
+  },
+  {
+    icon: Radio,
+    title: "Instant Broadcast Notifications",
+    desc: "Trigger automated announcements via PA system, SMS, email, and mobile app simultaneously to alert all relevant staff within seconds.",
+  },
+  {
+    icon: PhoneCall,
+    title: "Rapid Response Coordination",
+    desc: "Auto-assign response teams based on code type and location; track acknowledgements and response times with built-in SLA monitoring.",
+  },
+  {
+    icon: Activity,
+    title: "Real-time Incident Monitoring",
+    desc: "Live dashboard showing active codes, responders on-site, and escalation status with floor-map integration for precise location tracking.",
+  },
+  {
+    icon: ClipboardList,
+    title: "Audit Trail & Compliance Reporting",
+    desc: "Comprehensive logs of every code activation, response, and resolution for regulatory compliance, NABH/JCI accreditation, and post-incident review.",
+  },
+  {
+    icon: ShieldAlert,
+    title: "Drill & Simulation Management",
+    desc: "Schedule and execute emergency drills; capture drill metrics, staff participation rates, and generate improvement reports automatically.",
+  },
+  {
+    icon: Users,
+    title: "Role-Based Access & Permissions",
+    desc: "Configure who can activate, acknowledge, and close each code type — ensuring only authorized personnel can trigger critical alerts.",
+  },
+  {
+    icon: BarChart2,
+    title: "Analytics & Trend Reporting",
+    desc: "Analyze frequency, response times, and outcomes across departments to identify patterns and continuously improve emergency preparedness.",
+  },
+];
+
 export default function SolutionsPage({
   navigate,
 }: {
@@ -468,6 +517,7 @@ export default function SolutionsPage({
                 { label: "Integrations", id: "integrations" },
                 { label: "Hardware / Infra", id: "hardware" },
                 { label: "Attendance", id: "attendance" },
+                { label: "Emergency Code", id: "emergency" },
               ].map(({ label, id }) => (
                 <button
                   key={id}
@@ -1058,6 +1108,106 @@ export default function SolutionsPage({
                 className="rounded-2xl shadow-card w-full object-cover h-full min-h-[400px]"
               />
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 7: Emergency Code Management */}
+      <section id="emergency" className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-12"
+          >
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+              Emergency Management
+            </span>
+            <h2 className="text-4xl font-display font-bold text-foreground mt-2 mb-4">
+              Emergency Code Management Solution
+            </h2>
+            <p className="text-muted-foreground max-w-3xl text-base leading-relaxed">
+              A centralized, automated emergency code management platform that
+              empowers hospitals, enterprises, and large facilities to respond
+              to critical incidents faster, smarter, and with full
+              accountability — from code activation to resolution.
+            </p>
+          </motion.div>
+
+          {/* Photo + description row */}
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <img
+                src="/assets/generated/solutions-emergency-code.dim_800x500.jpg"
+                alt="Emergency Code Management Solution"
+                className="w-full rounded-2xl shadow-card object-cover"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <h3 className="text-2xl font-display font-bold text-foreground mb-4">
+                Why Emergency Code Management Matters
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Every second counts during a critical incident. Manual, ad-hoc
+                emergency response leads to delayed notifications, poor
+                coordination, and compliance gaps. ANYI's Emergency Code
+                Management Solution digitizes and automates the entire lifecycle
+                — from the moment a code is triggered to the final incident
+                report.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "Reduce average emergency response time by up to 60%",
+                  "Ensure 100% staff notification coverage across all channels",
+                  "Meet NABH, JCI, and ISO emergency preparedness standards",
+                  "Eliminate manual logbooks with automated, tamper-proof audit trails",
+                ].map((point) => (
+                  <li
+                    key={point}
+                    className="flex items-start gap-3 text-muted-foreground"
+                  >
+                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Feature Cards */}
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {EMERGENCY_CODE_FEATURES.map(({ icon: Icon, title, desc }, i) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+                className="glass-card rounded-xl p-5"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center mb-3">
+                  <Icon className="w-5 h-5 text-primary" />
+                </div>
+                <h4 className="font-semibold text-foreground mb-1.5 text-sm">
+                  {title}
+                </h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  {desc}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

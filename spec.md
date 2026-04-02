@@ -1,34 +1,34 @@
 # Anyi Website
 
 ## Current State
-The Solutions page (`SolutionsPage.tsx`) has the following sections:
-- Hero with nav buttons
-- Communication (Office PBX, Multi-Channel, WhatsApp, Voice Auto Dialer)
-- CRM Platform (Helpdesk Ticketing, Lead Management, Customized Applications)
-- Integrations
-- Hardware / Infra
-- Smart Marks (AI-Powered Features)
-- CTA
-- Footer
+The Solutions page (`SolutionsPage.tsx`) has these sections in order:
+1. Hero (with quick-nav buttons)
+2. Communication
+3. CRM Platform
+4. Integrations
+5. Hardware / Infra
+6. Smart Marks
+7. Attendance Management Solution (last, added in previous version)
+8. CTA
 
 ## Requested Changes (Diff)
 
 ### Add
-- New `ATTENDANCE_FEATURES` constant with key features of the Attendance Management Solution
-- New "Attendance Management" section added **after Smart Marks and before the CTA**, making it the last solution section
-- Uses the uploaded photo: `/assets/uploads/attandence_solution-019d4dd0-7c8e-71e8-ba1e-964a4dd8509c-1.jpeg`
-- Hero nav quick-jump button for "Attendance" linking to `#attendance` anchor
+- New `EMERGENCY_CODE_FEATURES` constant array with 8 feature cards for Emergency Code Management
+- New Section 7: Emergency Code Management Solution — placed AFTER Attendance and BEFORE the CTA (so it becomes the absolute last solution section)
+- The section uses the generated photo `/assets/generated/solutions-emergency-code.dim_800x500.jpg`
+- A "Emergency Code" quick-nav button in the Hero section
+- New lucide icons as needed: `AlertOctagon`, `Radio`, `Activity`, `ShieldAlert`, `PhoneCall`, `ClipboardList`
 
 ### Modify
-- Hero section: add "Attendance Management" quick-jump pill button in the navigation pills row
+- Hero quick-nav buttons array: add `{ label: "Emergency Code", id: "emergency" }` as the last item
+- Section ordering: Attendance stays where it is; Emergency Code Management is appended after it
 
 ### Remove
 - Nothing removed
 
 ## Implementation Plan
-1. Add `ATTENDANCE_FEATURES` array constant with feature list for Attendance Management
-2. Add hero pill button for "Attendance Management" → `#attendance`
-3. Add new `<section id="attendance">` block after Smart Marks section and before CTA
-   - Two-column layout: left = content/features, right = uploaded photo
-   - Uses the uploaded image `/assets/uploads/attandence_solution-019d4dd0-7c8e-71e8-ba1e-964a4dd8509c-1.jpeg`
-   - Consistent styling with other solution sections (glass-card, motion animations, primary colors)
+1. Import any additional lucide icons needed (AlertOctagon, Radio, Activity, ShieldAlert, PhoneCall, ClipboardList)
+2. Add `EMERGENCY_CODE_FEATURES` constant
+3. Add hero nav button for Emergency Code
+4. Add Section 7 with Emergency Code Management content and photo
