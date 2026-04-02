@@ -3,15 +3,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   AlertTriangle,
   BarChart2,
+  Bell,
   Brain,
+  Calendar,
   CheckCircle,
   ChevronRight,
+  Clock,
   Cpu,
   Globe,
   HardDrive,
   Headphones,
   Home,
   Layers,
+  Lock,
   Mail,
   Menu,
   MessageSquare,
@@ -21,6 +25,7 @@ import {
   QrCode,
   Server,
   Settings,
+  Shield,
   Smartphone,
   Star,
   StickyNote,
@@ -363,6 +368,49 @@ const SMART_MARKS = [
   },
 ];
 
+const ATTENDANCE_FEATURES = [
+  {
+    icon: Clock,
+    title: "Biometric & Face Recognition",
+    desc: "Seamless attendance marking via fingerprint, face recognition, and mobile app check-in",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile App Check-in",
+    desc: "GPS-tagged mobile attendance for field employees and remote teams",
+  },
+  {
+    icon: BarChart2,
+    title: "Real-time Reports & Analytics",
+    desc: "Instant dashboards for daily, weekly, and monthly attendance trends with drill-down reports",
+  },
+  {
+    icon: Bell,
+    title: "Automated Alerts & Notifications",
+    desc: "Auto-notify managers and HR of late arrivals, absences, and overtime in real time",
+  },
+  {
+    icon: Calendar,
+    title: "Leave & Holiday Management",
+    desc: "Integrated leave management with approval workflows, holiday calendar, and balance tracking",
+  },
+  {
+    icon: Shield,
+    title: "Payroll Integration",
+    desc: "Sync attendance data directly with payroll systems to eliminate manual errors",
+  },
+  {
+    icon: Users,
+    title: "Multi-branch Support",
+    desc: "Manage attendance across multiple offices, branches, and departments from a single dashboard",
+  },
+  {
+    icon: Lock,
+    title: "Data Security & Compliance",
+    desc: "Role-based access control and audit trails to ensure data integrity and regulatory compliance",
+  },
+];
+
 export default function SolutionsPage({
   navigate,
 }: {
@@ -419,6 +467,7 @@ export default function SolutionsPage({
                 { label: "CRM Platform", id: "crm" },
                 { label: "Integrations", id: "integrations" },
                 { label: "Hardware / Infra", id: "hardware" },
+                { label: "Attendance", id: "attendance" },
               ].map(({ label, id }) => (
                 <button
                   key={id}
@@ -936,6 +985,79 @@ export default function SolutionsPage({
                 </p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: Attendance Management */}
+      <section id="attendance" className="py-20 px-6 bg-muted">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-12"
+          >
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+              Attendance Management
+            </span>
+            <h2 className="text-4xl font-display font-bold text-foreground mt-2 mb-4">
+              Attendance Management Solution
+            </h2>
+            <p className="text-muted-foreground max-w-3xl text-base leading-relaxed">
+              A comprehensive attendance management system that automates
+              time-tracking, leave management, and workforce monitoring —
+              integrated with biometric devices, mobile apps, and payroll
+              systems for seamless operations.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            {/* Feature Cards */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="grid sm:grid-cols-2 gap-4"
+            >
+              {ATTENDANCE_FEATURES.map(({ icon: Icon, title, desc }, i) => (
+                <motion.div
+                  key={title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.07 }}
+                  className="glass-card rounded-xl p-5"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center mb-3">
+                    <Icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <h4 className="font-semibold text-foreground mb-1.5 text-sm">
+                    {title}
+                  </h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {desc}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Photo */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="h-full"
+            >
+              <img
+                src="/assets/uploads/attandence_solution-019d4dd0-7c8e-71e8-ba1e-964a4dd8509c-1.jpeg"
+                alt="Attendance Management Solution"
+                className="rounded-2xl shadow-card w-full object-cover h-full min-h-[400px]"
+              />
+            </motion.div>
           </div>
         </div>
       </section>

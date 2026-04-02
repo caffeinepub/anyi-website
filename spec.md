@@ -1,25 +1,34 @@
 # Anyi Website
 
 ## Current State
-The backend has a `ContactInfo` type with `email`, `phone`, and `address` fields. `getContactInfo()` and `updateContactInfo()` are already implemented and admin-protected. The frontend Contact section uses a static `src/frontend/src/config/contact.ts` file and does NOT fetch from the backend. There is no UI to update contact info after the admin CMS was removed.
+The Solutions page (`SolutionsPage.tsx`) has the following sections:
+- Hero with nav buttons
+- Communication (Office PBX, Multi-Channel, WhatsApp, Voice Auto Dialer)
+- CRM Platform (Helpdesk Ticketing, Lead Management, Customized Applications)
+- Integrations
+- Hardware / Infra
+- Smart Marks (AI-Powered Features)
+- CTA
+- Footer
 
 ## Requested Changes (Diff)
 
 ### Add
-- A hidden admin settings page at `/admin-settings` that shows a form to configure the contact email (and phone/address). Admin must be logged in (use `isCallerAdmin()` to gate access). The form reads current values from `getContactInfo()` and saves via `updateContactInfo()`.
-- The Contact section (in HomePage or wherever "Get In Touch" is rendered) should fetch the contact email from the backend via `getContactInfo()`, using the static `CONTACT.email` from `contact.ts` as fallback if the backend call fails.
+- New `ATTENDANCE_FEATURES` constant with key features of the Attendance Management Solution
+- New "Attendance Management" section added **after Smart Marks and before the CTA**, making it the last solution section
+- Uses the uploaded photo: `/assets/uploads/attandence_solution-019d4dd0-7c8e-71e8-ba1e-964a4dd8509c-1.jpeg`
+- Hero nav quick-jump button for "Attendance" linking to `#attendance` anchor
 
 ### Modify
-- The "Get In Touch" / Contact section on the homepage: fetch `contactInfo` from backend on mount, use `email` from backend response (fallback to `CONTACT.email` from static config if unavailable).
+- Hero section: add "Attendance Management" quick-jump pill button in the navigation pills row
 
 ### Remove
-- Nothing removed.
+- Nothing removed
 
 ## Implementation Plan
-1. Create `src/frontend/src/pages/AdminSettingsPage.tsx` — a simple page with:
-   - Auth gate: calls `isCallerAdmin()`, shows "Unauthorized" if not admin
-   - Form with fields: Email, Phone, Address (pre-filled from `getContactInfo()`)
-   - Save button calls `updateContactInfo()` with new values
-   - Success/error feedback
-2. Add `/admin-settings` route in `App.tsx`
-3. Update the Contact section component to call `getContactInfo()` on mount and use the returned email (with static fallback)
+1. Add `ATTENDANCE_FEATURES` array constant with feature list for Attendance Management
+2. Add hero pill button for "Attendance Management" → `#attendance`
+3. Add new `<section id="attendance">` block after Smart Marks section and before CTA
+   - Two-column layout: left = content/features, right = uploaded photo
+   - Uses the uploaded image `/assets/uploads/attandence_solution-019d4dd0-7c8e-71e8-ba1e-964a4dd8509c-1.jpeg`
+   - Consistent styling with other solution sections (glass-card, motion animations, primary colors)

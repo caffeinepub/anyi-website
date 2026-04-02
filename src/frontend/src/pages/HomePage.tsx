@@ -28,7 +28,6 @@ import {
 } from "react-icons/si";
 import { toast } from "sonner";
 import { ThemeToggle } from "../components/ThemeToggle";
-import { useActor } from "../hooks/useActor";
 import {
   useAboutContent,
   useGalleryItems,
@@ -687,19 +686,6 @@ function TestimonialsSection() {
 
 function ContactSection() {
   const ref = useScrollAnimation();
-  const { actor, isFetching } = useActor();
-  const [contactEmail, setContactEmail] = useState(CONTACT.email);
-
-  useEffect(() => {
-    if (!actor || isFetching) return;
-    actor
-      .getContactInfo()
-      .then((info) => {
-        if (info.email) setContactEmail(info.email);
-      })
-      .catch(() => {});
-  }, [actor, isFetching]);
-
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sendMethod, setSendMethod] = useState<"whatsapp" | "email">(
     "whatsapp",
@@ -724,7 +710,7 @@ function ContactSection() {
     } else {
       const subject = "Enquiry from ANYI Website";
       const body = `Name: ${form.name}%0AEmail: ${form.email}%0AMessage: ${form.message}`;
-      const url = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${body}`;
+      const url = `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${body}`;
       window.location.href = url;
       toast.success("Opening your email client...");
     }
@@ -757,10 +743,10 @@ function ContactSection() {
                         Email
                       </div>
                       <a
-                        href={`mailto:${contactEmail}`}
+                        href={`mailto:${CONTACT.email}`}
                         className="text-foreground hover:text-primary transition-colors text-sm"
                       >
-                        {contactEmail}
+                        {CONTACT.email}
                       </a>
                     </div>
                   </div>
