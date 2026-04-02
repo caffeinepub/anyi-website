@@ -186,6 +186,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
             "About",
             "Solutions",
             "BPO Services",
+            "Careers",
             "Services",
             "Portfolio",
             "Testimonials",
@@ -202,9 +203,11 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
                     ? navigate("/solutions")
                     : item === "BPO Services"
                       ? navigate("/bpo")
-                      : item === "About"
-                        ? navigate("/about")
-                        : scrollTo(item.toLowerCase())
+                      : item === "Careers"
+                        ? navigate("/careers")
+                        : item === "About"
+                          ? navigate("/about")
+                          : scrollTo(item.toLowerCase())
               }
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
@@ -250,6 +253,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
               "About",
               "Solutions",
               "BPO Services",
+              "Careers",
               "Services",
               "Portfolio",
               "Testimonials",
@@ -1034,6 +1038,8 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
                 "Home",
                 "About",
                 "Solutions",
+                "BPO Services",
+                "Careers",
                 "Services",
                 "Portfolio",
                 "Testimonials",

@@ -35,6 +35,7 @@ const NAV_ITEMS = [
   "About",
   "Solutions",
   "BPO Services",
+  "Careers",
   "Services",
   "Portfolio",
   "Testimonials",
@@ -56,6 +57,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
     if (item === "About") navigate("/about");
     else if (item === "Solutions") navigate("/solutions");
     else if (item === "BPO Services") navigate("/bpo");
+    else if (item === "Careers") navigate("/careers");
     else if (item === "Portfolio") navigate("/portfolio");
     else navigate(`/#${item.toLowerCase()}`);
   };
@@ -807,6 +809,7 @@ export default function BPOPage({
                   "About",
                   "Solutions",
                   "BPO Services",
+                  "Careers",
                   "Services",
                   "Portfolio",
                 ].map((item) => (
@@ -821,9 +824,11 @@ export default function BPOPage({
                           ? navigate("/solutions")
                           : item === "BPO Services"
                             ? navigate("/bpo")
-                            : item === "Portfolio"
-                              ? navigate("/portfolio")
-                              : navigate(`/#${item.toLowerCase()}`)
+                            : item === "Careers"
+                              ? navigate("/careers")
+                              : item === "Portfolio"
+                                ? navigate("/portfolio")
+                                : navigate(`/#${item.toLowerCase()}`)
                     }
                     className="text-sm text-white/60 hover:text-white transition-colors text-left"
                   >

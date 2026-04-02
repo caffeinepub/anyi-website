@@ -4,6 +4,7 @@ import { WhatsAppButton } from "./components/WhatsAppButton";
 import { ThemeProvider } from "./hooks/useTheme";
 import AboutPage from "./pages/AboutPage";
 import BPOPage from "./pages/BPOPage";
+import CareerPage from "./pages/CareerPage";
 import HomePage from "./pages/HomePage";
 import PortfolioPage from "./pages/PortfolioPage";
 import SolutionsPage from "./pages/SolutionsPage";
@@ -33,6 +34,8 @@ export default function App() {
         <SolutionsPage navigate={navigate} />
       ) : path.startsWith("/bpo") ? (
         <BPOPage navigate={navigate} />
+      ) : path.startsWith("/careers") ? (
+        <CareerPage navigate={navigate} />
       ) : (
         <HomePage navigate={navigate} />
       )}

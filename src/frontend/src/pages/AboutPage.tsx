@@ -80,6 +80,8 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
       navigate("/solutions");
     } else if (item === "BPO Services") {
       navigate("/bpo");
+    } else if (item === "Careers") {
+      navigate("/careers");
     } else if (item === "Portfolio") {
       navigate("/portfolio");
     } else {
@@ -115,6 +117,7 @@ function NavBar({ navigate }: { navigate: (to: string) => void }) {
             "About",
             "Solutions",
             "BPO Services",
+            "Careers",
             "Services",
             "Portfolio",
             "Testimonials",
@@ -545,6 +548,8 @@ export default function AboutPage({
                   "Home",
                   "About",
                   "Solutions",
+                  "BPO Services",
+                  "Careers",
                   "Services",
                   "Portfolio",
                   "Testimonials",
@@ -559,9 +564,13 @@ export default function AboutPage({
                         ? navigate("/about")
                         : item === "Solutions"
                           ? navigate("/solutions")
-                          : item === "Portfolio"
-                            ? navigate("/portfolio")
-                            : navigate(`/#${item.toLowerCase()}`)
+                          : item === "BPO Services"
+                            ? navigate("/bpo")
+                            : item === "Careers"
+                              ? navigate("/careers")
+                              : item === "Portfolio"
+                                ? navigate("/portfolio")
+                                : navigate(`/#${item.toLowerCase()}`)
                     }
                     className="text-sm text-white/60 hover:text-white transition-colors text-left"
                   >
