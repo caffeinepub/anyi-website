@@ -298,7 +298,7 @@ export default function BPOPage({
           />
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/85 via-indigo-800/70 to-teal-800/50" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-6 py-24 w-full">
+        <div className="relative max-w-7xl mx-auto px-6 py-16 w-full">
           <div className="flex items-center gap-2 text-sm text-white/60 mb-6">
             <button
               type="button"
@@ -349,7 +349,7 @@ export default function BPOPage({
       {/* Stats Bar */}
       <section className="bg-gradient-to-r from-indigo-600 to-teal-600 py-8">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { num: "500+", label: "Clients Served" },
               { num: "1M+", label: "Calls Handled" },
@@ -374,9 +374,9 @@ export default function BPOPage({
       </section>
 
       {/* About BPO */}
-      <section className="py-20 px-6">
+      <section className="py-14 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -425,14 +425,14 @@ export default function BPOPage({
       </section>
 
       {/* Our BPO Services */}
-      <section className="py-20 px-6 bg-muted/30">
+      <section className="py-14 px-6 bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-14"
+            className="text-center mb-10"
           >
             <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               What We Do
@@ -479,9 +479,9 @@ export default function BPOPage({
       </section>
 
       {/* Why Choose ANYI */}
-      <section className="py-20 px-6">
+      <section className="py-14 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -491,7 +491,7 @@ export default function BPOPage({
               <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
                 Our Advantage
               </span>
-              <h2 className="text-4xl font-display font-bold text-foreground mb-8">
+              <h2 className="text-4xl font-display font-bold text-foreground mb-6">
                 Why Choose ANYI?
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -549,14 +549,14 @@ export default function BPOPage({
       </section>
 
       {/* Our Process */}
-      <section className="py-20 px-6 bg-gradient-to-br from-indigo-50 to-teal-50">
+      <section className="py-14 px-6 bg-gradient-to-br from-indigo-50 to-teal-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-14"
+            className="text-center mb-10"
           >
             <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               How We Work
@@ -594,14 +594,14 @@ export default function BPOPage({
       </section>
 
       {/* Industries We Serve */}
-      <section className="py-20 px-6">
+      <section className="py-14 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
             <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               Sector Expertise
@@ -629,14 +629,14 @@ export default function BPOPage({
       </section>
 
       {/* Technology We Use */}
-      <section className="py-16 px-6 bg-muted/30">
+      <section className="py-12 px-6 bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-10"
+            className="text-center mb-8"
           >
             <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               Tech Stack
@@ -663,14 +663,14 @@ export default function BPOPage({
       </section>
 
       {/* Client Benefits */}
-      <section className="py-20 px-6">
+      <section className="py-14 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
             <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               What You Gain
@@ -704,7 +704,7 @@ export default function BPOPage({
       </section>
 
       {/* Testimonial */}
-      <section className="py-16 px-6 bg-gradient-to-br from-indigo-50 to-teal-50">
+      <section className="py-12 px-6 bg-gradient-to-br from-indigo-50 to-teal-50">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -712,8 +712,8 @@ export default function BPOPage({
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="text-5xl text-indigo-300 mb-4">&ldquo;</div>
-            <blockquote className="text-xl font-medium text-foreground mb-6 leading-relaxed">
+            <div className="text-5xl text-indigo-300 mb-2">&ldquo;</div>
+            <blockquote className="text-xl font-medium text-foreground mb-4 leading-relaxed">
               ANYI helped us reduce our support cost and improved response time
               drastically. Their team is professional, responsive, and truly
               results-driven.
@@ -726,7 +726,7 @@ export default function BPOPage({
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-indigo-600 to-teal-600">
+      <section className="py-14 px-6 bg-gradient-to-br from-indigo-600 to-teal-600">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -737,7 +737,7 @@ export default function BPOPage({
             <h2 className="text-4xl font-display font-bold text-white mb-4">
               Ready to Scale Your Business?
             </h2>
-            <p className="text-white/80 mb-10 text-lg">
+            <p className="text-white/80 mb-6 text-lg">
               Partner with ANYI and transform your business operations with our
               expert BPO solutions.
             </p>
@@ -764,8 +764,8 @@ export default function BPOPage({
 
       {/* Footer */}
       <footer className="btn-gradient text-white border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="grid md:grid-cols-4 gap-8 pb-8 border-b border-white/10">
             <div className="md:col-span-2">
               <div className="flex items-center gap-1 font-bold text-xl mb-4">
                 <img
@@ -778,7 +778,7 @@ export default function BPOPage({
                 We amplify brands through bold strategy, creative design, and
                 digital innovation.
               </p>
-              <div className="flex gap-3 mt-6">
+              <div className="flex gap-3 mt-4">
                 {[
                   { href: "https://twitter.com", Icon: SiX },
                   { href: "https://instagram.com", Icon: SiInstagram },
@@ -858,7 +858,7 @@ export default function BPOPage({
               </div>
             </div>
           </div>
-          <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40">
+          <div className="pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40">
             <span>&copy; {year} Anyi. All rights reserved.</span>
             <span>Built by ANYI</span>
           </div>
