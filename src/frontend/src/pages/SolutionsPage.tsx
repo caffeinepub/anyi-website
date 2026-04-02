@@ -417,46 +417,78 @@ const ATTENDANCE_FEATURES = [
   },
 ];
 
-const EMERGENCY_CODE_FEATURES = [
+const EMERGENCY_SYSTEM_FEATURES = [
   {
-    icon: AlertOctagon,
-    title: "Multi-Code Alert System",
-    desc: "Manage all emergency codes (Code Red, Blue, Yellow, Black, White, Orange, Purple, Pink, Green) from a single unified dashboard with real-time status tracking.",
+    icon: PhoneCall,
+    title: "Call Anytime / Anywhere",
+    desc: "Activate any emergency code instantly from any device — mobile, desktop, or desk phone — 24/7 with no manual intervention needed.",
+  },
+  {
+    icon: Bell,
+    title: "Responsive Alerts via Call / SMS / Email",
+    desc: "Multi-channel broadcast ensures every relevant staff member is notified simultaneously via voice call, SMS, and email the moment a code is triggered.",
   },
   {
     icon: Radio,
-    title: "Instant Broadcast Notifications",
-    desc: "Trigger automated announcements via PA system, SMS, email, and mobile app simultaneously to alert all relevant staff within seconds.",
+    title: "Real-time Response Coordination",
+    desc: "Live dashboard tracks code activation, acknowledgements, and responder status in real time for full situational awareness.",
+  },
+];
+
+const HOSPITAL_EMERGENCY_CODES = [
+  {
+    code: "CODE BLUE",
+    emergency: "CARDIAC ARREST",
+    color: "#3B82F6",
+    textColor: "#FFFFFF",
   },
   {
-    icon: PhoneCall,
-    title: "Rapid Response Coordination",
-    desc: "Auto-assign response teams based on code type and location; track acknowledgements and response times with built-in SLA monitoring.",
+    code: "CODE RED",
+    emergency: "FIRE",
+    color: "#EF4444",
+    textColor: "#FFFFFF",
   },
   {
-    icon: Activity,
-    title: "Real-time Incident Monitoring",
-    desc: "Live dashboard showing active codes, responders on-site, and escalation status with floor-map integration for precise location tracking.",
+    code: "CODE YELLOW",
+    emergency: "EXTERNAL DISASTER",
+    color: "#EAB308",
+    textColor: "#FFFFFF",
   },
   {
-    icon: ClipboardList,
-    title: "Audit Trail & Compliance Reporting",
-    desc: "Comprehensive logs of every code activation, response, and resolution for regulatory compliance, NABH/JCI accreditation, and post-incident review.",
+    code: "CODE BLACK",
+    emergency: "BOMB THREAT",
+    color: "#374151",
+    textColor: "#FFFFFF",
   },
   {
-    icon: ShieldAlert,
-    title: "Drill & Simulation Management",
-    desc: "Schedule and execute emergency drills; capture drill metrics, staff participation rates, and generate improvement reports automatically.",
+    code: "CODE PINK",
+    emergency: "MISSING PATIENT",
+    color: "#EC4899",
+    textColor: "#FFFFFF",
   },
   {
-    icon: Users,
-    title: "Role-Based Access & Permissions",
-    desc: "Configure who can activate, acknowledge, and close each code type — ensuring only authorized personnel can trigger critical alerts.",
+    code: "CODE VIOLET",
+    emergency: "VIOLENT PATIENT / ATTENDANT",
+    color: "#8B5CF6",
+    textColor: "#FFFFFF",
   },
   {
-    icon: BarChart2,
-    title: "Analytics & Trend Reporting",
-    desc: "Analyze frequency, response times, and outcomes across departments to identify patterns and continuously improve emergency preparedness.",
+    code: "CODE GREY",
+    emergency: "SECURITY THREAT / COMBATIVE PERSON",
+    color: "#6B7280",
+    textColor: "#FFFFFF",
+  },
+  {
+    code: "CODE WHITE",
+    emergency: "PEDIATRIC EMERGENCY / INFANT ABDUCTION",
+    color: "#F1F5F9",
+    textColor: "#1E293B",
+  },
+  {
+    code: "CODE HAZMAT",
+    emergency: "HAZARDOUS MATERIAL SPILL",
+    color: "#F97316",
+    textColor: "#FFFFFF",
   },
 ];
 
@@ -477,7 +509,7 @@ export default function SolutionsPage({
       <NavBar navigate={navigate} />
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-background via-primary/10 to-background pt-32 pb-20 px-6 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-background via-primary/10 to-background pt-28 pb-14 px-6 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-primary blur-3xl" />
           <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-primary blur-3xl" />
@@ -535,14 +567,14 @@ export default function SolutionsPage({
       </section>
 
       {/* Section 1: Communication */}
-      <section id="communication" className="py-20 px-6">
+      <section id="communication" className="py-14 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-14"
+            className="mb-8"
           >
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">
               Communication Solutions
@@ -555,7 +587,7 @@ export default function SolutionsPage({
           {/* Office PBX */}
           <div
             id="officepbx"
-            className="grid md:grid-cols-2 gap-12 items-center mb-20"
+            className="grid md:grid-cols-2 gap-12 items-center mb-12"
           >
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -604,7 +636,7 @@ export default function SolutionsPage({
           {/* Multi-Channel Communication */}
           <div
             id="multichannel"
-            className="grid md:grid-cols-2 gap-12 items-center mb-20"
+            className="grid md:grid-cols-2 gap-12 items-center mb-12"
           >
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -678,7 +710,7 @@ export default function SolutionsPage({
           </div>
 
           {/* WhatsApp */}
-          <div id="whatsapp" className="mb-20">
+          <div id="whatsapp" className="mb-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -762,14 +794,14 @@ export default function SolutionsPage({
       </section>
 
       {/* Section 2: CRM Platform */}
-      <section id="crm" className="py-20 px-6 bg-muted">
+      <section id="crm" className="py-14 px-6 bg-muted">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-14"
+            className="mb-8"
           >
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">
               CRM Platform
@@ -780,7 +812,7 @@ export default function SolutionsPage({
           </motion.div>
 
           {/* Helpdesk */}
-          <div id="ticketing" className="mb-16">
+          <div id="ticketing" className="mb-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -817,7 +849,7 @@ export default function SolutionsPage({
           </div>
 
           {/* Lead Management */}
-          <div id="leadmanagement" className="mb-16">
+          <div id="leadmanagement" className="mb-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -885,7 +917,7 @@ export default function SolutionsPage({
       </section>
 
       {/* Section 3: Integrations */}
-      <section id="integrations" className="py-20 px-6">
+      <section id="integrations" className="py-14 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -947,7 +979,7 @@ export default function SolutionsPage({
       {/* Section 4: Hardware / Infra */}
       <section
         id="hardware"
-        className="py-20 px-6 bg-gradient-to-br from-primary/20 to-accent/10"
+        className="py-14 px-6 bg-gradient-to-br from-primary/20 to-accent/10"
       >
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -994,7 +1026,7 @@ export default function SolutionsPage({
       </section>
 
       {/* Section 5: Smart Marks */}
-      <section id="smartmarks" className="py-20 px-6">
+      <section id="smartmarks" className="py-14 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1040,7 +1072,7 @@ export default function SolutionsPage({
       </section>
 
       {/* Section 6: Attendance Management */}
-      <section id="attendance" className="py-20 px-6 bg-muted">
+      <section id="attendance" className="py-14 px-6 bg-muted">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1063,57 +1095,68 @@ export default function SolutionsPage({
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Feature Cards */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="grid sm:grid-cols-2 gap-4"
-            >
-              {ATTENDANCE_FEATURES.map(({ icon: Icon, title, desc }, i) => (
-                <motion.div
-                  key={title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.07 }}
-                  className="glass-card rounded-xl p-5"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center mb-3">
-                    <Icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <h4 className="font-semibold text-foreground mb-1.5 text-sm">
-                    {title}
-                  </h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {desc}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
+          {/* Hero Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative w-full mb-12 rounded-2xl overflow-hidden shadow-card"
+            style={{ maxHeight: "400px" }}
+          >
+            <img
+              src="/assets/generated/attendance-management-hero.dim_1200x600.jpg"
+              alt="Attendance Management System in Action"
+              className="w-full object-cover"
+              style={{ maxHeight: "400px", width: "100%" }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to top, oklch(var(--background) / 0.75) 0%, transparent 55%)",
+              }}
+            />
+            <div className="absolute bottom-0 left-0 p-6">
+              <span className="text-white font-semibold text-lg drop-shadow">
+                Smart Attendance. Seamless Operations.
+              </span>
+            </div>
+          </motion.div>
 
-            {/* Photo */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="h-full"
-            >
-              <img
-                src="/assets/uploads/attandence_solution-019d4dd0-7c8e-71e8-ba1e-964a4dd8509c-1.jpeg"
-                alt="Attendance Management Solution"
-                className="rounded-2xl shadow-card w-full object-cover h-full min-h-[400px]"
-              />
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            {ATTENDANCE_FEATURES.map(({ icon: Icon, title, desc }, i) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+                className="glass-card rounded-xl p-5"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center mb-3">
+                  <Icon className="w-5 h-5 text-primary" />
+                </div>
+                <h4 className="font-semibold text-foreground mb-1.5 text-sm">
+                  {title}
+                </h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  {desc}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* Section 7: Emergency Code Management */}
-      <section id="emergency" className="py-20 px-6">
+      <section id="emergency" className="py-14 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1123,16 +1166,15 @@ export default function SolutionsPage({
             className="mb-12"
           >
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">
-              Emergency Management
+              Hospital Emergency System
             </span>
             <h2 className="text-4xl font-display font-bold text-foreground mt-2 mb-4">
               Emergency Code Management Solution
             </h2>
             <p className="text-muted-foreground max-w-3xl text-base leading-relaxed">
-              A centralized, automated emergency code management platform that
-              empowers hospitals, enterprises, and large facilities to respond
-              to critical incidents faster, smarter, and with full
-              accountability — from code activation to resolution.
+              A comprehensive hospital emergency code system enabling instant
+              multi-channel alerts (Call, SMS, Email) for all critical emergency
+              types — activated anytime, anywhere.
             </p>
           </motion.div>
 
@@ -1157,44 +1199,36 @@ export default function SolutionsPage({
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <h3 className="text-2xl font-display font-bold text-foreground mb-4">
-                Why Emergency Code Management Matters
+                Why It Matters
               </h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Every second counts during a critical incident. Manual, ad-hoc
-                emergency response leads to delayed notifications, poor
-                coordination, and compliance gaps. ANYI's Emergency Code
-                Management Solution digitizes and automates the entire lifecycle
-                — from the moment a code is triggered to the final incident
-                report.
-              </p>
               <ul className="space-y-3">
                 {[
-                  "Reduce average emergency response time by up to 60%",
-                  "Ensure 100% staff notification coverage across all channels",
-                  "Meet NABH, JCI, and ISO emergency preparedness standards",
-                  "Eliminate manual logbooks with automated, tamper-proof audit trails",
+                  "Instant multi-channel alerts via Call, SMS, and Email to all relevant staff",
+                  "Standardized hospital emergency codes recognized across healthcare facilities",
+                  "Reduce critical response time with one-tap code activation from any device",
+                  "Meet NABH, JCI, and hospital accreditation emergency preparedness standards",
                 ].map((point) => (
                   <li
                     key={point}
                     className="flex items-start gap-3 text-muted-foreground"
                   >
                     <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">{point}</span>
+                    <span className="text-sm leading-relaxed">{point}</span>
                   </li>
                 ))}
               </ul>
             </motion.div>
           </div>
 
-          {/* Feature Cards */}
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-            {EMERGENCY_CODE_FEATURES.map(({ icon: Icon, title, desc }, i) => (
+          {/* System Feature Cards */}
+          <div className="grid sm:grid-cols-3 gap-4 mb-12">
+            {EMERGENCY_SYSTEM_FEATURES.map(({ icon: Icon, title, desc }, i) => (
               <motion.div
                 key={title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.07 }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="glass-card rounded-xl p-5"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center mb-3">
@@ -1209,11 +1243,58 @@ export default function SolutionsPage({
               </motion.div>
             ))}
           </div>
+
+          {/* Hospital Emergency Codes */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-6"
+          >
+            <h3 className="text-2xl font-display font-bold text-foreground mb-2">
+              Hospital Emergency Codes
+            </h3>
+            <p className="text-muted-foreground text-sm">
+              Standardized emergency codes activated via one tap — all staff
+              notified instantly across all channels.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {HOSPITAL_EMERGENCY_CODES.map(({ code, emergency, color }, i) => (
+              <motion.div
+                key={code}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+                className="glass-card rounded-xl p-4 border-l-4 flex items-start gap-3"
+                style={{ borderLeftColor: color }}
+              >
+                <div
+                  className="w-3 h-3 rounded-full mt-1 flex-shrink-0"
+                  style={{ backgroundColor: color }}
+                />
+                <div>
+                  <p
+                    className="text-sm font-bold tracking-wide mb-0.5"
+                    style={{ color: color === "#F1F5F9" ? "#6366F1" : color }}
+                  >
+                    {code}
+                  </p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider leading-snug">
+                    {emergency}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 bg-gradient-to-br from-primary/20 to-accent/10 relative">
+      <section className="py-14 px-6 bg-gradient-to-br from-primary/20 to-accent/10 relative">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -686,13 +686,23 @@ function TestimonialsSection() {
 
 function ContactSection() {
   const ref = useScrollAnimation();
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    inquiry: "",
+    message: "",
+  });
   const [sendMethod, setSendMethod] = useState<"whatsapp" | "email">(
     "whatsapp",
   );
 
   const validateForm = () => {
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+    if (
+      !form.name.trim() ||
+      !form.email.trim() ||
+      !form.inquiry.trim() ||
+      !form.message.trim()
+    ) {
       toast.error("Please fill in all fields before sending.");
       return false;
     }
@@ -703,18 +713,18 @@ function ContactSection() {
     if (!validateForm()) return;
     if (sendMethod === "whatsapp") {
       const whatsappNumber = "919810657082";
-      const text = `New Enquiry from ANYI Website\n\nName: ${form.name}\nEmail: ${form.email}\nMessage: ${form.message}`;
+      const text = `New Enquiry from ANYI Website\n\nName: ${form.name}\nEmail: ${form.email}\nProduct Inquiry: ${form.inquiry}\nMessage: ${form.message}`;
       const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
       window.open(url, "_blank");
       toast.success("Redirecting to WhatsApp...");
     } else {
       const subject = "Enquiry from ANYI Website";
-      const body = `Name: ${form.name}%0AEmail: ${form.email}%0AMessage: ${form.message}`;
+      const body = `Name: ${form.name}%0AEmail: ${form.email}%0AProduct Inquiry: ${form.inquiry}%0AMessage: ${form.message}`;
       const url = `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${body}`;
       window.location.href = url;
       toast.success("Opening your email client...");
     }
-    setForm({ name: "", email: "", message: "" });
+    setForm({ name: "", email: "", inquiry: "", message: "" });
   };
 
   return (
@@ -848,6 +858,48 @@ function ContactSection() {
                   placeholder="john@company.com"
                   className="border-border focus:border-teal"
                 />
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
+                  Product / Service Inquiry
+                </p>
+                <select
+                  data-ocid="contact.input"
+                  value={form.inquiry}
+                  onChange={(e) =>
+                    setForm((p) => ({ ...p, inquiry: e.target.value }))
+                  }
+                  className="w-full rounded-md border border-border bg-background text-foreground text-sm px-3 py-2 focus:outline-none focus:border-teal appearance-none"
+                >
+                  <option value="">-- Select a Product / Service --</option>
+                  <option value="Helpdesk System - Grievance Resolution and Improvement Solution (GRIP)">
+                    Helpdesk System - Grievance Resolution and Improvement
+                    Solution (GRIP)
+                  </option>
+                  <option value="Voice Solutions - Cloud telephony, Inbound/Outbound setup, or AI voice bots">
+                    Voice Solutions - Cloud telephony, Inbound/Outbound setup,
+                    or AI voice bots
+                  </option>
+                  <option value="Call Center Solution - System that speaks every language: Call, Chat, Email, WhatsApp & Web">
+                    Call Center Solution - System that speaks every language:
+                    Call, Chat, Email, WhatsApp &amp; Web
+                  </option>
+                  <option value="IT Infra | Hardware - All-in-One IT & Cloud Infrastructure">
+                    IT Infra | Hardware - All-in-One IT &amp; Cloud
+                    Infrastructure
+                  </option>
+                  <option value="BPO Services - Your business, our process">
+                    BPO Services - Your business, our process
+                  </option>
+                  <option value="MaaS - IT & Technical Manpower As A Service">
+                    MaaS - IT &amp; Technical Manpower As A Service
+                  </option>
+                  <option value="Attendance App - Attendance. Analytics. Accountability - on your phone">
+                    Attendance App - Attendance. Analytics. Accountability - on
+                    your phone
+                  </option>
+                  <option value="Others">Others</option>
+                </select>
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
