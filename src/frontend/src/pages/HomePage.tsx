@@ -93,6 +93,13 @@ const DEFAULT_TESTIMONIALS = [
     author: "Vijay Pandey",
     role: "MD, Sytel India",
   },
+  {
+    id: "5",
+    quote:
+      "We implemented the GRIP Help Desk Solution with support from the ANYI team, and the experience has been positive overall. The system helped us organize our support requests better and improved our response time. Their team was cooperative during the implementation and addressed our requirements properly. We are satisfied with the solution and the support provided, and it has helped us deliver more consistent service to our clients.",
+    author: "Virender Nagi",
+    role: "Maruti",
+  },
 ];
 
 const DEFAULT_GALLERY = [
