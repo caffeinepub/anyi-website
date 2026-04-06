@@ -86,6 +86,13 @@ const DEFAULT_TESTIMONIALS = [
     author: "Sneha Iyer",
     role: "Marketing Director, Luminary Brands",
   },
+  {
+    id: "4",
+    quote:
+      "We were struggling to manage multiple vendors for our business processes, but this team provided a complete end-to-end solution under one roof. From planning to execution, everything was handled seamlessly. Their professionalism and technical expertise truly transformed our operations.",
+    author: "Vijay Pandey",
+    role: "MD, Sytel India",
+  },
 ];
 
 const DEFAULT_GALLERY = [
@@ -868,7 +875,7 @@ function ContactSection() {
                   Product / Service Inquiry
                 </p>
                 <select
-                  data-ocid="contact.input"
+                  data-ocid="contact.select"
                   value={form.inquiry}
                   onChange={(e) =>
                     setForm((p) => ({ ...p, inquiry: e.target.value }))
