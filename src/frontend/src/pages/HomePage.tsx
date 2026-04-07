@@ -66,13 +66,6 @@ const DEFAULT_SERVICES = [
 
 const DEFAULT_TESTIMONIALS = [
   {
-    id: "1",
-    quote:
-      "Anyi transformed our brand completely. The results were beyond our expectations — our engagement tripled within the first quarter.",
-    author: "Priya Sharma",
-    role: "CEO, NovaTech Solutions",
-  },
-  {
     id: "2",
     quote:
       "Working with Anyi was a game-changer. Their strategic approach to our digital marketing drove a 240% increase in qualified leads.",
@@ -99,6 +92,20 @@ const DEFAULT_TESTIMONIALS = [
       "We implemented the GRIP Help Desk Solution with support from the ANYI team, and the experience has been positive overall. The system helped us organize our support requests better and improved our response time. Their team was cooperative during the implementation and addressed our requirements properly. We are satisfied with the solution and the support provided, and it has helped us deliver more consistent service to our clients.",
     author: "Virender Nagi",
     role: "Maruti",
+  },
+  {
+    id: "6",
+    quote:
+      "We implemented the BI Tool to improve our reporting and data visibility. Earlier, we relied heavily on manual reports, which were time-consuming and sometimes inconsistent. After implementation, dashboards are now easily accessible, and decision-making has become quicker. The transition took some time, but overall the impact has been positive.",
+    author: "Subhash Yadav",
+    role: "Appo Mobiles",
+  },
+  {
+    id: "7",
+    quote:
+      "After implementing this tool, our sales tracking and follow-ups became much more structured. It gave us better visibility on our pipeline and helped the team stay aligned with targets. As a result, we were able to achieve our sales targets on time more consistently.",
+    author: "Rahul Mishra",
+    role: "Shri Cement",
   },
 ];
 
@@ -324,14 +331,14 @@ function HeroSection() {
                 transition={{ duration: 0.7, ease: "easeOut" }}
               >
                 <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-6 px-3 py-1.5 bg-primary/20 rounded-full">
-                  Creative Agency
+                  Process Automation
                 </span>
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[1.05] uppercase tracking-tight mb-6">
-                  {hero?.title ?? "WE AMPLIFY YOUR BRAND."}
+                  {hero?.title ?? "Process Automation For Every Business Need"}
                 </h1>
                 <p className="text-base text-muted-foreground leading-relaxed mb-10 max-w-md">
                   {hero?.subtitle ??
-                    "We craft bold digital experiences that connect brands with their audience and drive meaningful results."}
+                    "Helping Automate Business Processes With Visualization From Bird's-Eye View To Worm's-Eye View"}
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Button

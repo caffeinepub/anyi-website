@@ -479,6 +479,49 @@ const HOSPITAL_EMERGENCY_CODES = [
   },
 ];
 
+const WHATSAPP_FEATURES = [
+  {
+    icon: MessageSquare,
+    title: "WhatsApp Business API",
+    desc: "Official WhatsApp Business API integration for enterprise-grade messaging with verified business profiles and green tick verification.",
+  },
+  {
+    icon: Users,
+    title: "Bulk Broadcast Messaging",
+    desc: "Send promotional and transactional messages to thousands of opted-in customers simultaneously with delivery tracking.",
+  },
+  {
+    icon: Brain,
+    title: "AI-Powered Chatbot",
+    desc: "Intelligent chatbot for 24/7 automated FAQ responses, self-service workflows, and seamless agent handoff when needed.",
+  },
+  {
+    icon: Bell,
+    title: "Multi-media Messaging",
+    desc: "Send rich media content — images, PDFs, videos, voice notes, location, and interactive buttons through WhatsApp.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Two-way Communication",
+    desc: "Enable real-time two-way conversations between customers and agents directly within the WhatsApp interface.",
+  },
+  {
+    icon: BarChart2,
+    title: "Delivery Analytics",
+    desc: "Track message delivery, read rates, response times, and campaign performance with real-time dashboards.",
+  },
+  {
+    icon: Layers,
+    title: "CRM Integration",
+    desc: "Seamlessly integrates with your existing CRM, helpdesk, and lead management systems via ready-to-plug-in APIs.",
+  },
+  {
+    icon: Shield,
+    title: "Compliance & Security",
+    desc: "End-to-end encryption, GDPR-compliant opt-in/opt-out management, and data security for all customer conversations.",
+  },
+];
+
 export default function SolutionsPage({
   navigate,
 }: {
@@ -536,6 +579,7 @@ export default function SolutionsPage({
                 { label: "Hardware / Infra", id: "hardware" },
                 { label: "Attendance", id: "attendance" },
                 { label: "Emergency Code", id: "emergency" },
+                { label: "WhatsApp Business", id: "whatsapp" },
               ].map(({ label, id }) => (
                 <button
                   key={id}
@@ -1049,6 +1093,91 @@ export default function SolutionsPage({
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Section 8: WhatsApp Business Solution */}
+      <section id="whatsapp" className="py-14 px-6 bg-muted">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-12"
+          >
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+              WhatsApp Business
+            </span>
+            <h2 className="text-4xl font-display font-bold text-foreground mt-2 mb-4">
+              WhatsApp Business Solution
+            </h2>
+            <p className="text-muted-foreground max-w-3xl text-base leading-relaxed">
+              Leverage the power of WhatsApp Business API to engage customers at
+              scale — with automated chatbots, broadcast messaging, rich media,
+              and seamless CRM integration, all on the world's most-used
+              messaging platform.
+            </p>
+          </motion.div>
+
+          {/* Hero Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative w-full mb-12 rounded-2xl overflow-hidden shadow-card"
+            style={{ maxHeight: "400px" }}
+          >
+            <img
+              src="/assets/generated/solutions-whatsapp-business.dim_1200x600.jpg"
+              alt="WhatsApp Business Solution"
+              className="w-full object-cover"
+              style={{ maxHeight: "400px", width: "100%" }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%)",
+              }}
+            />
+            <div className="absolute bottom-0 left-0 p-6">
+              <span className="text-white font-semibold text-lg drop-shadow">
+                Engage Customers Where They Already Are
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Feature Cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            {WHATSAPP_FEATURES.map(({ icon: Icon, title, desc }, i) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+                className="glass-card rounded-xl p-5"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center mb-3">
+                  <Icon className="w-5 h-5 text-primary" />
+                </div>
+                <h4 className="font-semibold text-foreground mb-1.5 text-sm">
+                  {title}
+                </h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  {desc}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
