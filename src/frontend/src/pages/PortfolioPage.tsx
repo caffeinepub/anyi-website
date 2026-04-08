@@ -420,7 +420,7 @@ export default function PortfolioPage({
             {[
               { value: "500+", label: "Projects Delivered" },
               { value: "200+", label: "Happy Clients" },
-              { value: "15+", label: "Years Experience" },
+              { value: "20+", label: "Years Experience" },
               { value: "4", label: "Solution Categories" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
