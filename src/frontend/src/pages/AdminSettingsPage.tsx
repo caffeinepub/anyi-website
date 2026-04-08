@@ -14,7 +14,6 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { useActor } from "../hooks/useActor";
-
 interface AdminSettingsPageProps {
   navigate: (to: string) => void;
 }
@@ -142,7 +141,7 @@ export default function AdminSettingsPage({
         {!loading && !isFetching && isAdmin === true && (
           <div className="space-y-8">
             <div>
-              <h1 className="text-3xl font-extrabold text-foreground flex items-center gap-3">
+              <h1 className="text-2xl font-extrabold text-foreground flex items-center gap-3">
                 <Settings className="w-7 h-7 text-primary" />
                 Contact Settings
               </h1>

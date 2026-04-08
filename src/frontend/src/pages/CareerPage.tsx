@@ -7,6 +7,7 @@ import {
   Heart,
   Home,
   Lightbulb,
+  Linkedin,
   Mail,
   MapPin,
   Menu,
@@ -17,7 +18,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { SiInstagram, SiLinkedin, SiX } from "react-icons/si";
+import { SiInstagram, SiX } from "react-icons/si";
 import { ThemeToggle } from "../components/ThemeToggle";
 
 const NAV_ITEMS = [
@@ -279,7 +280,7 @@ const SOCIAL_LINKS = [
   { Icon: SiX, href: "https://twitter.com", label: "X (Twitter)" },
   { Icon: SiInstagram, href: "https://instagram.com", label: "Instagram" },
   {
-    Icon: SiLinkedin,
+    Icon: Linkedin,
     href: "https://linkedin.com/company/71969389/",
     label: "LinkedIn",
   },
@@ -343,7 +344,7 @@ export default function CareerPage({
                 <Briefcase className="w-3.5 h-3.5" />
                 We're Hiring
               </div>
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-5 leading-tight">
+              <h1 className="text-2xl font-bold tracking-tight mb-5 leading-tight">
                 Join{" "}
                 <span className="bg-gradient-to-r from-primary to-teal-500 bg-clip-text text-transparent">
                   Our Team
@@ -396,7 +397,7 @@ export default function CareerPage({
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
                 Our Culture
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-2xl font-bold mb-4">
                 Why Work at{" "}
                 <span className="bg-gradient-to-r from-primary to-teal-500 bg-clip-text text-transparent">
                   ANYI?
@@ -444,7 +445,7 @@ export default function CareerPage({
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
                 Open Positions
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-2xl font-bold mb-4">
                 Current{" "}
                 <span className="bg-gradient-to-r from-primary to-teal-500 bg-clip-text text-transparent">
                   Openings
@@ -528,7 +529,7 @@ export default function CareerPage({
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
                 Perks & Benefits
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-2xl font-bold mb-4">
                 What We{" "}
                 <span className="bg-gradient-to-r from-primary to-teal-500 bg-clip-text text-transparent">
                   Offer
@@ -581,7 +582,7 @@ export default function CareerPage({
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
                   <Mail className="w-8 h-8 text-primary" />
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <h2 className="text-2xl font-bold mb-4">
                   Don't see the right role?
                 </h2>
                 <p className="text-lg text-muted-foreground mb-2 max-w-xl mx-auto">

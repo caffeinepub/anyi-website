@@ -8,24 +8,6 @@
 
 import { IDL } from '@icp-sdk/core/candid';
 
-export const _CaffeineStorageCreateCertificateResult = IDL.Record({
-  'method' : IDL.Text,
-  'blob_hash' : IDL.Text,
-});
-export const _CaffeineStorageRefillInformation = IDL.Record({
-  'proposed_top_up_amount' : IDL.Opt(IDL.Nat),
-});
-export const _CaffeineStorageRefillResult = IDL.Record({
-  'success' : IDL.Opt(IDL.Bool),
-  'topped_up_amount' : IDL.Opt(IDL.Nat),
-});
-export const ExternalBlob = IDL.Vec(IDL.Nat8);
-export const GalleryItem = IDL.Record({
-  'id' : IDL.Text,
-  'title' : IDL.Text,
-  'blob' : ExternalBlob,
-  'category' : IDL.Text,
-});
 export const ServiceContent = IDL.Record({
   'id' : IDL.Text,
   'title' : IDL.Text,
@@ -36,11 +18,6 @@ export const TestimonialContent = IDL.Record({
   'role' : IDL.Text,
   'quote' : IDL.Text,
   'author' : IDL.Text,
-});
-export const UserRole = IDL.Variant({
-  'admin' : IDL.Null,
-  'user' : IDL.Null,
-  'guest' : IDL.Null,
 });
 export const AboutContent = IDL.Record({
   'title' : IDL.Text,
@@ -59,64 +36,25 @@ export const HeroContent = IDL.Record({
 });
 
 export const idlService = IDL.Service({
-  '_caffeineStorageBlobIsLive' : IDL.Func(
-      [IDL.Vec(IDL.Nat8)],
-      [IDL.Bool],
-      ['query'],
-    ),
-  '_caffeineStorageBlobsToDelete' : IDL.Func(
-      [],
-      [IDL.Vec(IDL.Vec(IDL.Nat8))],
-      ['query'],
-    ),
-  '_caffeineStorageConfirmBlobDeletion' : IDL.Func(
-      [IDL.Vec(IDL.Vec(IDL.Nat8))],
-      [],
-      [],
-    ),
-  '_caffeineStorageCreateCertificate' : IDL.Func(
-      [IDL.Text],
-      [_CaffeineStorageCreateCertificateResult],
-      [],
-    ),
-  '_caffeineStorageRefillCashier' : IDL.Func(
-      [IDL.Opt(_CaffeineStorageRefillInformation)],
-      [_CaffeineStorageRefillResult],
-      [],
-    ),
-  '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
-  '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
-  'addGalleryItem' : IDL.Func([GalleryItem], [], []),
   'addService' : IDL.Func([ServiceContent], [], []),
   'addTestimonial' : IDL.Func([TestimonialContent], [], []),
-  'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
   'getAboutContent' : IDL.Func([], [AboutContent], ['query']),
-  'getAllGalleryItems' : IDL.Func([], [IDL.Vec(GalleryItem)], ['query']),
   'getAllServices' : IDL.Func([], [IDL.Vec(ServiceContent)], ['query']),
   'getAllTestimonials' : IDL.Func([], [IDL.Vec(TestimonialContent)], ['query']),
   'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
-  'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
   'getContactInfo' : IDL.Func([], [ContactInfo], ['query']),
-  'getGalleryItemsByCategory' : IDL.Func(
-      [IDL.Text],
-      [IDL.Vec(GalleryItem)],
-      ['query'],
-    ),
   'getHeroContent' : IDL.Func([], [HeroContent], ['query']),
   'getUserProfile' : IDL.Func(
       [IDL.Principal],
       [IDL.Opt(UserProfile)],
       ['query'],
     ),
-  'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
-  'removeGalleryItem' : IDL.Func([IDL.Text], [], []),
   'removeService' : IDL.Func([IDL.Text], [], []),
   'removeTestimonial' : IDL.Func([IDL.Text], [], []),
   'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
   'searchServices' : IDL.Func([IDL.Text], [IDL.Vec(ServiceContent)], ['query']),
   'updateAboutContent' : IDL.Func([AboutContent], [], []),
   'updateContactInfo' : IDL.Func([ContactInfo], [], []),
-  'updateGalleryItem' : IDL.Func([IDL.Text, GalleryItem], [], []),
   'updateHeroContent' : IDL.Func([HeroContent], [], []),
   'updateService' : IDL.Func([IDL.Text, ServiceContent], [], []),
   'updateTestimonial' : IDL.Func([IDL.Text, TestimonialContent], [], []),
@@ -125,24 +63,6 @@ export const idlService = IDL.Service({
 export const idlInitArgs = [];
 
 export const idlFactory = ({ IDL }) => {
-  const _CaffeineStorageCreateCertificateResult = IDL.Record({
-    'method' : IDL.Text,
-    'blob_hash' : IDL.Text,
-  });
-  const _CaffeineStorageRefillInformation = IDL.Record({
-    'proposed_top_up_amount' : IDL.Opt(IDL.Nat),
-  });
-  const _CaffeineStorageRefillResult = IDL.Record({
-    'success' : IDL.Opt(IDL.Bool),
-    'topped_up_amount' : IDL.Opt(IDL.Nat),
-  });
-  const ExternalBlob = IDL.Vec(IDL.Nat8);
-  const GalleryItem = IDL.Record({
-    'id' : IDL.Text,
-    'title' : IDL.Text,
-    'blob' : ExternalBlob,
-    'category' : IDL.Text,
-  });
   const ServiceContent = IDL.Record({
     'id' : IDL.Text,
     'title' : IDL.Text,
@@ -153,11 +73,6 @@ export const idlFactory = ({ IDL }) => {
     'role' : IDL.Text,
     'quote' : IDL.Text,
     'author' : IDL.Text,
-  });
-  const UserRole = IDL.Variant({
-    'admin' : IDL.Null,
-    'user' : IDL.Null,
-    'guest' : IDL.Null,
   });
   const AboutContent = IDL.Record({ 'title' : IDL.Text, 'body' : IDL.Text });
   const UserProfile = IDL.Record({ 'name' : IDL.Text });
@@ -173,39 +88,9 @@ export const idlFactory = ({ IDL }) => {
   });
   
   return IDL.Service({
-    '_caffeineStorageBlobIsLive' : IDL.Func(
-        [IDL.Vec(IDL.Nat8)],
-        [IDL.Bool],
-        ['query'],
-      ),
-    '_caffeineStorageBlobsToDelete' : IDL.Func(
-        [],
-        [IDL.Vec(IDL.Vec(IDL.Nat8))],
-        ['query'],
-      ),
-    '_caffeineStorageConfirmBlobDeletion' : IDL.Func(
-        [IDL.Vec(IDL.Vec(IDL.Nat8))],
-        [],
-        [],
-      ),
-    '_caffeineStorageCreateCertificate' : IDL.Func(
-        [IDL.Text],
-        [_CaffeineStorageCreateCertificateResult],
-        [],
-      ),
-    '_caffeineStorageRefillCashier' : IDL.Func(
-        [IDL.Opt(_CaffeineStorageRefillInformation)],
-        [_CaffeineStorageRefillResult],
-        [],
-      ),
-    '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
-    '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
-    'addGalleryItem' : IDL.Func([GalleryItem], [], []),
     'addService' : IDL.Func([ServiceContent], [], []),
     'addTestimonial' : IDL.Func([TestimonialContent], [], []),
-    'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
     'getAboutContent' : IDL.Func([], [AboutContent], ['query']),
-    'getAllGalleryItems' : IDL.Func([], [IDL.Vec(GalleryItem)], ['query']),
     'getAllServices' : IDL.Func([], [IDL.Vec(ServiceContent)], ['query']),
     'getAllTestimonials' : IDL.Func(
         [],
@@ -213,21 +98,13 @@ export const idlFactory = ({ IDL }) => {
         ['query'],
       ),
     'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
-    'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
     'getContactInfo' : IDL.Func([], [ContactInfo], ['query']),
-    'getGalleryItemsByCategory' : IDL.Func(
-        [IDL.Text],
-        [IDL.Vec(GalleryItem)],
-        ['query'],
-      ),
     'getHeroContent' : IDL.Func([], [HeroContent], ['query']),
     'getUserProfile' : IDL.Func(
         [IDL.Principal],
         [IDL.Opt(UserProfile)],
         ['query'],
       ),
-    'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
-    'removeGalleryItem' : IDL.Func([IDL.Text], [], []),
     'removeService' : IDL.Func([IDL.Text], [], []),
     'removeTestimonial' : IDL.Func([IDL.Text], [], []),
     'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
@@ -238,7 +115,6 @@ export const idlFactory = ({ IDL }) => {
       ),
     'updateAboutContent' : IDL.Func([AboutContent], [], []),
     'updateContactInfo' : IDL.Func([ContactInfo], [], []),
-    'updateGalleryItem' : IDL.Func([IDL.Text, GalleryItem], [], []),
     'updateHeroContent' : IDL.Func([HeroContent], [], []),
     'updateService' : IDL.Func([IDL.Text, ServiceContent], [], []),
     'updateTestimonial' : IDL.Func([IDL.Text, TestimonialContent], [], []),

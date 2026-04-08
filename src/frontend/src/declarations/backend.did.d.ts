@@ -16,13 +16,6 @@ export interface ContactInfo {
   'address' : string,
   'phone' : string,
 }
-export type ExternalBlob = Uint8Array;
-export interface GalleryItem {
-  'id' : string,
-  'title' : string,
-  'blob' : ExternalBlob,
-  'category' : string,
-}
 export interface HeroContent {
   'title' : string,
   'ctaText' : string,
@@ -40,60 +33,22 @@ export interface TestimonialContent {
   'author' : string,
 }
 export interface UserProfile { 'name' : string }
-export type UserRole = { 'admin' : null } |
-  { 'user' : null } |
-  { 'guest' : null };
-export interface _CaffeineStorageCreateCertificateResult {
-  'method' : string,
-  'blob_hash' : string,
-}
-export interface _CaffeineStorageRefillInformation {
-  'proposed_top_up_amount' : [] | [bigint],
-}
-export interface _CaffeineStorageRefillResult {
-  'success' : [] | [boolean],
-  'topped_up_amount' : [] | [bigint],
-}
 export interface _SERVICE {
-  '_caffeineStorageBlobIsLive' : ActorMethod<[Uint8Array], boolean>,
-  '_caffeineStorageBlobsToDelete' : ActorMethod<[], Array<Uint8Array>>,
-  '_caffeineStorageConfirmBlobDeletion' : ActorMethod<
-    [Array<Uint8Array>],
-    undefined
-  >,
-  '_caffeineStorageCreateCertificate' : ActorMethod<
-    [string],
-    _CaffeineStorageCreateCertificateResult
-  >,
-  '_caffeineStorageRefillCashier' : ActorMethod<
-    [[] | [_CaffeineStorageRefillInformation]],
-    _CaffeineStorageRefillResult
-  >,
-  '_caffeineStorageUpdateGatewayPrincipals' : ActorMethod<[], undefined>,
-  '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
-  'addGalleryItem' : ActorMethod<[GalleryItem], undefined>,
   'addService' : ActorMethod<[ServiceContent], undefined>,
   'addTestimonial' : ActorMethod<[TestimonialContent], undefined>,
-  'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
   'getAboutContent' : ActorMethod<[], AboutContent>,
-  'getAllGalleryItems' : ActorMethod<[], Array<GalleryItem>>,
   'getAllServices' : ActorMethod<[], Array<ServiceContent>>,
   'getAllTestimonials' : ActorMethod<[], Array<TestimonialContent>>,
   'getCallerUserProfile' : ActorMethod<[], [] | [UserProfile]>,
-  'getCallerUserRole' : ActorMethod<[], UserRole>,
   'getContactInfo' : ActorMethod<[], ContactInfo>,
-  'getGalleryItemsByCategory' : ActorMethod<[string], Array<GalleryItem>>,
   'getHeroContent' : ActorMethod<[], HeroContent>,
   'getUserProfile' : ActorMethod<[Principal], [] | [UserProfile]>,
-  'isCallerAdmin' : ActorMethod<[], boolean>,
-  'removeGalleryItem' : ActorMethod<[string], undefined>,
   'removeService' : ActorMethod<[string], undefined>,
   'removeTestimonial' : ActorMethod<[string], undefined>,
   'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,
   'searchServices' : ActorMethod<[string], Array<ServiceContent>>,
   'updateAboutContent' : ActorMethod<[AboutContent], undefined>,
   'updateContactInfo' : ActorMethod<[ContactInfo], undefined>,
-  'updateGalleryItem' : ActorMethod<[string, GalleryItem], undefined>,
   'updateHeroContent' : ActorMethod<[HeroContent], undefined>,
   'updateService' : ActorMethod<[string, ServiceContent], undefined>,
   'updateTestimonial' : ActorMethod<[string, TestimonialContent], undefined>,

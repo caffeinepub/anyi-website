@@ -1,22 +1,39 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import type {
-  AboutContent,
-  ContactInfo,
-  GalleryItem,
-  HeroContent,
-  ServiceContent,
-  TestimonialContent,
-} from "../backend.d";
 import { useActor } from "./useActor";
 
-export type {
-  HeroContent,
-  AboutContent,
-  ServiceContent,
-  TestimonialContent,
-  ContactInfo,
-  GalleryItem,
-};
+// Local type definitions (backend interface is currently empty)
+export interface HeroContent {
+  title: string;
+  subtitle: string;
+  ctaText: string;
+}
+export interface AboutContent {
+  title: string;
+  body: string;
+}
+export interface ServiceContent {
+  id: string;
+  title: string;
+  description: string;
+}
+export interface TestimonialContent {
+  id: string;
+  quote: string;
+  author: string;
+  role: string;
+}
+export interface ContactInfo {
+  email: string;
+  phone: string;
+  address: string;
+}
+export interface GalleryItem {
+  id: string;
+  title: string;
+  category: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  blob: any;
+}
 
 export function useHeroContent() {
   const { actor, isFetching } = useActor();
@@ -25,7 +42,7 @@ export function useHeroContent() {
     queryFn: async () => {
       if (!actor)
         return {
-          title: "WE AMPLIFY YOUR BRAND.",
+          title: "Process Automation For Every Business Need",
           subtitle:
             "We craft bold digital experiences that connect brands with their audience and drive meaningful results in an ever-evolving market.",
           ctaText: "EXPLORE SERVICES",

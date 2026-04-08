@@ -1,0 +1,52 @@
+type UserProfile = record {name: text;};
+type TestimonialContent = 
+ record {
+   author: text;
+   id: text;
+   quote: text;
+   role: text;
+ };
+type ServiceContent = 
+ record {
+   description: text;
+   id: text;
+   title: text;
+ };
+type HeroContent = 
+ record {
+   ctaText: text;
+   subtitle: text;
+   title: text;
+ };
+type ContactInfo = 
+ record {
+   address: text;
+   email: text;
+   phone: text;
+ };
+type AboutContent = 
+ record {
+   body: text;
+   title: text;
+ };
+service : {
+  addService: ("service": ServiceContent) -> ();
+  addTestimonial: (testimonial: TestimonialContent) -> ();
+  getAboutContent: () -> (AboutContent) query;
+  getAllServices: () -> (vec ServiceContent) query;
+  getAllTestimonials: () -> (vec TestimonialContent) query;
+  getCallerUserProfile: () -> (opt UserProfile) query;
+  getContactInfo: () -> (ContactInfo) query;
+  getHeroContent: () -> (HeroContent) query;
+  getUserProfile: (user: principal) -> (opt UserProfile) query;
+  removeService: (serviceId: text) -> ();
+  removeTestimonial: (testimonialId: text) -> ();
+  saveCallerUserProfile: (profile: UserProfile) -> ();
+  searchServices: (keyword: text) -> (vec ServiceContent) query;
+  updateAboutContent: (newAbout: AboutContent) -> ();
+  updateContactInfo: (newContact: ContactInfo) -> ();
+  updateHeroContent: (newHero: HeroContent) -> ();
+  updateService: (serviceId: text, updatedService: ServiceContent) -> ();
+  updateTestimonial: (testimonialId: text, updatedTestimonial:
+   TestimonialContent) -> ();
+}

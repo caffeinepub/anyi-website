@@ -5,6 +5,7 @@ import {
   Handshake,
   Home,
   Lightbulb,
+  Linkedin,
   Menu,
   ShieldCheck,
   Sparkles,
@@ -14,7 +15,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { SiInstagram, SiLinkedin, SiX } from "react-icons/si";
+import { SiInstagram, SiX } from "react-icons/si";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { useAboutContent } from "../hooks/useQueries";
 
@@ -248,7 +249,7 @@ export default function AboutPage({
               <ChevronRight className="w-3 h-3" />
               <span className="text-foreground">About</span>
             </nav>
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-4">
+            <h1 className="text-2xl font-bold text-foreground mb-4">
               About Us
             </h1>
             <p className="text-lg text-muted-foreground max-w-xl">
@@ -272,7 +273,7 @@ export default function AboutPage({
                 <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
                   Who We Are
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                <h2 className="text-2xl font-bold text-foreground mb-4">
                   {about?.title ?? "About Anyi"}
                 </h2>
                 <p className="text-lg font-semibold text-foreground mb-6">
@@ -323,7 +324,7 @@ export default function AboutPage({
             <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               Purpose
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            <h2 className="text-2xl font-bold text-foreground">
               Mission &amp; Vision
             </h2>
           </motion.div>
@@ -380,9 +381,7 @@ export default function AboutPage({
             <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               What Drives Us
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Our Values
-            </h2>
+            <h2 className="text-2xl font-bold text-foreground">Our Values</h2>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {VALUES.map(({ icon: Icon, title, desc }, i) => (
@@ -422,7 +421,7 @@ export default function AboutPage({
             <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               The People
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            <h2 className="text-2xl font-bold text-foreground">
               Meet the Team
             </h2>
             <p className="text-sm text-muted-foreground mt-4 max-w-lg mx-auto">
@@ -486,7 +485,7 @@ export default function AboutPage({
             transition={{ duration: 0.5 }}
           >
             <Users className="w-12 h-12 text-primary mx-auto mb-6 opacity-60" />
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl font-bold text-foreground mb-4">
               Ready to work with us?
             </h2>
             <p className="text-sm text-muted-foreground mb-8 max-w-md mx-auto">
@@ -524,7 +523,7 @@ export default function AboutPage({
                 {[
                   { href: "https://twitter.com", Icon: SiX },
                   { href: "https://instagram.com", Icon: SiInstagram },
-                  { href: "https://linkedin.com", Icon: SiLinkedin },
+                  { href: "https://linkedin.com", Icon: Linkedin },
                 ].map(({ href, Icon }) => (
                   <a
                     key={href}

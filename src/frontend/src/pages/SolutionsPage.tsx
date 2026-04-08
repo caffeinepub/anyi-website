@@ -17,6 +17,7 @@ import {
   Headphones,
   Home,
   Layers,
+  Linkedin,
   Lock,
   Mail,
   Menu,
@@ -43,7 +44,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { SiInstagram, SiLinkedin, SiX } from "react-icons/si";
+import { SiInstagram, SiX } from "react-icons/si";
 import { ThemeToggle } from "../components/ThemeToggle";
 
 function NavBar({ navigate }: { navigate: (to: string) => void }) {
@@ -562,7 +563,7 @@ export default function SolutionsPage({
               <ChevronRight className="w-3 h-3" />
               <span className="text-primary">Solutions</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground mb-4">
+            <h1 className="text-2xl font-display font-bold text-foreground mb-4">
               Integrated Solutions
             </h1>
             <p className="text-2xl text-primary font-medium mb-4">
@@ -609,7 +610,7 @@ export default function SolutionsPage({
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">
               CRM Platform
             </span>
-            <h2 className="text-4xl font-display font-bold text-foreground mt-2">
+            <h2 className="text-2xl font-display font-bold text-foreground mt-2">
               CRM Platform
             </h2>
           </motion.div>
@@ -732,7 +733,7 @@ export default function SolutionsPage({
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">
               Ecosystem
             </span>
-            <h2 className="text-4xl font-display font-bold text-foreground mt-2">
+            <h2 className="text-2xl font-display font-bold text-foreground mt-2">
               Integrations
             </h2>
           </motion.div>
@@ -795,7 +796,7 @@ export default function SolutionsPage({
               <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-3 block">
                 Infrastructure
               </span>
-              <h2 className="text-4xl font-display font-bold text-foreground mb-8">
+              <h2 className="text-2xl font-display font-bold text-foreground mb-8">
                 Hardware / Infra
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -842,7 +843,7 @@ export default function SolutionsPage({
               <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2 block">
                 AI-Powered
               </span>
-              <h2 className="text-4xl font-display font-bold text-foreground mb-2">
+              <h2 className="text-2xl font-display font-bold text-foreground mb-2">
                 Smart Marks
               </h2>
               <p className="text-muted-foreground">
@@ -887,7 +888,7 @@ export default function SolutionsPage({
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">
               Attendance Management
             </span>
-            <h2 className="text-4xl font-display font-bold text-foreground mt-2 mb-4">
+            <h2 className="text-2xl font-display font-bold text-foreground mt-2 mb-4">
               Attendance Management Solution
             </h2>
             <p className="text-muted-foreground max-w-3xl text-base leading-relaxed">
@@ -971,7 +972,7 @@ export default function SolutionsPage({
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">
               Hospital Emergency System
             </span>
-            <h2 className="text-4xl font-display font-bold text-foreground mt-2 mb-4">
+            <h2 className="text-2xl font-display font-bold text-foreground mt-2 mb-4">
               Emergency Code Management Solution
             </h2>
             <p className="text-muted-foreground max-w-3xl text-base leading-relaxed">
@@ -1109,7 +1110,7 @@ export default function SolutionsPage({
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">
               WhatsApp Business
             </span>
-            <h2 className="text-4xl font-display font-bold text-foreground mt-2 mb-4">
+            <h2 className="text-2xl font-display font-bold text-foreground mt-2 mb-4">
               WhatsApp Business Solution
             </h2>
             <p className="text-muted-foreground max-w-3xl text-base leading-relaxed">
@@ -1190,7 +1191,7 @@ export default function SolutionsPage({
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl font-display font-bold text-foreground mb-4">
+            <h2 className="text-2xl font-display font-bold text-foreground mb-4">
               Need a hand?
             </h2>
             <p className="text-muted-foreground mb-8">
@@ -1247,7 +1248,7 @@ export default function SolutionsPage({
                 {[
                   { href: "https://twitter.com", Icon: SiX },
                   { href: "https://instagram.com", Icon: SiInstagram },
-                  { href: "https://linkedin.com", Icon: SiLinkedin },
+                  { href: "https://linkedin.com", Icon: Linkedin },
                 ].map(({ href, Icon }) => (
                   <a
                     key={href}

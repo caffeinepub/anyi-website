@@ -15,14 +15,6 @@ import { useGalleryItems } from "../hooks/useQueries";
 
 const DEFAULT_GALLERY = [
   {
-    id: "1",
-    title: "Office PBX System",
-    category: "Communication",
-    imageUrl: "/assets/generated/portfolio-pbx.dim_600x400.jpg",
-    description:
-      "IP/SIP based PBX solution with live monitoring, hot/cold redundancy, and easy-to-use User Control Panel.",
-  },
-  {
     id: "2",
     title: "Multi-Channel Communication",
     category: "Communication",
@@ -404,7 +396,7 @@ export default function PortfolioPage({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold leading-tight text-foreground"
+            className="text-2xl font-bold leading-tight text-foreground"
           >
             Our Portfolio
           </motion.h1>
@@ -432,7 +424,7 @@ export default function PortfolioPage({
               { value: "4", label: "Solution Categories" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-3xl font-bold text-primary">
+                <div className="text-2xl font-bold text-primary">
                   {stat.value}
                 </div>
                 <div className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">
@@ -518,7 +510,7 @@ export default function PortfolioPage({
               className="text-center py-24 text-muted-foreground"
               data-ocid="portfolio.empty_state"
             >
-              <p className="text-5xl mb-4">📂</p>
+              <p className="text-2xl mb-4">📂</p>
               <h3 className="text-xl font-semibold text-foreground mb-2">
                 No items found
               </h3>

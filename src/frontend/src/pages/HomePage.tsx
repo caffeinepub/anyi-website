@@ -7,6 +7,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Globe,
+  Linkedin,
   Mail,
   MapPin,
   Menu,
@@ -19,13 +20,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import {
-  SiFacebook,
-  SiInstagram,
-  SiLinkedin,
-  SiWhatsapp,
-  SiX,
-} from "react-icons/si";
+import { SiFacebook, SiInstagram, SiWhatsapp, SiX } from "react-icons/si";
 import { toast } from "sonner";
 import { ThemeToggle } from "../components/ThemeToggle";
 import {
@@ -110,12 +105,6 @@ const DEFAULT_TESTIMONIALS = [
 ];
 
 const DEFAULT_GALLERY = [
-  {
-    id: "1",
-    title: "Office PBX System",
-    category: "Communication",
-    imageUrl: "/assets/generated/portfolio-pbx.dim_600x400.jpg",
-  },
   {
     id: "2",
     title: "Multi-Channel Communication",
@@ -333,7 +322,7 @@ function HeroSection() {
                 <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-6 px-3 py-1.5 bg-primary/20 rounded-full">
                   Process Automation
                 </span>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[1.05] uppercase tracking-tight mb-6">
+                <h1 className="text-2xl font-extrabold text-foreground leading-[1.05] uppercase tracking-tight mb-6">
                   {hero?.title ?? "Process Automation For Every Business Need"}
                 </h1>
                 <p className="text-base text-muted-foreground leading-relaxed mb-10 max-w-md">
@@ -402,7 +391,7 @@ function AboutSection() {
               <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
                 Who We Are
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-2xl font-bold text-foreground mb-4">
                 {about?.title ?? "About Us"}
               </h2>
               <p className="text-lg font-semibold text-foreground mb-6">
@@ -456,9 +445,7 @@ function ServicesSection() {
           <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
             What We Do
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Our Services
-          </h2>
+          <h2 className="text-2xl font-bold text-foreground">Our Services</h2>
           <p className="text-sm text-muted-foreground mt-4 max-w-xl mx-auto">
             Comprehensive solutions tailored to elevate your brand and
             accelerate your growth.
@@ -542,9 +529,7 @@ function GallerySection() {
           <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
             Our Work
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Portfolio
-          </h2>
+          <h2 className="text-2xl font-bold text-foreground">Portfolio</h2>
           <p className="text-sm text-muted-foreground mt-4 max-w-xl mx-auto">
             A selection of projects that showcase the depth and diversity of our
             creative work.
@@ -643,9 +628,7 @@ function TestimonialsSection() {
           <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
             What Clients Say
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Testimonials
-          </h2>
+          <h2 className="text-2xl font-bold text-foreground">Testimonials</h2>
         </div>
 
         <div className="relative max-w-3xl mx-auto">
@@ -763,7 +746,7 @@ function ContactSection() {
                 <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-6">
                   Get In Touch
                 </span>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground uppercase leading-tight mb-8">
+                <h2 className="text-2xl font-extrabold text-foreground uppercase leading-tight mb-8">
                   Let&apos;s Build Something
                   <br />
                   <span className="text-primary">Extraordinary</span>
@@ -833,7 +816,7 @@ function ContactSection() {
                   className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center text-foreground hover:bg-primary transition-colors"
                   data-ocid="contact.link"
                 >
-                  <SiLinkedin className="w-4 h-4" />
+                  <Linkedin className="w-4 h-4" />
                 </a>
                 <a
                   href="https://instagram.com"
@@ -1037,7 +1020,7 @@ function SiteFooter({ navigate }: { navigate: (to: string) => void }) {
                 className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
                 data-ocid="footer.link"
               >
-                <SiLinkedin className="w-3.5 h-3.5" />
+                <Linkedin className="w-3.5 h-3.5" />
               </a>
               <a
                 href="https://instagram.com"

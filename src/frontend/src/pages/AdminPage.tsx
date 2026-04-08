@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
+import { useInternetIdentity } from "@caffeineai/core-infrastructure";
 import {
   ArrowLeft,
   Image,
@@ -16,7 +17,6 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { ExternalBlob } from "../backend";
-import { useInternetIdentity } from "../hooks/useInternetIdentity";
 import {
   useAboutContent,
   useAddGalleryItem,

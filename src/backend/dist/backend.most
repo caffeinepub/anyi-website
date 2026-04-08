@@ -1,0 +1,35 @@
+// Version: 1.0.0
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type ServiceContent__762622012 =
+  {description : Text; id : Text; title : Text};
+type TestimonialContent__717997581 =
+  {author : Text; id : Text; quote : Text; role : Text};
+type UserProfile__491224006 = {name : Text};
+actor {
+  stable var aboutContent : {body : Text; title : Text};
+  stable var contactInfo : {address : Text; email : Text; phone : Text};
+  stable var heroContent : {ctaText : Text; subtitle : Text; title : Text};
+  stable servicesStore :
+    {
+      var root : Node__46230540<Text, ServiceContent__762622012>;
+      var size : Nat__490723111
+    };
+  stable testimonialsStore :
+    {
+      var root : Node__46230540<Text, TestimonialContent__717997581>;
+      var size : Nat__490723111
+    };
+  stable userProfiles :
+    {
+      var root : Node__46230540<Principal, UserProfile__491224006>;
+      var size : Nat__490723111
+    }
+};

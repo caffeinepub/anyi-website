@@ -11,6 +11,7 @@ import {
   Heart,
   Home,
   Laptop,
+  Linkedin,
   Lock,
   Mail,
   Menu,
@@ -27,7 +28,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { SiInstagram, SiLinkedin, SiX } from "react-icons/si";
+import { SiInstagram, SiX } from "react-icons/si";
 import { ThemeToggle } from "../components/ThemeToggle";
 
 const NAV_ITEMS = [
@@ -319,7 +320,7 @@ export default function BPOPage({
             transition={{ duration: 0.7 }}
             className="max-w-2xl"
           >
-            <h1 className="text-5xl md:text-6xl font-display font-bold text-white mb-6 leading-tight">
+            <h1 className="text-2xl font-display font-bold text-white mb-6 leading-tight">
               What We Offer
             </h1>
             <p className="text-lg text-white/80 mb-10 leading-relaxed">
@@ -365,7 +366,7 @@ export default function BPOPage({
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="text-center"
               >
-                <div className="text-3xl font-extrabold text-white">
+                <div className="text-2xl font-extrabold text-white">
                   {stat.num}
                 </div>
                 <div className="text-sm text-white/70 mt-1">{stat.label}</div>
@@ -388,7 +389,7 @@ export default function BPOPage({
               <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
                 About Our BPO
               </span>
-              <h2 className="text-4xl font-display font-bold text-foreground mb-6">
+              <h2 className="text-2xl font-display font-bold text-foreground mb-6">
                 Your Trusted BPO Partner
               </h2>
               <p className="text-muted-foreground leading-relaxed text-lg mb-6">
@@ -439,7 +440,7 @@ export default function BPOPage({
             <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               What We Do
             </span>
-            <h2 className="text-4xl font-display font-bold text-foreground">
+            <h2 className="text-2xl font-display font-bold text-foreground">
               Our BPO Services
             </h2>
           </motion.div>
@@ -493,7 +494,7 @@ export default function BPOPage({
               <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
                 Our Advantage
               </span>
-              <h2 className="text-4xl font-display font-bold text-foreground mb-6">
+              <h2 className="text-2xl font-display font-bold text-foreground mb-6">
                 Why Choose ANYI?
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -563,7 +564,7 @@ export default function BPOPage({
             <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               How We Work
             </span>
-            <h2 className="text-4xl font-display font-bold text-foreground">
+            <h2 className="text-2xl font-display font-bold text-foreground">
               Our Process
             </h2>
           </motion.div>
@@ -608,7 +609,7 @@ export default function BPOPage({
             <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               Sector Expertise
             </span>
-            <h2 className="text-4xl font-display font-bold text-foreground">
+            <h2 className="text-2xl font-display font-bold text-foreground">
               Industries We Serve
             </h2>
           </motion.div>
@@ -643,7 +644,7 @@ export default function BPOPage({
             <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               Tech Stack
             </span>
-            <h2 className="text-3xl font-display font-bold text-foreground">
+            <h2 className="text-2xl font-display font-bold text-foreground">
               Technology We Use
             </h2>
           </motion.div>
@@ -677,7 +678,7 @@ export default function BPOPage({
             <span className="text-xs font-semibold uppercase tracking-widest text-primary block mb-3">
               What You Gain
             </span>
-            <h2 className="text-4xl font-display font-bold text-foreground">
+            <h2 className="text-2xl font-display font-bold text-foreground">
               Client Benefits
             </h2>
           </motion.div>
@@ -714,7 +715,7 @@ export default function BPOPage({
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="text-5xl text-indigo-300 mb-2">&ldquo;</div>
+            <div className="text-2xl text-indigo-300 mb-2">&ldquo;</div>
             <blockquote className="text-xl font-medium text-foreground mb-4 leading-relaxed">
               ANYI helped us reduce our support cost and improved response time
               drastically. Their team is professional, responsive, and truly
@@ -736,7 +737,7 @@ export default function BPOPage({
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl font-display font-bold text-white mb-4">
+            <h2 className="text-2xl font-display font-bold text-white mb-4">
               Ready to Scale Your Business?
             </h2>
             <p className="text-white/80 mb-6 text-lg">
@@ -784,7 +785,7 @@ export default function BPOPage({
                 {[
                   { href: "https://twitter.com", Icon: SiX },
                   { href: "https://instagram.com", Icon: SiInstagram },
-                  { href: "https://linkedin.com", Icon: SiLinkedin },
+                  { href: "https://linkedin.com", Icon: Linkedin },
                 ].map(({ href, Icon }) => (
                   <a
                     key={href}
