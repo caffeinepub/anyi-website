@@ -284,7 +284,7 @@ export default function AboutPage({
                 </p>
                 <div className="mt-8 grid grid-cols-3 gap-6">
                   {[
-                    { num: "10+", label: "Years Experience" },
+                    { num: "20+", label: "Years Experience" },
                     { num: "320+", label: "Projects Delivered" },
                     { num: "98%", label: "Client Satisfaction" },
                   ].map((stat) => (

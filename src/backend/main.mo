@@ -63,7 +63,7 @@ actor {
 
   // Persistent Storage
   var heroContent : HeroContent = {
-    title = "Welcome to Our Site";
+    title = "Process Automation For Every Business Need";
     subtitle = "Best services in town.";
     ctaText = "Get Started";
   };
