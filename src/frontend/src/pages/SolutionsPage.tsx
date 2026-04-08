@@ -1195,7 +1195,7 @@ export default function SolutionsPage({
               Need a hand?
             </h2>
             <p className="text-muted-foreground mb-8">
-              Contact us at Anyi Services India Private Limited
+              Contact us at Anyi Services
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10 text-sm text-muted-foreground">
               <a
@@ -1203,12 +1203,6 @@ export default function SolutionsPage({
                 className="flex items-center gap-2 hover:text-foreground transition-colors"
               >
                 <Phone className="w-4 h-4 text-primary" /> +91 9810657082
-              </a>
-              <a
-                href="mailto:ys@anyi.co.in"
-                className="flex items-center gap-2 hover:text-foreground transition-colors"
-              >
-                <Mail className="w-4 h-4 text-primary" /> ys@anyi.co.in
               </a>
               <a
                 href="mailto:ys@anyi.co.in"
